@@ -1,6 +1,6 @@
 import * as colors from './colors';
 
-function getTheme(isDark) {
+export const getTheme = (isDark) => {
     const defaultTextColor = isDark ? colors.light3 : colors.dark3;
     const defaultFontSize = 11;
 
@@ -81,5 +81,3 @@ function getTheme(isDark) {
         }
     };
 }
-
-export default getTheme;
