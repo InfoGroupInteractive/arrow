@@ -300,10 +300,24 @@ var light$1 = {
   },
   size: size
 };
+var vapor$1 = {
+  global: Object.assign({}, glowbal, {
+    colors: theme.vapor
+  }),
+  anchor: Object.assign({}, anchor, {
+    color: dark1
+  }),
+  edgeSize: edgeSize,
+  icon: {
+    color: dark4
+  },
+  size: size
+};
 
 var themes = /*#__PURE__*/Object.freeze({
     dark: dark$1,
-    light: light$1
+    light: light$1,
+    vapor: vapor$1
 });
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
