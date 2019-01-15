@@ -2,14 +2,11 @@
   "name": "arrow",
   "version": "1.0.0",
   "description": "Look and feel for CDP UI",
-  "main": "index.js",
+  "main": "bundle.js",
   "dependencies": {
-    "grommet": "^2.3.1",
-    "grommet-icons": "^4.1.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-redux": "6.0.0",
-    "redux": "4.0.1",
+
+
+
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -24,7 +21,12 @@
     "@babel/preset-react": "7.0.0"
   },
   "peerDependencies": {
-    "react": ">= 16.7.0"
+    "grommet": "^2.3.1",
+    "grommet-icons": "^4.1.0",
+    "react": ">= 16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "6.0.0",
+    "redux": "4.0.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

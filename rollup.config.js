@@ -23,5 +23,5 @@ export default {
         commonjs(),
         scss()
     ],
-    external: id => /^react/.test(id)
+    external: id => /^react|react-dom|react-redux|redux|grommet|grommet-icons/.test(id)
 }
