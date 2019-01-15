@@ -568,6 +568,13 @@ var store = redux.createStore(function () {
   }
 });
 
+var createToast = function createToast(text, background) {
+  store.dispatch({
+    type: ADD_TOAST,
+    text: text,
+    background: background
+  });
+};
 var removeToast = function removeToast(id) {
   store.dispatch({
     type: REMOVE_TOAST,
@@ -717,3 +724,5 @@ exports.ArrowApp = ArrowApp;
 exports.Navigation = Navigation;
 exports.ErrorBoundary = ErrorBoundary;
 exports.Loader = loader;
+exports.createToast = createToast;
+exports.removeToast = removeToast;

@@ -14,4 +14,4 @@ export { default as ArrowApp } from './src/arrow-app';
 export { default as Navigation } from './src/navigation/navigation';
 export { default as ErrorBoundary } from './src/error-boundary/error-boundary';
 export { default as Loader } from './src/loader/loader';
-
+export { createToast, removeToast } from './src/toast/toast.actions';
