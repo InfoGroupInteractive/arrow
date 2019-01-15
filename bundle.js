@@ -592,7 +592,7 @@ var Toast = function Toast(_ref) {
   var toasts = _ref.toasts;
 
   if (toasts && Array.isArray(toasts) && toasts.length > 0) {
-    var toastsItems = toasts.map(function (m) {
+    var toastItems = toasts.map(function (m) {
       return React__default.createElement(grommet.Box, {
         background: m.background || 'accent-1',
         pad: "medium",
