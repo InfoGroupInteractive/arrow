@@ -656,6 +656,12 @@ function Navigation(props) {
   });
 }
 
+var Loader = (function (props) {
+  return React__default.createElement("div", {
+    className: "loader ".concat(props.className)
+  });
+});
+
 var ArrowApp =
 /*#__PURE__*/
 function (_Component) {
@@ -695,7 +701,7 @@ function (_Component) {
         navigationItems: navItems,
         onClick: onNavItemClick
       }))), React__default.createElement(React.Suspense, {
-        fallback: React__default.createElement("div", null, "loading"),
+        fallback: React__default.createElement(Loader, null),
         maxDuration: 300
       }, this.props.children), React__default.createElement(reactRedux.Provider, {
         store: store
@@ -705,12 +711,6 @@ function (_Component) {
 
   return ArrowApp;
 }(React.Component);
-
-var loader = (function (props) {
-  return React__default.createElement("div", {
-    className: "loader ".concat(props.className)
-  });
-});
 
 var theme$1 = {
   colors: colors,
@@ -723,6 +723,6 @@ exports.theme = theme$1;
 exports.ArrowApp = ArrowApp;
 exports.Navigation = Navigation;
 exports.ErrorBoundary = ErrorBoundary;
-exports.Loader = loader;
+exports.Loader = Loader;
 exports.createToast = createToast;
 exports.removeToast = removeToast;

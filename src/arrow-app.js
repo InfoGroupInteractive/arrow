@@ -5,6 +5,7 @@ import * as themes from './theme/theme'
 import ErrorBoundary from './error-boundary/error-boundary';
 import Toast from './toast/toast';
 import Navigation from './navigation/navigation';
+import Loader from './loader/loader';
 import store from './store';
 
 
@@ -26,7 +27,7 @@ class ArrowApp extends Component {
                     <Navigation navigationItems={navItems} onClick={onNavItemClick} />
                 </Box>
             </Box>
-            <Suspense fallback={<div>loading</div>} maxDuration={300}>
+            <Suspense fallback={<Loader />} maxDuration={300}>
               {this.props.children}
             </Suspense>
             <Provider store={store}>
