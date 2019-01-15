@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { Grommet, Box } from 'grommet';
-import { theme } from './theme/theme'
+import * as themes from './theme/theme'
 import ErrorBoundary from './error-boundary/error-boundary';
 import Toast from './toast/toast';
 import Navigation from './navigation/navigation';
@@ -13,7 +13,7 @@ class ArrowApp extends Component {
     const { selectedTheme, navItems, onNavItemClick } = this.props;
     
     return (
-      <Grommet full theme={theme[selectedTheme]}>
+      <Grommet full theme={themes[selectedTheme]}>
         <ErrorBoundary>
           <Box direction='column' flex fill>
             <Box
