@@ -4,7 +4,7 @@ import * as toastConstants from './toast/toast.constants';
 
 export default createStore((state={ toasts: []}, action)=>{
     //if we are embedded, proxy
-    if(window.self.location !== window.top.location){
+    if(window.embeddedArrow){
         console.log('postMessage');
         window.top.postMessage(action,'http://localhost:3000');
         return state;

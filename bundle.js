@@ -80,9 +80,37 @@ var dark = Object.assign({}, light, {
   'accent-3': accent3Alt,
   'accent-4': accent4Alt
 });
+var vapor = Object.assign({}, light, {
+  brand: '#FF71CE',
+  'accent-1': '#B967FF',
+  'accent-1-alt': '#D5DD48',
+  'accent-2': '#01CDFE',
+  'accent-2-alt': '#28C0D2',
+  'accent-3': '#05FFA1',
+  'accent-3-alt': '#F4985F',
+  'accent-4': '#FFFB96',
+  'accent-4-alt': '#807AB9',
+  'dark-1': '#FF71CE',
+  'dark-2': '#B967FF',
+  'dark-3': '#01CDFE',
+  'dark-4': '#05FFA1',
+  'dark-5': '#FFFB96',
+  'dark-6': '#103',
+  'light-1': '#FF71CE',
+  'light-2': '#B967FF',
+  'light-3': '#01CDFE',
+  'light-4': '#05FFA1',
+  'light-5': '#FFFB96',
+  'light-6': '#336',
+  'status-critical': '#EB3C3C',
+  'status-error': '#EB3C3C',
+  'status-warning': '#F7E463',
+  'status-ok': '#329B46'
+});
 var theme = {
   light: light,
-  dark: dark
+  dark: dark,
+  vapor: vapor
 };
 
 var colors = /*#__PURE__*/Object.freeze({
@@ -200,10 +228,12 @@ var reportTheme = /*#__PURE__*/Object.freeze({
 
 var LIGHT = 'light';
 var DARK = 'dark';
+var VAPOR = 'vapor';
 
 var constants = /*#__PURE__*/Object.freeze({
     LIGHT: LIGHT,
-    DARK: DARK
+    DARK: DARK,
+    VAPOR: VAPOR
 });
 
 var font = {
@@ -531,7 +561,7 @@ var store = redux.createStore(function () {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   //if we are embedded, proxy
-  if (window.self.location !== window.top.location) {
+  if (window.embeddedArrow) {
     console.log('postMessage');
     window.top.postMessage(action, 'http://localhost:3000');
     return state;
@@ -662,6 +692,8 @@ var Loader = (function (props) {
   });
 });
 
+window.embeddedArrow = window.self.location !== window.top.location;
+
 var ArrowApp =
 /*#__PURE__*/
 function (_Component) {
@@ -687,7 +719,7 @@ function (_Component) {
         direction: "column",
         flex: true,
         fill: true
-      }, React__default.createElement(grommet.Box, {
+      }, !window.embeddedArrow ? React__default.createElement(grommet.Box, {
         tag: "header",
         justify: "between",
         direction: "row",
@@ -700,7 +732,7 @@ function (_Component) {
       }, React__default.createElement(Navigation, {
         navigationItems: navItems,
         onClick: onNavItemClick
-      }))), React__default.createElement(React.Suspense, {
+      }))) : null, React__default.createElement(React.Suspense, {
         fallback: React__default.createElement(Loader, null),
         maxDuration: 300
       }, this.props.children), React__default.createElement(reactRedux.Provider, {

@@ -8,6 +8,7 @@ import Navigation from './navigation/navigation';
 import Loader from './loader/loader';
 import store from './store';
 
+window.embeddedArrow = window.self.location !== window.top.location;
 
 class ArrowApp extends Component {
   render() {
@@ -17,7 +18,7 @@ class ArrowApp extends Component {
       <Grommet full theme={themes[selectedTheme]}>
         <ErrorBoundary>
           <Box direction='column' flex fill>
-            <Box
+            {!window.embeddedArrow ? <Box
                 tag='header'
                 justify='between'
                 direction='row'
@@ -26,7 +27,7 @@ class ArrowApp extends Component {
                 <Box tag='nav' direction='row' align='center'>
                     <Navigation navigationItems={navItems} onClick={onNavItemClick} />
                 </Box>
-            </Box>
+            </Box> : null }
             <Suspense fallback={<Loader />} maxDuration={300}>
               {this.props.children}
             </Suspense>
