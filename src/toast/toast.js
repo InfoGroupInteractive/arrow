@@ -14,7 +14,7 @@ const mapStateToProps = (state)=>{
 
 const Toast = ({ toasts }) => {
     if(toasts && Array.isArray(toasts) && toasts.length > 0){
-        let toastsItems = toasts.map(m=>(
+        let toastItems = toasts.map(m=>(
             <Box 
                 background={ m.background || 'accent-1'}
                 pad='medium'
