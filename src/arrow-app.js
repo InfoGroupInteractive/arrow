@@ -8,7 +8,7 @@ import Navigation from './navigation/navigation';
 import Loader from './loader/loader';
 import store from './store';
 
-window.embeddedArrow = window.self.location !== window.top.location;
+
 
 
 

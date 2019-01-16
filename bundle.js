@@ -570,6 +570,7 @@ function v4(options, buf, offset) {
 
 var v4_1 = v4;
 
+window.embeddedArrow = window.self.location !== window.top.location;
 var store = redux.createStore(function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     toasts: []
@@ -620,7 +621,7 @@ var store = redux.createStore(function () {
 });
 window.addEventListener('message', function (e) {
   //verify origin
-  if (e.origin !== 'http://localhost:3000') {
+  if (e.origin !== 'http://localhost:3000' || !action.type) {
     return;
   } //assign key so we know not to process this action instead of proxy
 
@@ -631,6 +632,12 @@ window.addEventListener('message', function (e) {
 
   store.dispatch(action);
 });
+
+if (window.embeddedArrow) {
+  console.log('we are embedded!');
+} else {
+  console.log('we are not embedded');
+}
 
 var createToast = function createToast(text, background) {
   store.dispatch({
@@ -725,8 +732,6 @@ var Loader = (function (props) {
     className: "loader ".concat(props.className)
   });
 });
-
-window.embeddedArrow = window.self.location !== window.top.location;
 
 var ArrowApp =
 /*#__PURE__*/

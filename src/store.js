@@ -3,6 +3,8 @@ import uuidv4 from 'uuid/v4';
 import * as toastConstants from './toast/toast.constants';
 import { SET_THEME } from './theme/theme.constants';
 
+window.embeddedArrow = window.self.location !== window.top.location;
+
 const store = createStore((state={ toasts: []}, action)=>{
     //if we are embedded, proxy
     if(window.embeddedArrow && !action.__processAction__){
@@ -43,7 +45,7 @@ const store = createStore((state={ toasts: []}, action)=>{
 
 window.addEventListener('message', (e)=>{
     //verify origin
-    if(e.origin !== 'http://localhost:3000'){
+    if(e.origin !== 'http://localhost:3000' || !action.type){
         return;
     }
 
@@ -55,5 +57,11 @@ window.addEventListener('message', (e)=>{
     //dispatch that jazz
     store.dispatch(action);
 });
+
+if(window.embeddedArrow){
+    console.log('we are embedded!');
+} else {
+    console.log('we are not embedded');
+}
 
 export default store;
