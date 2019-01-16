@@ -1,3 +1,5 @@
+import * as toastConstants from './toast.constants';
+
 export default ((state=[], action)=>{
     var newState;
     switch(action.type){

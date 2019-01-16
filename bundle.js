@@ -229,13 +229,13 @@ var reportTheme = /*#__PURE__*/Object.freeze({
 var LIGHT = 'light';
 var DARK = 'dark';
 var VAPOR = 'vapor';
-var SET_THEME$1 = 'SET_THEME';
+var SET_THEME = 'SET_THEME';
 
 var constants = /*#__PURE__*/Object.freeze({
     LIGHT: LIGHT,
     DARK: DARK,
     VAPOR: VAPOR,
-    SET_THEME: SET_THEME$1
+    SET_THEME: SET_THEME
 });
 
 var font = {
@@ -524,7 +524,7 @@ var toastReducers = (function () {
   var newState;
 
   switch (action.type) {
-    case toastConstants.ADD_TOAST:
+    case ADD_TOAST:
       newState = Object.assign({}, state);
       newState.toasts = state.toasts.slice();
       newState.toasts.push({
@@ -534,7 +534,7 @@ var toastReducers = (function () {
       });
       return newState;
 
-    case toastConstants.REMOVE_TOAST:
+    case REMOVE_TOAST:
       newState = Object.assign({}, state);
       newState.toasts = state.toasts.slice();
       var toastIndex = newState.toasts.findIndex(function (n) {
@@ -786,7 +786,7 @@ function (_Component) {
 
 var setTheme = function setTheme(theme) {
   store.dispatch({
-    type: SET_THEME$1,
+    type: SET_THEME,
     theme: theme
   });
 };
