@@ -525,9 +525,8 @@ var toastReducers = (function () {
 
   switch (action.type) {
     case ADD_TOAST:
-      newState = Object.assign({}, state);
-      newState.toasts = state.toasts.slice();
-      newState.toasts.push({
+      newState = state.slice();
+      newState.push({
         id: uuidv4(),
         text: action.text,
         background: action.background
@@ -535,14 +534,13 @@ var toastReducers = (function () {
       return newState;
 
     case REMOVE_TOAST:
-      newState = Object.assign({}, state);
-      newState.toasts = state.toasts.slice();
-      var toastIndex = newState.toasts.findIndex(function (n) {
+      newState = state.slice();
+      var toastIndex = newState.findIndex(function (n) {
         return n.id === action.id;
       });
 
       if (toastIndex !== -1) {
-        newState.toasts.splice(toastIndex, 1);
+        newState.splice(toastIndex, 1);
       }
 
       return newState;
