@@ -506,6 +506,54 @@ function (_React$Component) {
   return ErrorBoundary;
 }(React__default.Component);
 
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    toasts: state.toasts
+  };
+};
+
+var Toast = function Toast(_ref) {
+  var toasts = _ref.toasts,
+      onClose = _ref.onClose;
+
+  if (toasts && Array.isArray(toasts) && toasts.length > 0) {
+    var toastItems = toasts.map(function (m) {
+      return React__default.createElement(grommet.Box, {
+        background: m.background || 'accent-1',
+        pad: "medium",
+        elevation: "xsmall",
+        round: "small",
+        direction: "row",
+        justify: "between",
+        align: "center",
+        gap: "medium"
+      }, React__default.createElement(grommet.Text, {
+        size: "large"
+      }, m.text), React__default.createElement(grommetIcons.Close, {
+        onClick: function onClick() {
+          onClose(m.id);
+        }
+      }));
+    });
+    return React__default.createElement(grommet.Layer, {
+      modal: false,
+      position: "bottom",
+      style: {
+        background: 'transparent'
+      }
+    }, React__default.createElement(grommet.Box, {
+      gap: "small",
+      margin: {
+        bottom: 'small'
+      }
+    }, toastItems));
+  } else {
+    return null;
+  }
+};
+
+var Toast$1 = reactRedux.connect(mapStateToProps)(Toast);
+
 var ADD_TOAST = 'ADD_TOAST';
 var REMOVE_TOAST = 'REMOVE_TOAST';
 
@@ -656,65 +704,24 @@ if (window.embeddedArrow) {
 }
 
 var createToast = function createToast(text, background) {
-  store.dispatch({
-    type: ADD_TOAST,
-    text: text,
-    background: background
-  });
+  store.dispatch(createToastAction(text, background));
 };
 var removeToast = function removeToast(id) {
-  store.dispatch({
+  store.dispatch(removeToastAction(id));
+};
+var removeToastAction = function removeToastAction(id) {
+  return {
     type: REMOVE_TOAST,
     id: id
-  });
-};
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    toasts: state.toasts
   };
 };
-
-var Toast = function Toast(_ref) {
-  var toasts = _ref.toasts;
-
-  if (toasts && Array.isArray(toasts) && toasts.length > 0) {
-    var toastItems = toasts.map(function (m) {
-      return React__default.createElement(grommet.Box, {
-        background: m.background || 'accent-1',
-        pad: "medium",
-        elevation: "xsmall",
-        round: "small",
-        direction: "row",
-        justify: "between",
-        align: "center",
-        gap: "medium"
-      }, React__default.createElement(grommet.Text, {
-        size: "large"
-      }, m.text), React__default.createElement(grommetIcons.Close, {
-        onClick: function onClick() {
-          removeToast(m.id);
-        }
-      }));
-    });
-    return React__default.createElement(grommet.Layer, {
-      modal: false,
-      position: "bottom",
-      style: {
-        background: 'transparent'
-      }
-    }, React__default.createElement(grommet.Box, {
-      gap: "small",
-      margin: {
-        bottom: 'small'
-      }
-    }, toastItems));
-  } else {
-    return null;
-  }
+var createToastAction = function createToastAction(text, background) {
+  return {
+    type: REMOVE_TOAST,
+    text: text,
+    background: background
+  };
 };
-
-var Toast$1 = reactRedux.connect(mapStateToProps)(Toast);
 
 function Navigation(props) {
   var navigationItems = props.navigationItems,
@@ -807,7 +814,9 @@ function (_Component) {
         maxDuration: 300
       }, this.props.children), React__default.createElement(reactRedux.Provider, {
         store: store
-      }, React__default.createElement(Toast$1, null)))));
+      }, React__default.createElement(Toast$1, {
+        onClose: removeToast
+      })))));
     }
   }]);
 
@@ -836,5 +845,7 @@ exports.Loader = Loader;
 exports.Toast = Toast$1;
 exports.createToast = createToast;
 exports.removeToast = removeToast;
+exports.removeToastAction = removeToastAction;
+exports.createToastAction = createToastAction;
 exports.toastReducers = toastReducers;
 exports.setTheme = setTheme;
