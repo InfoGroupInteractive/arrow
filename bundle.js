@@ -571,6 +571,7 @@ function v4(options, buf, offset) {
 var v4_1 = v4;
 
 window.embeddedArrow = window.self.location !== window.top.location;
+var proxyableTypes = [SET_THEME, ADD_TOAST, REMOVE_TOAST];
 var store = redux.createStore(function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
     toasts: []
@@ -578,7 +579,7 @@ var store = redux.createStore(function () {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   //if we are embedded, proxy
-  if (window.embeddedArrow && !action.__processAction__) {
+  if (window.embeddedArrow && !action.__processAction__ && proxyableTypes.indexOf(action.type) !== -1) {
     console.log('postMessage');
     window.top.postMessage(action, 'http://localhost:3000');
     return state;

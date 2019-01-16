@@ -5,9 +5,11 @@ import { SET_THEME } from './theme/theme.constants';
 
 window.embeddedArrow = window.self.location !== window.top.location;
 
+const proxyableTypes = [SET_THEME, toastConstants.ADD_TOAST, toastConstants.REMOVE_TOAST];
+
 const store = createStore((state={ toasts: []}, action)=>{
     //if we are embedded, proxy
-    if(window.embeddedArrow && !action.__processAction__){
+    if(window.embeddedArrow && !action.__processAction__ && proxyableTypes.indexOf(action.type) !== -1){
         console.log('postMessage');
         window.top.postMessage(action,'http://localhost:3000');
         return state;
