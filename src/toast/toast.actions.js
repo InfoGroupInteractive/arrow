@@ -15,7 +15,7 @@ export const removeToastAction = (id) => ({
 });
 
 export const createToastAction = (text, background) => ({
-    type: constants.REMOVE_TOAST,
+    type: constants.ADD_TOAST,
     text,
     background
 })

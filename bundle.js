@@ -717,7 +717,7 @@ var removeToastAction = function removeToastAction(id) {
 };
 var createToastAction = function createToastAction(text, background) {
   return {
-    type: REMOVE_TOAST,
+    type: ADD_TOAST,
     text: text,
     background: background
   };
