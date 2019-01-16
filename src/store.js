@@ -61,9 +61,9 @@ window.addEventListener('message', (e)=>{
 });
 
 if(window.embeddedArrow){
-    console.log('we are embedded!');
-} else {
-    console.log('we are not embedded');
+    window.top.postMessage({
+        type: '__initialize__'
+    },'http://localhost:3000');
 }
 
 export default store;
