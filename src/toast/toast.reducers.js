@@ -1,7 +1,8 @@
-import * as toastConstants from './toast.constants';
 import uuidv4 from 'uuid/v4';
+import * as toastConstants from './toast.constants';
+import ProxyEnhancer from '../proxy-enhancer';
 
-export default ((state=[], action)=>{
+export default ProxyEnhancer((state=[], action)=>{
     var newState;
     switch(action.type){
         case toastConstants.ADD_TOAST:           
@@ -22,4 +23,4 @@ export default ((state=[], action)=>{
         default:
             return state;
     }
-});
+}, [toastConstants.ADD_TOAST, toastConstants.REMOVE_TOAST]);
