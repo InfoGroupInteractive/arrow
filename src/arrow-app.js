@@ -17,7 +17,7 @@ class ArrowApp extends Component {
     super(props);
 
     this.state = {
-      selectedTheme: props.selectedTheme
+      selectedTheme: store.getState().selectedTheme
     };
 
     const unsubscribe = store.subscribe(()=>{

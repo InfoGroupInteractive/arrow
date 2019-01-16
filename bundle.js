@@ -746,7 +746,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ArrowApp).call(this, props));
     _this.state = {
-      selectedTheme: props.selectedTheme
+      selectedTheme: store.getState().selectedTheme
     };
     var unsubscribe = store.subscribe(function () {
       var newState = store.getState();
