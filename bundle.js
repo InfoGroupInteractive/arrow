@@ -620,8 +620,8 @@ var store = redux.createStore(function () {
   }
 });
 window.addEventListener('message', function (e) {
-  //verify origin
-  if (e.origin !== 'http://localhost:3000' || !action.type) {
+  //verify origin and check for type property (required for action)
+  if (e.origin !== 'http://localhost:3000' || !e.data.type) {
     return;
   } //assign key so we know not to process this action instead of proxy
 
