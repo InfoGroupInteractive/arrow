@@ -666,12 +666,12 @@ var toastReducers = ProxyEnhancer(function () {
 }, [ADD_TOAST, REMOVE_TOAST]);
 
 var themeReducers = ProxyEnhancer(function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'light';
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : LIGHT;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
     case SET_THEME:
-      return action.theme;
+      return action.theme || LIGHT;
 
     default:
       return state;
