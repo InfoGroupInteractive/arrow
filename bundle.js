@@ -793,6 +793,13 @@ function (_Component) {
   return ArrowApp;
 }(React.Component);
 
+var setTheme = function setTheme(theme) {
+  store.dispatch({
+    type: SET_THEME,
+    theme: theme
+  });
+};
+
 var theme$1 = {
   colors: colors,
   reportTheme: reportTheme,
@@ -807,3 +814,4 @@ exports.ErrorBoundary = ErrorBoundary;
 exports.Loader = Loader;
 exports.createToast = createToast;
 exports.removeToast = removeToast;
+exports.setTheme = setTheme;

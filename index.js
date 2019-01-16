@@ -15,3 +15,4 @@ export { default as Navigation } from './src/navigation/navigation';
 export { default as ErrorBoundary } from './src/error-boundary/error-boundary';
 export { default as Loader } from './src/loader/loader';
 export { createToast, removeToast } from './src/toast/toast.actions';
+export { setTheme } from './src/theme/theme.actions';
