@@ -4,9 +4,11 @@ import { Grommet, Box } from 'grommet';
 import * as themes from './theme/theme'
 import ErrorBoundary from './error-boundary/error-boundary';
 import Toast from './toast/toast';
+import { removeToast } from './toast.actions';
 import Navigation from './navigation/navigation';
 import Loader from './loader/loader';
 import store from './store';
+
 
 
 
@@ -49,7 +51,7 @@ class ArrowApp extends Component {
               {this.props.children}
             </Suspense>
             <Provider store={store}>
-                <Toast />
+                <Toast onClose={removeToast}/>
             </Provider>
           </Box>          
         </ErrorBoundary>

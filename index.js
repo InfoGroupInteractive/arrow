@@ -15,6 +15,6 @@ export { default as Navigation } from './src/navigation/navigation';
 export { default as ErrorBoundary } from './src/error-boundary/error-boundary';
 export { default as Loader } from './src/loader/loader';
 export { default as Toast } from './src/toast/toast';
-export { createToast, removeToast } from './src/toast/toast.actions';
+export { createToast, removeToast, removeToastAction, createToastAction } from './src/toast/toast.actions';
 export { default as toastReducers } from './src/toast/toast.reducers';
 export { setTheme } from './src/theme/theme.actions';
