@@ -229,11 +229,13 @@ var reportTheme = /*#__PURE__*/Object.freeze({
 var LIGHT = 'light';
 var DARK = 'dark';
 var VAPOR = 'vapor';
+var SET_THEME = 'SET_THEME';
 
 var constants = /*#__PURE__*/Object.freeze({
     LIGHT: LIGHT,
     DARK: DARK,
-    VAPOR: VAPOR
+    VAPOR: VAPOR,
+    SET_THEME: SET_THEME
 });
 
 var font = {
@@ -575,7 +577,7 @@ var store = redux.createStore(function () {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   //if we are embedded, proxy
-  if (window.embeddedArrow) {
+  if (window.embeddedArrow && !action.__processAction__) {
     console.log('postMessage');
     window.top.postMessage(action, 'http://localhost:3000');
     return state;
@@ -584,6 +586,11 @@ var store = redux.createStore(function () {
   var newState;
 
   switch (action.type) {
+    case SET_THEME:
+      newState = Object.assign({}, state);
+      newState.selectedTheme = action.theme;
+      return newState;
+
     case ADD_TOAST:
       newState = Object.assign({}, state);
       newState.toasts = state.toasts.slice();
@@ -610,6 +617,19 @@ var store = redux.createStore(function () {
     default:
       return state;
   }
+});
+window.addEventListener('message', function (e) {
+  //verify origin
+  if (e.origin !== 'http://localhost:3000') {
+    return;
+  } //assign key so we know not to process this action instead of proxy
+
+
+  var action = Object.assign({
+    __processAction__: true
+  }, e.data); //dispatch that jazz
+
+  store.dispatch(action);
 });
 
 var createToast = function createToast(text, background) {
@@ -713,19 +733,34 @@ var ArrowApp =
 function (_Component) {
   _inherits(ArrowApp, _Component);
 
-  function ArrowApp() {
+  function ArrowApp(props) {
+    var _this;
+
     _classCallCheck(this, ArrowApp);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ArrowApp).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ArrowApp).call(this, props));
+    _this.state = {
+      selectedTheme: props.selectedTheme
+    };
+    var unsubscribe = store.subscribe(function () {
+      var newState = store.getState();
+
+      if (newState.selectedTheme && newState.selectedTheme !== _this.state.selectedTheme) {
+        _this.setState({
+          selectedTheme: newState.selectedTheme
+        });
+      }
+    });
+    return _this;
   }
 
   _createClass(ArrowApp, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          selectedTheme = _this$props.selectedTheme,
           navItems = _this$props.navItems,
           onNavItemClick = _this$props.onNavItemClick;
+      var selectedTheme = this.state.selectedTheme;
       return React__default.createElement(grommet.Grommet, {
         full: true,
         theme: themes[selectedTheme]

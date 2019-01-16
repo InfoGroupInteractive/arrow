@@ -1,10 +1,11 @@
 import { createStore } from 'redux';
 import uuidv4 from 'uuid/v4';
 import * as toastConstants from './toast/toast.constants';
+import { SET_THEME } from './theme/theme.constants';
 
-export default createStore((state={ toasts: []}, action)=>{
+const store = createStore((state={ toasts: []}, action)=>{
     //if we are embedded, proxy
-    if(window.embeddedArrow){
+    if(window.embeddedArrow && !action.__processAction__){
         console.log('postMessage');
         window.top.postMessage(action,'http://localhost:3000');
         return state;
@@ -12,6 +13,10 @@ export default createStore((state={ toasts: []}, action)=>{
    
     var newState;
     switch(action.type){
+        case SET_THEME:
+            newState = Object.assign({}, state);
+            newState.selectedTheme = action.theme;
+            return newState;
         case toastConstants.ADD_TOAST:
             newState = Object.assign({}, state);
             newState.toasts = state.toasts.slice();
@@ -34,3 +39,21 @@ export default createStore((state={ toasts: []}, action)=>{
             return state;
     }
 });
+
+
+window.addEventListener('message', (e)=>{
+    //verify origin
+    if(e.origin !== 'http://localhost:3000'){
+        return;
+    }
+
+    //assign key so we know not to process this action instead of proxy
+    let action = Object.assign({
+        __processAction__: true
+    }, e.data);
+
+    //dispatch that jazz
+    store.dispatch(action);
+});
+
+export default store;

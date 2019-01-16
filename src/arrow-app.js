@@ -10,9 +10,26 @@ import store from './store';
 
 window.embeddedArrow = window.self.location !== window.top.location;
 
+
+
 class ArrowApp extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      selectedTheme: props.selectedTheme
+    };
+
+    const unsubscribe = store.subscribe(()=>{
+      const newState = store.getState();
+      if(newState.selectedTheme && newState.selectedTheme !== this.state.selectedTheme){
+        this.setState({selectedTheme: newState.selectedTheme});
+      }
+    });    
+  }
   render() {
-    const { selectedTheme, navItems, onNavItemClick } = this.props;
+    const { navItems, onNavItemClick } = this.props;
+    const { selectedTheme } = this.state;
     
     return (
       <Grommet full theme={themes[selectedTheme]}>
