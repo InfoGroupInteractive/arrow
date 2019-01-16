@@ -1,13 +1,15 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import uuidv4 from 'uuid/v4';
 import * as toastConstants from './toast/toast.constants';
 import { SET_THEME } from './theme/theme.constants';
+import { default as toastReducers } from './toast/toast.reducers';
+import { default as themeReducers } from './theme/theme.reducers';
 
 window.embeddedArrow = window.self.location !== window.top.location;
 
 const proxyableTypes = [SET_THEME, toastConstants.ADD_TOAST, toastConstants.REMOVE_TOAST];
 
-const store = createStore((state={ toasts: []}, action)=>{
+const store = createStore(combineReducers({ toasts: toastReducers, theme: themeReducers}));/*(state={ toasts: []}, action)=>{
     //if we are embedded, proxy
     if(window.embeddedArrow && !action.__processAction__ && proxyableTypes.indexOf(action.type) !== -1){
         console.log('postMessage');
@@ -42,7 +44,7 @@ const store = createStore((state={ toasts: []}, action)=>{
         default:
             return state;
     }
-});
+});*/
 
 
 window.addEventListener('message', (e)=>{

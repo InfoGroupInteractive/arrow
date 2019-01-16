@@ -10,7 +10,7 @@ var reactRedux = require('react-redux');
 var grommet = require('grommet');
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
-var crypto = _interopDefault(require('crypto'));
+require('crypto');
 
 var brand = '#54B948';
 var accent1 = '#ECE64A';
@@ -229,13 +229,13 @@ var reportTheme = /*#__PURE__*/Object.freeze({
 var LIGHT = 'light';
 var DARK = 'dark';
 var VAPOR = 'vapor';
-var SET_THEME = 'SET_THEME';
+var SET_THEME$1 = 'SET_THEME';
 
 var constants = /*#__PURE__*/Object.freeze({
     LIGHT: LIGHT,
     DARK: DARK,
     VAPOR: VAPOR,
-    SET_THEME: SET_THEME
+    SET_THEME: SET_THEME$1
 });
 
 var font = {
@@ -509,15 +509,6 @@ function (_React$Component) {
 var ADD_TOAST = 'ADD_TOAST';
 var REMOVE_TOAST = 'REMOVE_TOAST';
 
-// Unique ID creation requires a high quality random # generator.  In node.js
-// this is pretty straight-forward - we use the crypto API.
-
-
-
-var rng = function nodeRNG() {
-  return crypto.randomBytes(16);
-};
-
 /**
  * Convert array of 16 byte values to UUID string format of the form:
  * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
@@ -527,83 +518,23 @@ for (var i = 0; i < 256; ++i) {
   byteToHex[i] = (i + 0x100).toString(16).substr(1);
 }
 
-function bytesToUuid(buf, offset) {
-  var i = offset || 0;
-  var bth = byteToHex;
-  // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
-  return ([bth[buf[i++]], bth[buf[i++]], 
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]],
-	bth[buf[i++]], bth[buf[i++]],
-	bth[buf[i++]], bth[buf[i++]]]).join('');
-}
-
-var bytesToUuid_1 = bytesToUuid;
-
-function v4(options, buf, offset) {
-  var i = buf && offset || 0;
-
-  if (typeof(options) == 'string') {
-    buf = options === 'binary' ? new Array(16) : null;
-    options = null;
-  }
-  options = options || {};
-
-  var rnds = options.random || (options.rng || rng)();
-
-  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-  rnds[6] = (rnds[6] & 0x0f) | 0x40;
-  rnds[8] = (rnds[8] & 0x3f) | 0x80;
-
-  // Copy bytes to buffer, if provided
-  if (buf) {
-    for (var ii = 0; ii < 16; ++ii) {
-      buf[i + ii] = rnds[ii];
-    }
-  }
-
-  return buf || bytesToUuid_1(rnds);
-}
-
-var v4_1 = v4;
-
-window.embeddedArrow = window.self.location !== window.top.location;
-var proxyableTypes = [SET_THEME, ADD_TOAST, REMOVE_TOAST];
-var store = redux.createStore(function () {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-    toasts: []
-  };
+var toastReducers = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-
-  //if we are embedded, proxy
-  if (window.embeddedArrow && !action.__processAction__ && proxyableTypes.indexOf(action.type) !== -1) {
-    console.log('postMessage');
-    window.top.postMessage(action, 'http://localhost:3000');
-    return state;
-  }
-
   var newState;
 
   switch (action.type) {
-    case SET_THEME:
-      newState = Object.assign({}, state);
-      newState.selectedTheme = action.theme;
-      return newState;
-
-    case ADD_TOAST:
+    case toastConstants.ADD_TOAST:
       newState = Object.assign({}, state);
       newState.toasts = state.toasts.slice();
       newState.toasts.push({
-        id: v4_1(),
+        id: uuidv4(),
         text: action.text,
         background: action.background
       });
       return newState;
 
-    case REMOVE_TOAST:
+    case toastConstants.REMOVE_TOAST:
       newState = Object.assign({}, state);
       newState.toasts = state.toasts.slice();
       var toastIndex = newState.toasts.findIndex(function (n) {
@@ -620,6 +551,60 @@ var store = redux.createStore(function () {
       return state;
   }
 });
+
+var themeReducers = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'light';
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case SET_THEME:
+      return action.theme;
+
+    default:
+      return state;
+  }
+});
+
+window.embeddedArrow = window.self.location !== window.top.location;
+var store = redux.createStore(redux.combineReducers({
+  toasts: toastReducers,
+  theme: themeReducers
+}));
+/*(state={ toasts: []}, action)=>{
+//if we are embedded, proxy
+if(window.embeddedArrow && !action.__processAction__ && proxyableTypes.indexOf(action.type) !== -1){
+console.log('postMessage');
+window.top.postMessage(action,'http://localhost:3000');
+return state;
+}
+var newState;
+switch(action.type){
+case SET_THEME:
+newState = Object.assign({}, state);
+newState.selectedTheme = action.theme;
+return newState;
+case toastConstants.ADD_TOAST:
+newState = Object.assign({}, state);
+newState.toasts = state.toasts.slice();
+newState.toasts.push({
+id: uuidv4(),
+text: action.text,
+background: action.background
+});
+return newState;
+case toastConstants.REMOVE_TOAST:
+newState = Object.assign({}, state);
+newState.toasts = state.toasts.slice();
+var toastIndex = newState.toasts.findIndex(n=>n.id===action.id);
+if(toastIndex !== -1){
+newState.toasts.splice(toastIndex, 1);
+}
+return newState;            
+default:
+return state;
+}
+});*/
+
 window.addEventListener('message', function (e) {
   //verify origin and check for type property (required for action)
   if (e.origin !== 'http://localhost:3000' || !e.data.type) {
@@ -801,7 +786,7 @@ function (_Component) {
 
 var setTheme = function setTheme(theme) {
   store.dispatch({
-    type: SET_THEME,
+    type: SET_THEME$1,
     theme: theme
   });
 };
