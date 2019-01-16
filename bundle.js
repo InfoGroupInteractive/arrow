@@ -818,6 +818,7 @@ exports.ArrowApp = ArrowApp;
 exports.Navigation = Navigation;
 exports.ErrorBoundary = ErrorBoundary;
 exports.Loader = Loader;
+exports.Toast = Toast$1;
 exports.createToast = createToast;
 exports.removeToast = removeToast;
 exports.setTheme = setTheme;
