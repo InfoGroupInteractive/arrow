@@ -836,4 +836,5 @@ exports.Loader = Loader;
 exports.Toast = Toast$1;
 exports.createToast = createToast;
 exports.removeToast = removeToast;
+exports.toastReducers = toastReducers;
 exports.setTheme = setTheme;
