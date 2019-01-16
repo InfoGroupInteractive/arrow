@@ -17,13 +17,13 @@ class ArrowApp extends Component {
     super(props);
 
     this.state = {
-      selectedTheme: store.getState().selectedTheme
+      selectedTheme: store.getState().theme
     };
 
     const unsubscribe = store.subscribe(()=>{
       const newState = store.getState();
-      if(newState.selectedTheme && newState.selectedTheme !== this.state.selectedTheme){
-        this.setState({selectedTheme: newState.selectedTheme});
+      if(newState.theme && newState.theme !== this.state.selectedTheme){
+        this.setState({selectedTheme: newState.theme});
       }
     });    
   }

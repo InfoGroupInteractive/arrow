@@ -8,6 +8,5 @@ export default (reducer, proxyableTypes) => {
         }
         return reducer(state, action);
     }
-    return proxiedReducer;
-    //const curriedReducer = (state, action) => prod
+    return proxiedReducer;    
 }
