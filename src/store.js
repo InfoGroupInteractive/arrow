@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux';
-import uuidv4 from 'uuid/v4';
+//import uuidv4 from 'uuid/v4';
 import * as toastConstants from './toast/toast.constants';
 import { SET_THEME } from './theme/theme.constants';
 import { default as toastReducers } from './toast/toast.reducers';

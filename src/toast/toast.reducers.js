@@ -1,4 +1,5 @@
 import * as toastConstants from './toast.constants';
+import uuidv4 from 'uuid/v4';
 
 export default ((state=[], action)=>{
     var newState;
