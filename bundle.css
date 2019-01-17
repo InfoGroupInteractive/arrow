@@ -1,0 +1,21 @@
+.loader {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(100, 149, 237, 0.25);
+  border-top-color: CornflowerBlue;
+  animation: spin 800ms infinite ease; }
+  .loader.large {
+    width: 75px;
+    height: 75px;
+    border-width: 7.5px; }
+  .loader.small {
+    width: 25px;
+    height: 25px;
+    border-width: 2.5px; }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }

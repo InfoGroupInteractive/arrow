@@ -70,3 +70,17 @@ export const light = {
     },
     size
 };
+
+export const vapor = {
+    global: Object.assign({}, glowbal, {
+        colors: colors.theme.vapor
+    }),
+    anchor: Object.assign({}, anchor, {
+        color: colors.dark1
+    }),
+    edgeSize,
+    icon: {
+        color: colors.dark4
+    },
+    size
+};

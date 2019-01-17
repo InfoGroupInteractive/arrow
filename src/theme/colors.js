@@ -69,7 +69,36 @@ const dark = Object.assign({}, light, {
     'accent-4': accent4Alt
 });
 
+const vapor = Object.assign({}, light, {
+    brand: '#FF71CE',
+    'accent-1': '#B967FF',
+    'accent-1-alt': '#D5DD48',
+    'accent-2': '#01CDFE',
+    'accent-2-alt': '#28C0D2',
+    'accent-3': '#05FFA1',
+    'accent-3-alt': '#F4985F',
+    'accent-4': '#FFFB96',
+    'accent-4-alt': '#807AB9',
+    'dark-1': '#FF71CE',
+    'dark-2': '#B967FF',
+    'dark-3': '#01CDFE',
+    'dark-4': '#05FFA1',
+    'dark-5': '#FFFB96',
+    'dark-6': '#103',
+    'light-1': '#FF71CE',
+    'light-2': '#B967FF',
+    'light-3': '#01CDFE',
+    'light-4': '#05FFA1',
+    'light-5': '#FFFB96',
+    'light-6': '#336',
+    'status-critical': '#EB3C3C',
+    'status-error': '#EB3C3C',
+    'status-warning': '#F7E463',
+    'status-ok':  '#329B46'
+});
+
 export const theme = {
     light,
-    dark
+    dark,
+    vapor
 };
