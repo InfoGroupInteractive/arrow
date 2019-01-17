@@ -16,6 +16,7 @@ const Toast = ({ toasts, onClose }) => {
     if(toasts && Array.isArray(toasts) && toasts.length > 0){
         let toastItems = toasts.map(m=>(
             <Box 
+                key={m.id}
                 background={ m.background || 'accent-1'}
                 pad='medium'
                 elevation='xsmall'
