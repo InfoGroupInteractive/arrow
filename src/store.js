@@ -1,9 +1,13 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { default as toastReducers } from './toast/toast.reducers';
 import { default as themeReducers } from './theme/theme.reducers';
+import ProxyMiddleware from './proxy-middleware';
 
 window.embeddedArrow = window.self.location !== window.top.location;
-const store = createStore(combineReducers({ toasts: toastReducers, theme: themeReducers}));
+const store = createStore(
+    combineReducers({ toasts: toastReducers, theme: themeReducers}),
+    applyMiddleware(ProxyMiddleware)
+);
 
 window.addEventListener('message', (e)=>{
     //verify origin and check for type property (required for action)

@@ -618,22 +618,7 @@ function v4(options, buf, offset) {
 
 var v4_1 = v4;
 
-var ProxyEnhancer = (function (reducer, proxyableTypes) {
-  var proxiedReducer = function proxiedReducer(state, action) {
-    //if we are embedded, proxy
-    if (window.embeddedArrow && !action.__processAction__ && proxyableTypes.indexOf(action.type) !== -1) {
-      console.log('postMessage');
-      window.top.postMessage(action, 'http://localhost:3000');
-      return state;
-    }
-
-    return reducer(state, action);
-  };
-
-  return proxiedReducer;
-});
-
-var toastReducers = ProxyEnhancer(function () {
+var toastReducers = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   var newState;
@@ -663,9 +648,9 @@ var toastReducers = ProxyEnhancer(function () {
     default:
       return state;
   }
-}, [ADD_TOAST, REMOVE_TOAST]);
+});
 
-var themeReducers = ProxyEnhancer(function () {
+var themeReducers = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : LIGHT;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
@@ -676,13 +661,28 @@ var themeReducers = ProxyEnhancer(function () {
     default:
       return state;
   }
-}, [SET_THEME]);
+});
+
+var PROXYABLE_TYPES = [ADD_TOAST, REMOVE_TOAST, SET_THEME];
+var ProxyMiddleware = (function (store) {
+  return function (next) {
+    return function (action) {
+      //if we are embedded, proxy action to parent
+      if (window.embeddedArrow && !action.__processAction__ && PROXYABLE_TYPES.indexOf(action.type) !== -1) {
+        console.log('postMessage');
+        window.top.postMessage(action, 'http://localhost:3000');
+      } else {
+        return next(action);
+      }
+    };
+  };
+});
 
 window.embeddedArrow = window.self.location !== window.top.location;
 var store = redux.createStore(redux.combineReducers({
   toasts: toastReducers,
   theme: themeReducers
-}));
+}), redux.applyMiddleware(ProxyMiddleware));
 window.addEventListener('message', function (e) {
   //verify origin and check for type property (required for action)
   if (e.origin !== 'http://localhost:3000' || !e.data.type) {
