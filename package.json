@@ -4,9 +4,7 @@
   "description": "Look and feel for CDP UI",
   "main": "bundle.js",
   "dependencies": {
-
-
-
+    "babel-plugin-transform-runtime": "^6.23.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

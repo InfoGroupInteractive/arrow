@@ -519,6 +519,7 @@ var Toast = function Toast(_ref) {
   if (toasts && Array.isArray(toasts) && toasts.length > 0) {
     var toastItems = toasts.map(function (m) {
       return React__default.createElement(grommet.Box, {
+        key: m.id,
         background: m.background || 'accent-1',
         pad: "medium",
         elevation: "xsmall",
