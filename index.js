@@ -18,3 +18,4 @@ export { default as Toast } from './src/toast/toast';
 export { createToast, removeToast, removeToastAction, createToastAction } from './src/toast/toast.actions';
 export { default as toastReducers } from './src/toast/toast.reducers';
 export { setTheme } from './src/theme/theme.actions';
+export { default as Tags } from './src/tags/tags';
