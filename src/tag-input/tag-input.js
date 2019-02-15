@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Box, Text, TextInput } from 'grommet';
 import { Close } from 'grommet-icons';
 
-const Tags = memo(({
+const TagInput = memo(({
     values,
     value,
     onRemoveValue,
@@ -80,5 +80,5 @@ const Tags = memo(({
     );
 });
 
-Tags.displayName = 'Tags';
-export default Tags;
+TagInput.displayName = 'TagInput';
+export default TagInput;
