@@ -1,11 +1,20 @@
 import * as colors from './colors';
 
 const font = {
-    family: '"Open Sans", sans-serif'
+    family: '"Open Sans", sans-serif',
+    size: '14px',
+    height: '18px',
 };
 
 const glowbal = {
     font: font,
+    control: {
+        border: {
+            width: '1px',
+            radius: '9px',
+            color: 'border'
+        }
+    },
     input: {
         weight: 400
     },
@@ -35,13 +44,24 @@ const edgeSize = {
     none: '0px',
     hair: '1px',
     xxsmall: '3px',
-    xsmall: '18px',
-    small: '12px',
-    medium: '24px',
-    large: '48px',
-    xlarge: '96px',
+    xsmall: '6px',
+    small: '9px',
+    medium: '18px',
+    large: '36px',
+    xlarge: '72px',
     responsiveBreakpoint: 'small'
 };
+
+const button = {
+    padding: {
+        vertical: '9px',
+        horizontal: '18px'
+    },
+    border: {
+        radius: '9px'
+    }
+
+}
 
 export const dark = {
     global: Object.assign({}, glowbal, {
@@ -54,7 +74,8 @@ export const dark = {
     icon: {
         color: colors.light3
     },
-    size
+    size,
+    button
 };
 
 export const light = {
@@ -68,7 +89,8 @@ export const light = {
     icon: {
         color: colors.dark4
     },
-    size
+    size,
+    button
 };
 
 export const vapor = {
@@ -82,5 +104,6 @@ export const vapor = {
     icon: {
         color: colors.dark4
     },
-    size
+    size,
+    button
 };
