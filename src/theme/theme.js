@@ -63,6 +63,15 @@ const button = {
 
 }
 
+const text = {
+    "xsmall": { "size": "12px", "height": "16px", "maxWidth": "288px" },
+    "small": { "size": "13px", "height": "17px", "maxWidth": "336px" },
+    "medium": { "size": "14px", "height": "18px", "maxWidth": "432px" },
+    "large": { "size": "16px", "height": "20px", "maxWidth": "528px" },
+    "xlarge": { "size": "18px", "height": "22px", "maxWidth": "624px" },
+    "xxlarge": { "size": "22px", "height": "26px", "maxWidth": "816px" }
+}
+
 export const dark = {
     global: Object.assign({}, glowbal, {
         colors: colors.theme.dark
@@ -75,7 +84,8 @@ export const dark = {
         color: colors.light3
     },
     size,
-    button
+    button,
+    text
 };
 
 export const light = {
@@ -90,7 +100,8 @@ export const light = {
         color: colors.dark4
     },
     size,
-    button
+    button,
+    text
 };
 
 export const vapor = {
@@ -105,5 +116,6 @@ export const vapor = {
         color: colors.dark4
     },
     size,
-    button
+    button,
+    text
 };

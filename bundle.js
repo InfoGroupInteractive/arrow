@@ -301,6 +301,38 @@ var button = {
     radius: '9px'
   }
 };
+var text = {
+  "xsmall": {
+    "size": "12px",
+    "height": "16px",
+    "maxWidth": "288px"
+  },
+  "small": {
+    "size": "13px",
+    "height": "17px",
+    "maxWidth": "336px"
+  },
+  "medium": {
+    "size": "14px",
+    "height": "18px",
+    "maxWidth": "432px"
+  },
+  "large": {
+    "size": "16px",
+    "height": "20px",
+    "maxWidth": "528px"
+  },
+  "xlarge": {
+    "size": "18px",
+    "height": "22px",
+    "maxWidth": "624px"
+  },
+  "xxlarge": {
+    "size": "22px",
+    "height": "26px",
+    "maxWidth": "816px"
+  }
+};
 var dark$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.dark
@@ -313,7 +345,8 @@ var dark$1 = {
     color: light3
   },
   size: size,
-  button: button
+  button: button,
+  text: text
 };
 var light$1 = {
   global: Object.assign({}, glowbal, {
@@ -327,7 +360,8 @@ var light$1 = {
     color: dark4
   },
   size: size,
-  button: button
+  button: button,
+  text: text
 };
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
@@ -341,7 +375,8 @@ var vapor$1 = {
     color: dark4
   },
   size: size,
-  button: button
+  button: button,
+  text: text
 };
 
 var themes = /*#__PURE__*/Object.freeze({
