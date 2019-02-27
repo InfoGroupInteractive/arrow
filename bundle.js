@@ -246,10 +246,19 @@ var constants = /*#__PURE__*/Object.freeze({
 });
 
 var font = {
-  family: '"Open Sans", sans-serif'
+  family: '"Open Sans", sans-serif',
+  size: '14px',
+  height: '18px'
 };
 var glowbal = {
   font: font,
+  control: {
+    border: {
+      width: '1px',
+      radius: '9px',
+      color: 'border'
+    }
+  },
   input: {
     weight: 400
   },
@@ -276,12 +285,53 @@ var edgeSize = {
   none: '0px',
   hair: '1px',
   xxsmall: '3px',
-  xsmall: '18px',
-  small: '12px',
-  medium: '24px',
-  large: '48px',
-  xlarge: '96px',
+  xsmall: '6px',
+  small: '9px',
+  medium: '18px',
+  large: '36px',
+  xlarge: '72px',
   responsiveBreakpoint: 'small'
+};
+var button = {
+  padding: {
+    vertical: '9px',
+    horizontal: '18px'
+  },
+  border: {
+    radius: '9px'
+  }
+};
+var text = {
+  "xsmall": {
+    "size": "12px",
+    "height": "16px",
+    "maxWidth": "288px"
+  },
+  "small": {
+    "size": "13px",
+    "height": "17px",
+    "maxWidth": "336px"
+  },
+  "medium": {
+    "size": "14px",
+    "height": "18px",
+    "maxWidth": "432px"
+  },
+  "large": {
+    "size": "16px",
+    "height": "20px",
+    "maxWidth": "528px"
+  },
+  "xlarge": {
+    "size": "18px",
+    "height": "22px",
+    "maxWidth": "624px"
+  },
+  "xxlarge": {
+    "size": "22px",
+    "height": "26px",
+    "maxWidth": "816px"
+  }
 };
 var dark$1 = {
   global: Object.assign({}, glowbal, {
@@ -294,7 +344,9 @@ var dark$1 = {
   icon: {
     color: light3
   },
-  size: size
+  size: size,
+  button: button,
+  text: text
 };
 var light$1 = {
   global: Object.assign({}, glowbal, {
@@ -307,7 +359,9 @@ var light$1 = {
   icon: {
     color: dark4
   },
-  size: size
+  size: size,
+  button: button,
+  text: text
 };
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
@@ -320,7 +374,9 @@ var vapor$1 = {
   icon: {
     color: dark4
   },
-  size: size
+  size: size,
+  button: button,
+  text: text
 };
 
 var themes = /*#__PURE__*/Object.freeze({
@@ -733,6 +789,84 @@ var setTheme = function setTheme(theme) {
   });
 };
 
+var TagInput = React.memo(function (_ref) {
+  var values = _ref.values,
+      value = _ref.value,
+      onRemoveValue = _ref.onRemoveValue,
+      onAddValue = _ref.onAddValue,
+      onValueChange = _ref.onValueChange,
+      isInputDisabled = _ref.isInputDisabled,
+      suggestions = _ref.suggestions;
+  return React__default.createElement(grommet.Box, {
+    fill: true,
+    direction: "row",
+    border: "all",
+    round: "xsmall"
+  }, Array.isArray(values) && values.length > 0 ? React__default.createElement(grommet.Box, {
+    direction: "row",
+    gap: "xsmall",
+    margin: {
+      horizontal: 'xsmall'
+    },
+    style: {
+      maxWidth: '80%'
+    },
+    overflow: "auto"
+  }, values.map(function (v) {
+    return React__default.createElement(grommet.Box, {
+      direction: "row",
+      round: "xsmall",
+      pad: "xxsmall",
+      key: v,
+      background: "dark-3",
+      flex: false,
+      fill: false,
+      gap: "xsmall",
+      alignSelf: "center",
+      align: "center"
+    }, React__default.createElement(grommet.Text, {
+      size: "small"
+    }, v), React__default.createElement(grommetIcons.Close, {
+      size: "small",
+      onClick: function onClick() {
+        onRemoveValue(v);
+      }
+    }));
+  })) : null, React__default.createElement(grommet.Box, {
+    fill: true,
+    flex: true
+  }, React__default.createElement(grommet.TextInput, {
+    disabled: isInputDisabled //can only multi-select for =
+    ,
+    plain: true,
+    value: value,
+    onChange: function onChange(e) {
+      onValueChange(e.target.value);
+    },
+    onSelect: function onSelect(e) {
+      onAddValue(e.suggestion);
+    },
+    onKeyUp: function onKeyUp(e) {
+      if (e.key === 'Enter' && value !== '') {
+        onAddValue(value);
+      }
+    },
+    onBlur: function onBlur() {//TODO: figure out the correct way to do this, so typed in values get selected when the user leaves
+      //but they DON'T get selected when the user starts typing, then selects a suggestion
+      //if (clause.value !== '') {
+      //    const newValues = [...clause.values];
+      //    newValues.push(clause.value);
+      //    onClauseChange(clause, {
+      //        values: newValues,
+      //        value: '' //clear out value input
+      //    });
+      //}
+    },
+    suggestions: suggestions
+  })));
+});
+TagInput.displayName = 'TagInput';
+
 var theme$1 = {
   colors: colors,
   reportTheme: reportTheme,
@@ -752,3 +886,4 @@ exports.removeToastAction = removeToastAction;
 exports.createToastAction = createToastAction;
 exports.toastReducers = toastReducers;
 exports.setTheme = setTheme;
+exports.TagInput = TagInput;
