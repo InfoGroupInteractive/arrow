@@ -261,7 +261,7 @@ var glowbal = {
   },
   input: {
     weight: 400,
-    padding: '8px 10px'
+    padding: '8px'
   },
   breakpoints: {
     medium: {
