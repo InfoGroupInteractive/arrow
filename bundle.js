@@ -296,7 +296,7 @@ var edgeSize = {
 var button = {
   padding: {
     vertical: '0.6em',
-    horizontal: '18px'
+    horizontal: '0.7em'
   },
   border: {
     radius: '9px'
