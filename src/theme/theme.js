@@ -7,7 +7,8 @@ const font = {
 const glowbal = {
     font: font,
     input: {
-        weight: 400
+        weight: 400,
+        padding: '8px 10px'
     },
     breakpoints: {
         medium: {

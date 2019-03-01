@@ -251,7 +251,8 @@ var font = {
 var glowbal = {
   font: font,
   input: {
-    weight: 400
+    weight: 400,
+    padding: '8px 10px'
   },
   breakpoints: {
     medium: {
@@ -733,6 +734,84 @@ var setTheme = function setTheme(theme) {
   });
 };
 
+var TagInput = React.memo(function (_ref) {
+  var values = _ref.values,
+      value = _ref.value,
+      onRemoveValue = _ref.onRemoveValue,
+      onAddValue = _ref.onAddValue,
+      onValueChange = _ref.onValueChange,
+      isInputDisabled = _ref.isInputDisabled,
+      suggestions = _ref.suggestions;
+  return React__default.createElement(grommet.Box, {
+    fill: true,
+    direction: "row",
+    border: "all",
+    round: "xsmall"
+  }, Array.isArray(values) && values.length > 0 ? React__default.createElement(grommet.Box, {
+    direction: "row",
+    gap: "xsmall",
+    margin: {
+      horizontal: 'xsmall'
+    },
+    style: {
+      maxWidth: '80%'
+    },
+    overflow: "auto"
+  }, values.map(function (v) {
+    return React__default.createElement(grommet.Box, {
+      direction: "row",
+      round: "xsmall",
+      pad: "xxsmall",
+      key: v,
+      background: "dark-3",
+      flex: false,
+      fill: false,
+      gap: "xsmall",
+      alignSelf: "center",
+      align: "center"
+    }, React__default.createElement(grommet.Text, {
+      size: "small"
+    }, v), React__default.createElement(grommetIcons.Close, {
+      size: "small",
+      onClick: function onClick() {
+        onRemoveValue(v);
+      }
+    }));
+  })) : null, React__default.createElement(grommet.Box, {
+    fill: true,
+    flex: true
+  }, React__default.createElement(grommet.TextInput, {
+    disabled: isInputDisabled //can only multi-select for =
+    ,
+    plain: true,
+    value: value,
+    onChange: function onChange(e) {
+      onValueChange(e.target.value);
+    },
+    onSelect: function onSelect(e) {
+      onAddValue(e.suggestion);
+    },
+    onKeyUp: function onKeyUp(e) {
+      if (e.key === 'Enter' && value !== '') {
+        onAddValue(value);
+      }
+    },
+    onBlur: function onBlur() {//TODO: figure out the correct way to do this, so typed in values get selected when the user leaves
+      //but they DON'T get selected when the user starts typing, then selects a suggestion
+      //if (clause.value !== '') {
+      //    const newValues = [...clause.values];
+      //    newValues.push(clause.value);
+      //    onClauseChange(clause, {
+      //        values: newValues,
+      //        value: '' //clear out value input
+      //    });
+      //}
+    },
+    suggestions: suggestions
+  })));
+});
+TagInput.displayName = 'TagInput';
+
 var theme$1 = {
   colors: colors,
   reportTheme: reportTheme,
@@ -752,3 +831,4 @@ exports.removeToastAction = removeToastAction;
 exports.createToastAction = createToastAction;
 exports.toastReducers = toastReducers;
 exports.setTheme = setTheme;
+exports.TagInput = TagInput;
