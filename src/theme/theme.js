@@ -3,7 +3,7 @@ import * as colors from './colors';
 const font = {
     family: '"Open Sans", sans-serif',
     size: '14px',
-    height: '18px',
+    height: '16px',
 };
 
 const glowbal = {
@@ -17,7 +17,10 @@ const glowbal = {
     },
     input: {
         weight: 400,
-        padding: '8px'
+        padding: {
+            vertical: '0.6em',
+            horizontal: '18px'
+        }
     },
     breakpoints: {
         medium: {
@@ -55,7 +58,7 @@ const edgeSize = {
 
 const button = {
     padding: {
-        vertical: '9px',
+        vertical: '0.6em',
         horizontal: '18px'
     },
     border: {
@@ -65,12 +68,12 @@ const button = {
 }
 
 const text = {
-    "xsmall": { "size": "12px", "height": "16px", "maxWidth": "288px" },
-    "small": { "size": "13px", "height": "17px", "maxWidth": "336px" },
-    "medium": { "size": "14px", "height": "18px", "maxWidth": "432px" },
-    "large": { "size": "16px", "height": "20px", "maxWidth": "528px" },
-    "xlarge": { "size": "18px", "height": "22px", "maxWidth": "624px" },
-    "xxlarge": { "size": "22px", "height": "26px", "maxWidth": "816px" }
+    "xsmall": { "size": "10px", "height": "12px", "maxWidth": "288px" },
+    "small": { "size": "12px", "height": "14px", "maxWidth": "336px" },
+    "medium": { "size": "14px", "height": "16px", "maxWidth": "432px" },
+    "large": { "size": "18px", "height": "21px", "maxWidth": "528px" },
+    "xlarge": { "size": "26px", "height": "30px", "maxWidth": "624px" },
+    "xxlarge": { "size": "32px", "height": "36px", "maxWidth": "816px" }
 }
 
 export const dark = {

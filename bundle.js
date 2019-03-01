@@ -248,7 +248,7 @@ var constants = /*#__PURE__*/Object.freeze({
 var font = {
   family: '"Open Sans", sans-serif',
   size: '14px',
-  height: '18px'
+  height: '16px'
 };
 var glowbal = {
   font: font,
@@ -261,7 +261,10 @@ var glowbal = {
   },
   input: {
     weight: 400,
-    padding: '8px'
+    padding: {
+      vertical: '0.6em',
+      horizontal: '18px'
+    }
   },
   breakpoints: {
     medium: {
@@ -295,7 +298,7 @@ var edgeSize = {
 };
 var button = {
   padding: {
-    vertical: '9px',
+    vertical: '0.6em',
     horizontal: '18px'
   },
   border: {
@@ -304,33 +307,33 @@ var button = {
 };
 var text = {
   "xsmall": {
-    "size": "12px",
-    "height": "16px",
+    "size": "10px",
+    "height": "12px",
     "maxWidth": "288px"
   },
   "small": {
-    "size": "13px",
-    "height": "17px",
+    "size": "12px",
+    "height": "14px",
     "maxWidth": "336px"
   },
   "medium": {
     "size": "14px",
-    "height": "18px",
+    "height": "16px",
     "maxWidth": "432px"
   },
   "large": {
-    "size": "16px",
-    "height": "20px",
+    "size": "18px",
+    "height": "21px",
     "maxWidth": "528px"
   },
   "xlarge": {
-    "size": "18px",
-    "height": "22px",
+    "size": "26px",
+    "height": "30px",
     "maxWidth": "624px"
   },
   "xxlarge": {
-    "size": "22px",
-    "height": "26px",
+    "size": "32px",
+    "height": "36px",
     "maxWidth": "816px"
   }
 };
