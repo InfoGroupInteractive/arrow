@@ -17,10 +17,7 @@ const glowbal = {
     },
     input: {
         weight: 400,
-        padding: {
-            vertical: '0.6em',
-            horizontal: '18px'
-        }
+        padding: '0.6em'
     },
     breakpoints: {
         medium: {
