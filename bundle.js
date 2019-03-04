@@ -260,8 +260,7 @@ var glowbal = {
     }
   },
   input: {
-    weight: 400,
-    padding: '0.6em 0.8em'
+    weight: 400
   },
   breakpoints: {
     medium: {
@@ -299,7 +298,8 @@ var button = {
     horizontal: '0.8em'
   },
   border: {
-    radius: '10px'
+    radius: '10px',
+    width: '1px'
   }
 };
 var text = {
@@ -334,6 +334,13 @@ var text = {
     "maxWidth": "816px"
   }
 };
+var textInput = {
+  extend: function extend() {
+    return {
+      padding: '0.6em 0.8em'
+    };
+  }
+};
 var dark$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.dark
@@ -347,7 +354,8 @@ var dark$1 = {
   },
   size: size,
   button: button,
-  text: text
+  text: text,
+  textInput: textInput
 };
 var light$1 = {
   global: Object.assign({}, glowbal, {
@@ -362,7 +370,8 @@ var light$1 = {
   },
   size: size,
   button: button,
-  text: text
+  text: text,
+  textInput: textInput
 };
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
@@ -377,7 +386,8 @@ var vapor$1 = {
   },
   size: size,
   button: button,
-  text: text
+  text: text,
+  textInput: textInput
 };
 
 var themes = /*#__PURE__*/Object.freeze({

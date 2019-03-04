@@ -16,9 +16,7 @@ const glowbal = {
         }
     },
     input: {
-        weight: 400,
-        padding: '0.6em 0.8em'
-
+        weight: 400
     },
     breakpoints: {
         medium: {
@@ -60,7 +58,8 @@ const button = {
         horizontal: '0.8em'
     },
     border: {
-        radius: '10px'
+        radius: '10px',
+        width: '1px'
     }
 
 }
@@ -72,6 +71,14 @@ const text = {
     "large": { "size": "18px", "height": "21px", "maxWidth": "528px" },
     "xlarge": { "size": "26px", "height": "30px", "maxWidth": "624px" },
     "xxlarge": { "size": "32px", "height": "36px", "maxWidth": "816px" }
+}
+
+const textInput = {
+    extend: () => {
+      return {
+        padding: '0.6em 0.8em'
+      }
+    }
 }
 
 export const dark = {
@@ -87,7 +94,8 @@ export const dark = {
     },
     size,
     button,
-    text
+    text,
+    textInput
 };
 
 export const light = {
@@ -103,7 +111,8 @@ export const light = {
     },
     size,
     button,
-    text
+    text,
+    textInput
 };
 
 export const vapor = {
@@ -119,5 +128,6 @@ export const vapor = {
     },
     size,
     button,
-    text
+    text,
+    textInput
 };
