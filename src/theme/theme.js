@@ -3,7 +3,7 @@ import * as colors from './colors';
 const font = {
     family: '"Open Sans", sans-serif',
     size: '14px',
-    height: '18px',
+    height: '16px',
 };
 
 const glowbal = {
@@ -11,7 +11,7 @@ const glowbal = {
     control: {
         border: {
             width: '1px',
-            radius: '9px',
+            radius: '10px',
             color: 'border'
         }
     },
@@ -54,22 +54,31 @@ const edgeSize = {
 
 const button = {
     padding: {
-        vertical: '9px',
-        horizontal: '18px'
+        vertical: '0.6em',
+        horizontal: '0.8em'
     },
     border: {
-        radius: '9px'
+        radius: '10px',
+        width: '1px'
     }
 
 }
 
 const text = {
-    "xsmall": { "size": "12px", "height": "16px", "maxWidth": "288px" },
-    "small": { "size": "13px", "height": "17px", "maxWidth": "336px" },
-    "medium": { "size": "14px", "height": "18px", "maxWidth": "432px" },
-    "large": { "size": "16px", "height": "20px", "maxWidth": "528px" },
-    "xlarge": { "size": "18px", "height": "22px", "maxWidth": "624px" },
-    "xxlarge": { "size": "22px", "height": "26px", "maxWidth": "816px" }
+    "xsmall": { "size": "10px", "height": "12px", "maxWidth": "288px" },
+    "small": { "size": "12px", "height": "14px", "maxWidth": "336px" },
+    "medium": { "size": "14px", "height": "16px", "maxWidth": "432px" },
+    "large": { "size": "18px", "height": "21px", "maxWidth": "528px" },
+    "xlarge": { "size": "26px", "height": "30px", "maxWidth": "624px" },
+    "xxlarge": { "size": "32px", "height": "36px", "maxWidth": "816px" }
+}
+
+const textInput = {
+    extend: () => {
+      return {
+        padding: '0.6em 0.8em'
+      }
+    }
 }
 
 export const dark = {
@@ -85,7 +94,8 @@ export const dark = {
     },
     size,
     button,
-    text
+    text,
+    textInput
 };
 
 export const light = {
@@ -101,7 +111,8 @@ export const light = {
     },
     size,
     button,
-    text
+    text,
+    textInput
 };
 
 export const vapor = {
@@ -117,5 +128,6 @@ export const vapor = {
     },
     size,
     button,
-    text
+    text,
+    textInput
 };

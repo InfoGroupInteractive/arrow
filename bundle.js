@@ -248,14 +248,14 @@ var constants = /*#__PURE__*/Object.freeze({
 var font = {
   family: '"Open Sans", sans-serif',
   size: '14px',
-  height: '18px'
+  height: '16px'
 };
 var glowbal = {
   font: font,
   control: {
     border: {
       width: '1px',
-      radius: '9px',
+      radius: '10px',
       color: 'border'
     }
   },
@@ -294,43 +294,51 @@ var edgeSize = {
 };
 var button = {
   padding: {
-    vertical: '9px',
-    horizontal: '18px'
+    vertical: '0.6em',
+    horizontal: '0.8em'
   },
   border: {
-    radius: '9px'
+    radius: '10px',
+    width: '1px'
   }
 };
 var text = {
   "xsmall": {
-    "size": "12px",
-    "height": "16px",
+    "size": "10px",
+    "height": "12px",
     "maxWidth": "288px"
   },
   "small": {
-    "size": "13px",
-    "height": "17px",
+    "size": "12px",
+    "height": "14px",
     "maxWidth": "336px"
   },
   "medium": {
     "size": "14px",
-    "height": "18px",
+    "height": "16px",
     "maxWidth": "432px"
   },
   "large": {
-    "size": "16px",
-    "height": "20px",
+    "size": "18px",
+    "height": "21px",
     "maxWidth": "528px"
   },
   "xlarge": {
-    "size": "18px",
-    "height": "22px",
+    "size": "26px",
+    "height": "30px",
     "maxWidth": "624px"
   },
   "xxlarge": {
-    "size": "22px",
-    "height": "26px",
+    "size": "32px",
+    "height": "36px",
     "maxWidth": "816px"
+  }
+};
+var textInput = {
+  extend: function extend() {
+    return {
+      padding: '0.6em 0.8em'
+    };
   }
 };
 var dark$1 = {
@@ -346,7 +354,8 @@ var dark$1 = {
   },
   size: size,
   button: button,
-  text: text
+  text: text,
+  textInput: textInput
 };
 var light$1 = {
   global: Object.assign({}, glowbal, {
@@ -361,7 +370,8 @@ var light$1 = {
   },
   size: size,
   button: button,
-  text: text
+  text: text,
+  textInput: textInput
 };
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
@@ -376,7 +386,8 @@ var vapor$1 = {
   },
   size: size,
   button: button,
-  text: text
+  text: text,
+  textInput: textInput
 };
 
 var themes = /*#__PURE__*/Object.freeze({
