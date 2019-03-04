@@ -12,12 +12,12 @@ const glowbal = {
         border: {
             width: '1px',
             radius: '10px',
-            color: 'border',
-            padding: '0.6em'
+            color: 'border'
         }
     },
     input: {
         weight: 400,
+        padding: '0.6em 0.8em'
 
     },
     breakpoints: {
