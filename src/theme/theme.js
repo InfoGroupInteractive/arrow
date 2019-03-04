@@ -11,13 +11,14 @@ const glowbal = {
     control: {
         border: {
             width: '1px',
-            radius: '9px',
-            color: 'border'
+            radius: '10px',
+            color: 'border',
+            padding: '0.6em'
         }
     },
     input: {
         weight: 400,
-        padding: '0.6em'
+
     },
     breakpoints: {
         medium: {
@@ -56,10 +57,10 @@ const edgeSize = {
 const button = {
     padding: {
         vertical: '0.6em',
-        horizontal: '0.7em'
+        horizontal: '0.8em'
     },
     border: {
-        radius: '9px'
+        radius: '10px'
     }
 
 }
