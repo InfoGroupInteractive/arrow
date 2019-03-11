@@ -19,3 +19,4 @@ export { createToast, removeToast, removeToastAction, createToastAction } from '
 export { default as toastReducers } from './src/toast/toast.reducers';
 export { setTheme } from './src/theme/theme.actions';
 export { default as TagInput } from './src/tag-input/tag-input';
+export { doFetch } from './src/utils/fetch-utils';
