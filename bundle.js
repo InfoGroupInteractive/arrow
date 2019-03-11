@@ -909,19 +909,27 @@ var doFetch = function doFetch(url) {
   var headers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {
     'Content-Type': 'application/json'
   };
-  return fetch(url, {
-    method: method,
-    body: JSON.stringify(body),
-    headers: headers
-  }).then(function (res) {
-    if (res.ok) {
-      return res;
-    }
-
-    throw Error(res.statusText);
-  }).then(function (res) {
-    return res.json();
+  var plomise = new Promise(function (resolve, reject) {
+    fetch(url, {
+      method: method,
+      body: JSON.stringify(body),
+      headers: headers
+    }).then(function (res) {
+      res.json().then(function (json) {
+        if (res.ok) {
+          //200 level error
+          resolve(json);
+        } else {
+          reject(json); //fail with error response from server
+        }
+      }).catch(function (e) {
+        return reject(e);
+      }); //error processing json response      
+    }).catch(function (e) {
+      return reject(e);
+    }); //fetch error   
   });
+  return plomise;
 };
 
 var theme$1 = {
