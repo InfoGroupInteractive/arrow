@@ -904,8 +904,16 @@ function (_Component) {
 }(React.Component);
 
 var doFetch = function doFetch(url) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  return fetch(url, options).then(function (res) {
+  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
+  var body = arguments.length > 2 ? arguments[2] : undefined;
+  var headers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {
+    'Content-Type': 'application/json'
+  };
+  return fetch(url, {
+    method: method,
+    body: JSON.stringify(body),
+    headers: headers
+  }).then(function (res) {
     if (res.ok) {
       return res;
     }
