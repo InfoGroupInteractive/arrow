@@ -935,6 +935,16 @@ var doFetch = function doFetch(url) {
   });
   return plomise;
 };
+var doGet = function doGet(url, body) {
+  return doFetch(url, 'POST', body).then(function (response) {
+    if (typeof response === 'undefined') {
+      // TODO: make this error more better
+      throw Error('Not Found');
+    }
+
+    return response[0];
+  });
+};
 
 var theme$1 = {
   colors: colors,
@@ -957,3 +967,4 @@ exports.toastReducers = toastReducers;
 exports.setTheme = setTheme;
 exports.TagInput = TagInput;
 exports.doFetch = doFetch;
+exports.doGet = doGet;
