@@ -27,9 +27,8 @@
     "redux": "4.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "npm run release",
-    "release": "npm run build:dev && npm run build:prod",
+    "test": "echo \"Error: no test specified\" && exit 1",    
+    "build": "npm run build:dev && npm run build:prod",
     "build:prod": "NODE_ENV=production rollup -c",
     "build:dev": "NODE_ENV=development rollup -c"
   },
