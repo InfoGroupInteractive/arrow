@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Box, Text, TextInput } from 'grommet';
 import { Close } from 'grommet-icons';
 
-class TagInput extends Component {
+class TagInput extends PureComponent {
     render(){
         const {
             values,
@@ -30,7 +30,7 @@ class TagInput extends Component {
                                     direction='row'
                                     round='xsmall'
                                     pad='xxsmall'
-                                    key={v}
+                                    key={`value-${v}`}
                                     background='dark-3'
                                     flex={false}
                                     fill={false}
