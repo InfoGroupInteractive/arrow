@@ -5,11 +5,12 @@ import commonjs from 'rollup-plugin-commonjs';
 import scss from 'rollup-plugin-scss';
 
 const NODE_ENV = process.env.NODE_ENV || "development";
+const outputFile = NODE_ENV === "production" ? "./lib/prod.js" : "./lib/dev.js";
 
 export default {
-    input: 'index.js',
+    input: 'arrow.js',
     output: {
-        file: 'bundle.js',
+        file: outputFile,
         format: 'cjs',
         sourcemap: 'inline'
     },
