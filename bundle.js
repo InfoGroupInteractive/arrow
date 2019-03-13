@@ -920,7 +920,7 @@ var doFetch = function doFetch(url) {
       } else {
         res.json().then(function (json) {
           if (res.ok) {
-            //200 level error
+            // 200 level response
             resolve(json);
           } else {
             reject(json); //fail with error response from server

@@ -13,7 +13,7 @@ export const doFetch = (url, method='GET', body, headers={
                 } else {
                     res.json()
                         .then((json)=>{
-                            if(res.ok){ //200 level error
+                            if(res.ok){ // 200 level response
                                 resolve(json);
                             } else {
                                 reject(json); //fail with error response from server
