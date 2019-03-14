@@ -915,19 +915,23 @@ var doFetch = function doFetch(url) {
       body: JSON.stringify(body),
       headers: headers
     }).then(function (res) {
-      res.json().then(function (json) {
-        if (res.ok) {
-          //200 level error
-          resolve(json);
-        } else {
-          reject(json); //fail with error response from server
-        }
-      }).catch(function (e) {
-        return reject(e);
-      }); //error processing json response      
+      if (res.status === 204) {
+        resolve();
+      } else {
+        res.json().then(function (json) {
+          if (res.ok) {
+            // 200 level response
+            resolve(json);
+          } else {
+            reject(json); //fail with error response from server
+          }
+        }).catch(function (e) {
+          return reject(e);
+        }); //error processing json response
+      }
     }).catch(function (e) {
       return reject(e);
-    }); //fetch error   
+    }); //fetch error
   });
   return plomise;
 };
