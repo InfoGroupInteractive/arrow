@@ -27,13 +27,3 @@ export const doFetch = (url, method='GET', body, headers={
     
     return plomise;
 };
-
-
-export const doGet = (url, body) => doFetch(url, 'POST', body)
-    .then((response) => {
-        if (typeof response === 'undefined'){
-            // TODO: make this error more better
-            throw Error('Not Found');
-        }
-        return response[0];
-    });
