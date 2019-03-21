@@ -286,10 +286,10 @@ var edgeSize = {
   hair: '1px',
   xxsmall: '3px',
   xsmall: '6px',
-  small: '9px',
-  medium: '18px',
+  small: '12px',
+  medium: '24px',
   large: '36px',
-  xlarge: '72px',
+  xlarge: '48px',
   responsiveBreakpoint: 'small'
 };
 var button = {
@@ -343,12 +343,12 @@ var textInput = {
 };
 var dark$1 = {
   global: Object.assign({}, glowbal, {
-    colors: theme.dark
+    colors: theme.dark,
+    edgeSize: edgeSize
   }),
   anchor: Object.assign({}, anchor, {
     color: light2
   }),
-  edgeSize: edgeSize,
   icon: {
     color: light3
   },
@@ -359,12 +359,12 @@ var dark$1 = {
 };
 var light$1 = {
   global: Object.assign({}, glowbal, {
-    colors: theme.light
+    colors: theme.light,
+    edgeSize: edgeSize
   }),
   anchor: Object.assign({}, anchor, {
     color: dark1
   }),
-  edgeSize: edgeSize,
   icon: {
     color: dark4
   },
@@ -375,12 +375,12 @@ var light$1 = {
 };
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
-    colors: theme.vapor
+    colors: theme.vapor,
+    edgeSize: edgeSize
   }),
   anchor: Object.assign({}, anchor, {
     color: dark1
   }),
-  edgeSize: edgeSize,
   icon: {
     color: dark4
   },

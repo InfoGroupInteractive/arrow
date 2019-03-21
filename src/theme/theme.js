@@ -45,10 +45,10 @@ const edgeSize = {
     hair: '1px',
     xxsmall: '3px',
     xsmall: '6px',
-    small: '9px',
-    medium: '18px',
+    small: '12px',
+    medium: '24px',
     large: '36px',
-    xlarge: '72px',
+    xlarge: '48px',
     responsiveBreakpoint: 'small'
 };
 
@@ -83,12 +83,12 @@ const textInput = {
 
 export const dark = {
     global: Object.assign({}, glowbal, {
-        colors: colors.theme.dark
+        colors: colors.theme.dark,
+        edgeSize
     }),
     anchor: Object.assign({}, anchor, {
         color: colors.light2
     }),
-    edgeSize,
     icon: {
         color: colors.light3
     },
@@ -100,12 +100,12 @@ export const dark = {
 
 export const light = {
     global: Object.assign({}, glowbal, {
-        colors: colors.theme.light
+        colors: colors.theme.light,
+        edgeSize
     }),
     anchor: Object.assign({}, anchor, {
         color: colors.dark1
     }),
-    edgeSize,
     icon: {
         color: colors.dark4
     },
@@ -117,12 +117,12 @@ export const light = {
 
 export const vapor = {
     global: Object.assign({}, glowbal, {
-        colors: colors.theme.vapor
+        colors: colors.theme.vapor,
+        edgeSize
     }),
     anchor: Object.assign({}, anchor, {
         color: colors.dark1
     }),
-    edgeSize,
     icon: {
         color: colors.dark4
     },
