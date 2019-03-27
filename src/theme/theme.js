@@ -81,6 +81,13 @@ const textInput = {
     }
 }
 
+const iconSize = {
+    small: '16px',
+    medium: '24px',
+    large: '32px',
+    xlarge: '48px'
+}
+
 export const dark = {
     global: Object.assign({}, glowbal, {
         colors: colors.theme.dark,
@@ -90,7 +97,8 @@ export const dark = {
         color: colors.light2
     }),
     icon: {
-        color: colors.light3
+        color: colors.light3,
+        size: iconSize
     },
     size,
     button,
@@ -107,7 +115,8 @@ export const light = {
         color: colors.dark1
     }),
     icon: {
-        color: colors.dark4
+        color: colors.dark4,
+        size: iconSize
     },
     size,
     button,
@@ -124,7 +133,8 @@ export const vapor = {
         color: colors.dark1
     }),
     icon: {
-        color: colors.dark4
+        color: colors.dark4,
+        size: iconSize
     },
     size,
     button,
