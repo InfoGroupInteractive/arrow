@@ -341,6 +341,13 @@ var textInput = {
     };
   }
 };
+var iconSize = {
+  xsmall: '12px',
+  small: '16px',
+  medium: '24px',
+  large: '32px',
+  xlarge: '48px'
+};
 var dark$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.dark,
@@ -350,7 +357,8 @@ var dark$1 = {
     color: light2
   }),
   icon: {
-    color: light3
+    color: light3,
+    size: iconSize
   },
   size: size,
   button: button,
@@ -366,7 +374,8 @@ var light$1 = {
     color: dark1
   }),
   icon: {
-    color: dark4
+    color: dark4,
+    size: iconSize
   },
   size: size,
   button: button,
@@ -382,7 +391,8 @@ var vapor$1 = {
     color: dark1
   }),
   icon: {
-    color: dark4
+    color: dark4,
+    size: iconSize
   },
   size: size,
   button: button,
