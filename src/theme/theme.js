@@ -82,6 +82,7 @@ const textInput = {
 }
 
 const iconSize = {
+    xsmall: '12px',
     small: '16px',
     medium: '24px',
     large: '32px',
