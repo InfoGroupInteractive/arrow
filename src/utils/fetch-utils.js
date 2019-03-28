@@ -36,7 +36,7 @@ export const doFetch = (url, method='GET', body, headers={
     })
 
     if(typeof abortController !== 'undefined'){
-        plomise.abort = abortController.abort.bind(window);  //b/c clean code is mean code
+        plomise.abort = abortController.abort.bind(abortController);  //b/c clean code is mean code
     }
     
     return plomise;
