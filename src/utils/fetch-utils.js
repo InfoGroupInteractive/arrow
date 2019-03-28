@@ -1,11 +1,6 @@
 export const doFetch = (url, method='GET', body, headers={
     'Content-Type': 'application/json'
 }, signal) => {
-    let abortController;
-    if(typeof signal === 'undefined'){
-        abortController = new AbortController();        
-        signal = abortController.signal;
-    }
     const plomise = new Promise((resolve, reject)=>{
         fetch(url, {
             method,
@@ -33,11 +28,7 @@ export const doFetch = (url, method='GET', body, headers={
                     reject(e);                    
                 }                
             }); //fetch error
-    })
-
-    if(typeof abortController !== 'undefined'){
-        plomise.abort = abortController.abort.bind(abortController);  //b/c clean code is mean code
-    }
+    })   
     
     return plomise;
 };

@@ -920,13 +920,6 @@ var doFetch = function doFetch(url) {
     'Content-Type': 'application/json'
   };
   var signal = arguments.length > 4 ? arguments[4] : undefined;
-  var abortController;
-
-  if (typeof signal === 'undefined') {
-    abortController = new AbortController();
-    signal = abortController.signal;
-  }
-
   var plomise = new Promise(function (resolve, reject) {
     fetch(url, {
       method: method,
@@ -954,11 +947,6 @@ var doFetch = function doFetch(url) {
       }
     }); //fetch error
   });
-
-  if (typeof abortController !== 'undefined') {
-    plomise.abort = abortController.abort.bind(abortController); //b/c clean code is mean code
-  }
-
   return plomise;
 };
 
