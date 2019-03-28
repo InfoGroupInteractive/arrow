@@ -1,11 +1,12 @@
-export const doFetch = (url, method='GET', body, headers={
+export const doFetch = (url, method='GET', body, signal, headers={
     'Content-Type': 'application/json'
 }) => {
     const plomise = new Promise((resolve, reject)=>{
         fetch(url, {
             method,
             body: JSON.stringify(body),
-            headers
+            headers,
+            signal
         })
             .then((res) => {
                 if (res.status === 204){
@@ -22,8 +23,12 @@ export const doFetch = (url, method='GET', body, headers={
                         .catch((e)=>reject(e)); //error processing json response
                 }
             })
-            .catch((e)=>reject(e)); //fetch error
-    })
+            .catch((e)=>{
+                if(e.name !== 'AbortError'){
+                    reject(e);                    
+                }                
+            }); //fetch error
+    })   
     
     return plomise;
 };
