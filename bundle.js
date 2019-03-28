@@ -956,7 +956,7 @@ var doFetch = function doFetch(url) {
   });
 
   if (typeof abortController !== 'undefined') {
-    plomise.abort = abortController.abort; //b/c clean code is mean code
+    plomise.abort = abortController.abort.bind(window); //b/c clean code is mean code
   }
 
   return plomise;
