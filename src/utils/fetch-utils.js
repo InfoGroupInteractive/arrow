@@ -1,6 +1,6 @@
-export const doFetch = (url, method='GET', body, headers={
+export const doFetch = (url, method='GET', body, signal, headers={
     'Content-Type': 'application/json'
-}, signal) => {
+}) => {
     const plomise = new Promise((resolve, reject)=>{
         fetch(url, {
             method,
