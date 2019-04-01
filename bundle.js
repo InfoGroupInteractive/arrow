@@ -739,32 +739,25 @@ var Loader = (function (_ref) {
   var size = _ref.size,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'brand' : _ref$color;
-  return (// border-radius: 50%;
-    // width: $size;
-    // height: $size;
-    // border: $border-size solid $base-color;
-    // border-top-color: $color;
-    // animation: spin $spin-duration infinite ease;
-    React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
-      var loaderSize = theme.icon.size[size];
-      var loaderColor = theme.global.colors[color];
-      var loaderBaseColor = alpha(loaderColor, 0.25);
-      return React__default.createElement("div", {
-        className: "loader",
-        style: {
-          borderRadius: '50%',
-          width: loaderSize,
-          height: loaderSize,
-          borderWidth: "".concat(loaderSize / 10, "px"),
-          borderStyle: 'solid',
-          borderRightColor: loaderBaseColor,
-          borderLeftColor: loaderBaseColor,
-          borderBottomColor: loaderBaseColor,
-          borderTopColor: loaderColor
-        }
-      });
-    })
-  );
+  return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
+    var loaderSize = theme.icon.size[size];
+    var loaderColor = theme.global.colors[color];
+    var loaderBaseColor = alpha(loaderColor, 0.25);
+    return React__default.createElement("div", {
+      className: "loader",
+      style: {
+        borderRadius: '50%',
+        width: loaderSize,
+        height: loaderSize,
+        borderWidth: "".concat(loaderSize / 10, "px"),
+        borderStyle: 'solid',
+        borderRightColor: loaderBaseColor,
+        borderLeftColor: loaderBaseColor,
+        borderBottomColor: loaderBaseColor,
+        borderTopColor: loaderColor
+      }
+    });
+  });
 });
 
 var ArrowApp =

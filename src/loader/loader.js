@@ -5,12 +5,6 @@ import './loader.scss';
 
 export default ({size, color='brand'}) => {
     return (
-        // border-radius: 50%;
-        // width: $size;
-        // height: $size;
-        // border: $border-size solid $base-color;
-        // border-top-color: $color;
-        // animation: spin $spin-duration infinite ease;
         <ThemeContext.Consumer>
         {(theme) => {
             const loaderSize = theme.icon.size[size];
