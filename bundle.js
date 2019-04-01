@@ -755,8 +755,8 @@ var Loader = (function (_ref) {
           borderRadius: '50%',
           width: loaderSize,
           height: loaderSize,
-          border: "".concat(loaderSize / 10, "px solid ").concat(base - color),
-          borderTopColor: loaderBaseColor
+          border: "".concat(loaderSize / 10, "px solid ").concat(loaderBaseColor),
+          borderTopColor: loaderColor
         }
       });
     })

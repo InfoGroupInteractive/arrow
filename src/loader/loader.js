@@ -23,8 +23,8 @@ export default ({size, color='brand'}) => {
                         borderRadius: '50%',
                         width: loaderSize,
                         height: loaderSize,
-                        border: `${loaderSize/10}px solid ${base-color}`,
-                        borderTopColor: loaderBaseColor
+                        border: `${loaderSize/10}px solid ${loaderBaseColor}`,
+                        borderTopColor: loaderColor
                     }}
                 ></div>
             )
