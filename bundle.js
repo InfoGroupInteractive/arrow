@@ -746,6 +746,7 @@ var Loader = (function (_ref) {
     // border-top-color: $color;
     // animation: spin $spin-duration infinite ease;
     React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
+      console.log('theme: ', theme);
       var loaderSize = theme.icon[size];
       var loaderColor = theme.global.colors[color];
       var loaderBaseColor = alpha(loaderColor, 0.25);

@@ -13,6 +13,8 @@ export default ({size, color='brand'}) => {
         // animation: spin $spin-duration infinite ease;
         <ThemeContext.Consumer>
         {(theme) => {
+            console.log('theme: ', theme);
+
             const loaderSize = theme.icon[size];
             const loaderColor = theme.global.colors[color];
             const loaderBaseColor = alpha(loaderColor, 0.25);
