@@ -736,7 +736,8 @@ var alpha = function alpha(color, percentage) {
 };
 
 var Loader = (function (_ref) {
-  var size = _ref.size,
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 'medium' : _ref$size,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'brand' : _ref$color;
   return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {

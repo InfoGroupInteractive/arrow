@@ -3,7 +3,7 @@ import { ThemeContext } from 'grommet';
 import { alpha } from '../utils/color-utils';
 import './loader.scss';
 
-export default ({size, color='brand'}) => {
+export default ({size = 'medium', color = 'brand'}) => {
     return (
         <ThemeContext.Consumer>
         {(theme) => {
