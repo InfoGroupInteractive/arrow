@@ -1,6 +1,5 @@
 import React from 'react';
 import { ThemeContext } from 'grommet';
-import './loader.scss';
 import { alpha } from '../utils/color-utils';
 
 const spin = keyframes`
