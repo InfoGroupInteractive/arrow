@@ -940,14 +940,16 @@ function (_Component) {
 var doFetch = function doFetch(url) {
   var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
   var body = arguments.length > 2 ? arguments[2] : undefined;
-  var headers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {
+  var signal = arguments.length > 3 ? arguments[3] : undefined;
+  var headers = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {
     'Content-Type': 'application/json'
   };
   var plomise = new Promise(function (resolve, reject) {
     fetch(url, {
       method: method,
       body: JSON.stringify(body),
-      headers: headers
+      headers: headers,
+      signal: signal
     }).then(function (res) {
       if (res.status === 204) {
         resolve();
@@ -964,7 +966,9 @@ var doFetch = function doFetch(url) {
         }); //error processing json response
       }
     }).catch(function (e) {
-      return reject(e);
+      if (e.name !== 'AbortError') {
+        reject(e);
+      }
     }); //fetch error
   });
   return plomise;
