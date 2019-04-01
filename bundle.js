@@ -734,6 +734,27 @@ function Navigation(props) {
 var alpha = function alpha(color, percentage) {
   return Color(color).alpha(percentage);
 };
+/**
+ *
+ * determines if seed color is light or dark and returns a contrasting color
+ * @export
+ * @param {string} color
+ * @param {number} [ratio=3]
+ * @returns string
+ */
+
+var getContrastingColor = function getContrastingColor(color) {
+  var c = Color(color);
+  var contrast = 0;
+
+  if (c.isLight()) {
+    contrast = c.contrast(Color('black'));
+    return c.darken(contrast);
+  } else {
+    contrast = c.contrast(Color('white'));
+    return c.lighten(contrast);
+  }
+};
 
 var Loader = (function (_ref) {
   var _ref$size = _ref.size,
@@ -996,3 +1017,4 @@ exports.toastReducers = toastReducers;
 exports.setTheme = setTheme;
 exports.TagInput = TagInput;
 exports.doFetch = doFetch;
+exports.getContrastingColor = getContrastingColor;
