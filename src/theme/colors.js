@@ -20,7 +20,7 @@ export const light4 = '#BCBEC0';
 export const light5 = '#A7A9AC';
 export const light6 = '#939598';
 export const error = '#EB3C3C';
-export const warning = '#F7E463';
+export const warning = '#FFBB22';
 export const success = '#329B46';
 
 const light = {
