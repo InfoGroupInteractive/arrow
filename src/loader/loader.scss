@@ -1,5 +1,10 @@
+$spin-duration: 800ms;
+
+
+
 .loader {
-    animation: spin 800ms infinite ease;
+    animation: spin $spin-duration infinite ease;
+
 
     @keyframes spin {
         0% {
