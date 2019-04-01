@@ -16,7 +16,7 @@ export default ({size, color='brand'}) => {
             const loaderSize = theme.icon.size[size];
             const loaderColor = theme.global.colors[color];
             const loaderBaseColor = alpha(loaderColor, 0.25);
-            
+
             return (
                 <div
                     className='loader'
@@ -24,7 +24,11 @@ export default ({size, color='brand'}) => {
                         borderRadius: '50%',
                         width: loaderSize,
                         height: loaderSize,
-                        border: `${loaderSize/10}px solid ${loaderBaseColor}`,
+                        borderWidth: `${loaderSize/10}px`,
+                        borderStyle: 'solid',
+                        borderRightColor: loaderBaseColor,
+                        borderLeftColor: loaderBaseColor,
+                        borderBottomColor: loaderBaseColor,
                         borderTopColor: loaderColor
                     }}
                 ></div>

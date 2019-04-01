@@ -755,7 +755,11 @@ var Loader = (function (_ref) {
           borderRadius: '50%',
           width: loaderSize,
           height: loaderSize,
-          border: "".concat(loaderSize / 10, "px solid ").concat(loaderBaseColor),
+          borderWidth: "".concat(loaderSize / 10, "px"),
+          borderStyle: 'solid',
+          borderRightColor: loaderBaseColor,
+          borderLeftColor: loaderBaseColor,
+          borderBottomColor: loaderBaseColor,
           borderTopColor: loaderColor
         }
       });
