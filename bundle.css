@@ -1,18 +1,5 @@
 .loader {
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  border: 5px solid rgba(100, 149, 237, 0.25);
-  border-top-color: CornflowerBlue;
   animation: spin 800ms infinite ease; }
-  .loader.large {
-    width: 72px;
-    height: 72px;
-    border-width: 7.2px; }
-  .loader.small {
-    width: 24px;
-    height: 24px;
-    border-width: 2.4px; }
 
 @keyframes spin {
   0% {

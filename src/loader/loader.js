@@ -1,10 +1,7 @@
 import React from 'react';
 import { ThemeContext } from 'grommet';
 import { alpha } from '../utils/color-utils';
-
-const spin = keyframes`
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }`;
+import './loader.scss';
 
 export default ({size, color='brand'}) => {
     return (
@@ -21,13 +18,13 @@ export default ({size, color='brand'}) => {
             const loaderBaseColor = alpha(loaderColor, 0.25);
             return (
                 <div
+                    className='loader'
                     style={{
                         borderRadius: '50%',
                         width: loaderSize,
                         height: loaderSize,
                         border: `${loaderSize/10}px solid ${base-color}`,
-                        borderTopColor: loaderBaseColor,
-                        animation: `${spin} 800ms infinite ease`
+                        borderTopColor: loaderBaseColor
                     }}
                 ></div>
             )

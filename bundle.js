@@ -18,7 +18,6 @@ var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToG
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
-var _taggedTemplateLiteral = _interopDefault(require('@babel/runtime/helpers/taggedTemplateLiteral'));
 var Color = _interopDefault(require('color'));
 
 var brand = '#54B948';
@@ -736,16 +735,6 @@ var alpha = function alpha(color, percentage) {
   return Color(color).alpha(percentage);
 };
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n      0% { transform: rotate(0deg); }\n      100% { transform: rotate(360deg); }"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var spin = keyframes(_templateObject());
 var Loader = (function (_ref) {
   var size = _ref.size,
       _ref$color = _ref.color,
@@ -761,13 +750,13 @@ var Loader = (function (_ref) {
       var loaderColor = theme.global.colors[color];
       var loaderBaseColor = alpha(loaderColor, 0.25);
       return React__default.createElement("div", {
+        className: "loader",
         style: {
           borderRadius: '50%',
           width: loaderSize,
           height: loaderSize,
           border: "".concat(loaderSize / 10, "px solid ").concat(base - color),
-          borderTopColor: loaderBaseColor,
-          animation: "".concat(spin, " 800ms infinite ease")
+          borderTopColor: loaderBaseColor
         }
       });
     })
