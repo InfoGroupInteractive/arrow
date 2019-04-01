@@ -18,6 +18,7 @@ var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToG
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
+var Color = _interopDefault(require('color'));
 
 var brand = '#54B948';
 var accent1 = '#ECE64A';
@@ -41,7 +42,7 @@ var light4 = '#BCBEC0';
 var light5 = '#A7A9AC';
 var light6 = '#939598';
 var error = '#EB3C3C';
-var warning = '#F7E463';
+var warning = '#FFBB22';
 var success = '#329B46';
 var light = {
   brand: brand,
@@ -730,9 +731,54 @@ function Navigation(props) {
   });
 }
 
-var Loader = (function (props) {
-  return React__default.createElement("div", {
-    className: "loader ".concat(props.className)
+var alpha = function alpha(color, percentage) {
+  return Color(color).alpha(percentage);
+};
+/**
+ *
+ * determines if seed color is light or dark and returns a contrasting color
+ * @export
+ * @param {string} color
+ * @param {number} [ratio=3]
+ * @returns string
+ */
+
+var getContrastingColor = function getContrastingColor(color) {
+  var c = Color(color);
+  var contrast = 0;
+
+  if (c.isLight()) {
+    contrast = c.contrast(Color('black'));
+    return c.darken(contrast);
+  } else {
+    contrast = c.contrast(Color('white'));
+    return c.lighten(contrast);
+  }
+};
+
+var Loader = (function (_ref) {
+  var _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 'medium' : _ref$size,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? 'brand' : _ref$color;
+  return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
+    var loaderSize = theme ? theme.icon.size[size] : '24px';
+    var loaderColor = theme ? theme.global.colors[color] : '#000';
+    var loaderBaseColor = alpha(loaderColor, 0.25);
+    return React__default.createElement("div", {
+      className: "loader",
+      style: {
+        borderRadius: '50%',
+        width: loaderSize,
+        height: loaderSize,
+        borderWidth: "".concat(loaderSize / 10, "px"),
+        borderStyle: 'solid',
+        borderRightColor: loaderBaseColor,
+        borderLeftColor: loaderBaseColor,
+        borderBottomColor: loaderBaseColor,
+        borderTopColor: loaderColor
+      }
+    });
   });
 });
 
@@ -971,3 +1017,4 @@ exports.toastReducers = toastReducers;
 exports.setTheme = setTheme;
 exports.TagInput = TagInput;
 exports.doFetch = doFetch;
+exports.getContrastingColor = getContrastingColor;

@@ -1,32 +1,11 @@
-$size: 48px;
-$size-large: $size * 1.5;
-$size-small: $size/2;
-$color: CornflowerBlue;
-$base-color: rgba($color, 0.25);
 $spin-duration: 800ms;
-$border-size: 5px;
+
 
 
 .loader {
-    border-radius: 50%;
-    width: $size;
-    height: $size;
-    border: $border-size solid $base-color;
-    border-top-color: $color;
     animation: spin $spin-duration infinite ease;
 
-    &.large {
-        width: $size-large;
-        height: $size-large;
-        border-width: $size-large/10;
-    }
 
-    &.small {
-        width: $size-small;
-        height: $size-small;
-        border-width: $size-small/10;
-    }
-    
     @keyframes spin {
         0% {
             transform: rotate(0deg);
