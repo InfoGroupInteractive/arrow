@@ -1,14 +1,15 @@
 import React from 'react';
 import { ThemeContext } from 'grommet';
 import { alpha } from '../utils/color-utils';
+
 import './loader.scss';
 
 export default ({size = 'medium', color = 'brand'}) => {
     return (
         <ThemeContext.Consumer>
         {(theme) => {
-            const loaderSize = theme.icon.size[size];
-            const loaderColor = theme.global.colors[color];
+            const loaderSize = theme ? theme.icon.size[size] : '24px';
+            const loaderColor = theme ? theme.global.colors[color] : '#000';
             const loaderBaseColor = alpha(loaderColor, 0.25);
 
             return (

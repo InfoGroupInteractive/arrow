@@ -741,8 +741,8 @@ var Loader = (function (_ref) {
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'brand' : _ref$color;
   return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
-    var loaderSize = theme.icon.size[size];
-    var loaderColor = theme.global.colors[color];
+    var loaderSize = theme ? theme.icon.size[size] : '24px';
+    var loaderColor = theme ? theme.global.colors[color] : '#000';
     var loaderBaseColor = alpha(loaderColor, 0.25);
     return React__default.createElement("div", {
       className: "loader",
