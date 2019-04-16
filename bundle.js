@@ -256,7 +256,7 @@ var glowbal = {
   control: {
     border: {
       width: '1px',
-      radius: '10px',
+      radius: '12px',
       color: 'border'
     }
   },
@@ -299,7 +299,7 @@ var button = {
     horizontal: '0.8em'
   },
   border: {
-    radius: '10px',
+    radius: '12px',
     width: '1px'
   }
 };
