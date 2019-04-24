@@ -343,11 +343,13 @@ var textInput = {
   }
 };
 var iconSize = {
-  xsmall: '12px',
-  small: '16px',
+  xxsmall: '12px',
+  xsmall: '16px',
+  small: '20px',
   medium: '24px',
-  large: '32px',
-  xlarge: '48px'
+  large: '30px',
+  xlarge: '48px',
+  xxlarge: '72px'
 };
 var dark$1 = {
   global: Object.assign({}, glowbal, {
