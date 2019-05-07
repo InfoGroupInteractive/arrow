@@ -269,20 +269,6 @@ var glowbal = {
     }
   }
 };
-var anchor = {
-  'textDecoration': 'underline',
-  'fontWeight': 400,
-  'color': {
-    'dark': light1,
-    'light': dark1
-  },
-  'hover': {
-    'color': {
-      'dark': accent3Alt,
-      'light': accent3
-    }
-  }
-};
 var size = {
   xxsmall: '48px',
   xsmall: '96px',
@@ -390,7 +376,6 @@ var dark$1 = {
     },
     elevation: elevation
   }),
-  anchor: anchor,
   icon: {
     color: light3,
     size: iconSize
@@ -406,7 +391,6 @@ var light$1 = {
     edgeSize: edgeSize,
     elevation: elevation
   }),
-  anchor: anchor,
   icon: {
     color: dark4,
     size: iconSize
@@ -422,7 +406,6 @@ var vapor$1 = {
     edgeSize: edgeSize,
     elevation: elevation
   }),
-  anchor: anchor,
   icon: {
     color: dark4,
     size: iconSize

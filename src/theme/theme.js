@@ -25,12 +25,6 @@ const glowbal = {
     }
 };
 
-const anchor = {
-    'textDecoration': 'underline',
-    'fontWeight': 400,
-    'color': { 'dark': colors.light1, 'light': colors.dark1 },
-    'hover': { 'color': { 'dark': colors.accent3Alt, 'light': colors.accent3 }}
-};
 
 const size = {
     xxsmall: '48px',
@@ -124,7 +118,6 @@ export const dark = {
         },
         elevation
     }),
-    anchor,
     icon: {
         color: colors.light3,
         size: iconSize
@@ -141,7 +134,6 @@ export const light = {
         edgeSize,
         elevation
     }),
-    anchor,
     icon: {
         color: colors.dark4,
         size: iconSize
@@ -158,7 +150,6 @@ export const vapor = {
         edgeSize,
         elevation
     }),
-    anchor,
     icon: {
         color: colors.dark4,
         size: iconSize
