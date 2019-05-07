@@ -124,7 +124,12 @@ export const light = {
     size,
     button,
     text,
-    textInput
+    textInput,
+    select: {
+        extend: (props) => {
+            console.log(props);
+        }
+    }
 };
 
 export const vapor = {

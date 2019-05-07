@@ -383,7 +383,12 @@ var light$1 = {
   size: size,
   button: button,
   text: text,
-  textInput: textInput
+  textInput: textInput,
+  select: {
+    extend: function extend(props) {
+      console.log(props);
+    }
+  }
 };
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
