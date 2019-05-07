@@ -388,14 +388,7 @@ var light$1 = {
     container: {
       extend: function extend(props) {
         return {
-          background: '#f00'
-        };
-      }
-    },
-    control: {
-      extend: function extend(props) {
-        return {
-          background: '#0f0'
+          background: props.theme.dark ? dark1 : '#fff'
         };
       }
     }

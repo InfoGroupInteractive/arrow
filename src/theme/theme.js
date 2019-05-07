@@ -129,14 +129,7 @@ export const light = {
         container: {
             extend: (props) => {
                 return {
-                    background: '#f00'
-                }
-            }
-        },
-        control: {
-            extend: (props) => {
-                return {
-                    background: '#0f0'
+                    background: props.theme.dark ? colors.dark1 : '#fff'
                 }
             }
         }
