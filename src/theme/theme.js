@@ -22,6 +22,12 @@ const glowbal = {
         medium: {
             value: 1200
         }
+    },
+    drop: {
+        extend: ({theme}) => {
+            console.log(theme.dark);
+            background: theme.dark ? colors.warning : '#fff'
+        }
     }
 };
 
@@ -124,17 +130,7 @@ export const light = {
     size,
     button,
     text,
-    textInput,
-    select: {
-        container: {
-            extend: ({theme}) => {
-                console.log(theme.dark);
-                return {
-                    background: theme.dark ? `${colors.warning} !important` : '#fff'
-                }
-            }
-        }
-    }
+    textInput
 };
 
 export const vapor = {

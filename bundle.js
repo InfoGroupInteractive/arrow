@@ -267,6 +267,14 @@ var glowbal = {
     medium: {
       value: 1200
     }
+  },
+  drop: {
+    extend: function extend(_ref) {
+      var theme$$1 = _ref.theme;
+      console.log(theme$$1.dark);
+
+      background: theme$$1.dark ? warning : '#fff';
+    }
   }
 };
 var anchor = {
@@ -383,18 +391,7 @@ var light$1 = {
   size: size,
   button: button,
   text: text,
-  textInput: textInput,
-  select: {
-    container: {
-      extend: function extend(_ref) {
-        var theme$$1 = _ref.theme;
-        console.log(theme$$1.dark);
-        return {
-          background: theme$$1.dark ? "".concat(warning, " !important") : '#fff'
-        };
-      }
-    }
-  }
+  textInput: textInput
 };
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
