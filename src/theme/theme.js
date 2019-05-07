@@ -128,12 +128,16 @@ export const light = {
     select: {
         container: {
             extend: (props) => {
-                console.log(props);
+                return {
+                    background: '#f00'
+                }
             }
         },
         control: {
             extend: (props) => {
-                console.log(props);
+                return {
+                    background: '#0f0'
+                }
             }
         }
     }

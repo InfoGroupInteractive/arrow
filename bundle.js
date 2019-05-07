@@ -387,12 +387,16 @@ var light$1 = {
   select: {
     container: {
       extend: function extend(props) {
-        console.log(props);
+        return {
+          background: '#f00'
+        };
       }
     },
     control: {
       extend: function extend(props) {
-        console.log(props);
+        return {
+          background: '#0f0'
+        };
       }
     }
   }
