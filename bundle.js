@@ -387,6 +387,7 @@ var light$1 = {
   select: {
     container: {
       extend: function extend(props) {
+        console.log(props);
         return {
           background: props.theme.dark ? dark1 : '#fff'
         };

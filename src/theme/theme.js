@@ -128,6 +128,7 @@ export const light = {
     select: {
         container: {
             extend: (props) => {
+                console.log(props);
                 return {
                     background: props.theme.dark ? colors.dark1 : '#fff'
                 }
