@@ -269,9 +269,6 @@ var glowbal = {
     }
   }
 };
-var anchor = {
-  fontWeight: 400
-};
 var size = {
   xxsmall: '48px',
   xsmall: '96px',
@@ -293,6 +290,25 @@ var edgeSize = {
   xlarge: '48px',
   responsiveBreakpoint: 'small'
 };
+var shadow = 'rgba(0, 0, 0, 0.20)';
+var elevation = {
+  'light': {
+    'none': 'none',
+    'xsmall': "0px 1px 2px ".concat(shadow),
+    'small': "0px 2px 4px ".concat(shadow),
+    'medium': "0px 4px 8px ".concat(shadow),
+    'large': "0px 8px 16px ".concat(shadow),
+    'xlarge': "0px 12px 24px ".concat(shadow)
+  },
+  'dark': {
+    'none': 'none',
+    'xsmall': "0px 2px 2px ".concat(shadow),
+    'small': "0px 4px 4px ".concat(shadow),
+    'medium': "0px 6px 8px ".concat(shadow),
+    'large': "0px 8px 16px ".concat(shadow),
+    'xlarge': "0px 12px 24px ".concat(shadow)
+  }
+};
 var button = {
   padding: {
     vertical: '0.6em',
@@ -304,35 +320,35 @@ var button = {
   }
 };
 var text = {
-  "xsmall": {
-    "size": "10px",
-    "height": "12px",
-    "maxWidth": "288px"
+  'xsmall': {
+    'size': '10px',
+    'height': '12px',
+    'maxWidth': '288px'
   },
-  "small": {
-    "size": "12px",
-    "height": "14px",
-    "maxWidth": "336px"
+  'small': {
+    'size': '12px',
+    'height': '14px',
+    'maxWidth': '336px'
   },
-  "medium": {
-    "size": "14px",
-    "height": "16px",
-    "maxWidth": "432px"
+  'medium': {
+    'size': '14px',
+    'height': '16px',
+    'maxWidth': '432px'
   },
-  "large": {
-    "size": "18px",
-    "height": "21px",
-    "maxWidth": "528px"
+  'large': {
+    'size': '18px',
+    'height': '21px',
+    'maxWidth': '528px'
   },
-  "xlarge": {
-    "size": "26px",
-    "height": "30px",
-    "maxWidth": "624px"
+  'xlarge': {
+    'size': '26px',
+    'height': '30px',
+    'maxWidth': '624px'
   },
-  "xxlarge": {
-    "size": "32px",
-    "height": "36px",
-    "maxWidth": "816px"
+  'xxlarge': {
+    'size': '32px',
+    'height': '36px',
+    'maxWidth': '816px'
   }
 };
 var textInput = {
@@ -354,10 +370,11 @@ var iconSize = {
 var dark$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.dark,
-    edgeSize: edgeSize
-  }),
-  anchor: Object.assign({}, anchor, {
-    color: light2
+    edgeSize: edgeSize,
+    drop: {
+      background: dark2
+    },
+    elevation: elevation
   }),
   icon: {
     color: light3,
@@ -371,10 +388,8 @@ var dark$1 = {
 var light$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.light,
-    edgeSize: edgeSize
-  }),
-  anchor: Object.assign({}, anchor, {
-    color: dark1
+    edgeSize: edgeSize,
+    elevation: elevation
   }),
   icon: {
     color: dark4,
@@ -388,10 +403,8 @@ var light$1 = {
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.vapor,
-    edgeSize: edgeSize
-  }),
-  anchor: Object.assign({}, anchor, {
-    color: dark1
+    edgeSize: edgeSize,
+    elevation: elevation
   }),
   icon: {
     color: dark4,
