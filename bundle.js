@@ -390,7 +390,7 @@ var light$1 = {
         var theme$$1 = _ref.theme;
         console.log(theme$$1.dark);
         return {
-          background: theme$$1.dark ? "".concat(dark1, " !important") : '#fff'
+          background: theme$$1.dark ? "".concat(warning, " !important") : '#fff'
         };
       }
     }

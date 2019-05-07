@@ -130,7 +130,7 @@ export const light = {
             extend: ({theme}) => {
                 console.log(theme.dark);
                 return {
-                    background: theme.dark ? `${colors.dark1} !important` : '#fff'
+                    background: theme.dark ? `${colors.warning} !important` : '#fff'
                 }
             }
         }
