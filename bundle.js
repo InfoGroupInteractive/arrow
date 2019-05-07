@@ -385,13 +385,12 @@ var light$1 = {
   text: text,
   textInput: textInput,
   select: {
-    background: '#f00',
     container: {
       extend: function extend(_ref) {
         var theme$$1 = _ref.theme;
         console.log(theme$$1.dark);
         return {
-          background: theme$$1.dark ? dark1 : '#fff'
+          background: theme$$1.dark ? "".concat(dark1, " !important") : '#fff'
         };
       }
     }

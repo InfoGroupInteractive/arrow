@@ -126,12 +126,11 @@ export const light = {
     text,
     textInput,
     select: {
-        background: '#f00',
         container: {
             extend: ({theme}) => {
                 console.log(theme.dark);
                 return {
-                    background: theme.dark ? colors.dark1 : '#fff'
+                    background: theme.dark ? `${colors.dark1} !important` : '#fff'
                 }
             }
         }
