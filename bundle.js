@@ -356,7 +356,7 @@ var dark$1 = {
     colors: theme.dark,
     edgeSize: edgeSize,
     drop: {
-      background: warning
+      background: dark2
     }
   }),
   anchor: Object.assign({}, anchor, {

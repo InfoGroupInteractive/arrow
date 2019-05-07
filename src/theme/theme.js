@@ -96,7 +96,7 @@ export const dark = {
         colors: colors.theme.dark,
         edgeSize,
         drop: {
-            background: colors.warning
+            background: colors.dark2
         }
     }),
     anchor: Object.assign({}, anchor, {
