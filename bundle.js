@@ -270,7 +270,18 @@ var glowbal = {
   }
 };
 var anchor = {
-  fontWeight: 400
+  'textDecoration': 'underline',
+  'fontWeight': 400,
+  'color': {
+    'dark': light1,
+    'light': dark1
+  },
+  'hover': {
+    'color': {
+      'dark': accent3Alt,
+      'light': accent3
+    }
+  }
 };
 var size = {
   xxsmall: '48px',
@@ -323,35 +334,35 @@ var button = {
   }
 };
 var text = {
-  "xsmall": {
-    "size": "10px",
-    "height": "12px",
-    "maxWidth": "288px"
+  'xsmall': {
+    'size': '10px',
+    'height': '12px',
+    'maxWidth': '288px'
   },
-  "small": {
-    "size": "12px",
-    "height": "14px",
-    "maxWidth": "336px"
+  'small': {
+    'size': '12px',
+    'height': '14px',
+    'maxWidth': '336px'
   },
-  "medium": {
-    "size": "14px",
-    "height": "16px",
-    "maxWidth": "432px"
+  'medium': {
+    'size': '14px',
+    'height': '16px',
+    'maxWidth': '432px'
   },
-  "large": {
-    "size": "18px",
-    "height": "21px",
-    "maxWidth": "528px"
+  'large': {
+    'size': '18px',
+    'height': '21px',
+    'maxWidth': '528px'
   },
-  "xlarge": {
-    "size": "26px",
-    "height": "30px",
-    "maxWidth": "624px"
+  'xlarge': {
+    'size': '26px',
+    'height': '30px',
+    'maxWidth': '624px'
   },
-  "xxlarge": {
-    "size": "32px",
-    "height": "36px",
-    "maxWidth": "816px"
+  'xxlarge': {
+    'size': '32px',
+    'height': '36px',
+    'maxWidth': '816px'
   }
 };
 var textInput = {
@@ -379,9 +390,7 @@ var dark$1 = {
     },
     elevation: elevation
   }),
-  anchor: Object.assign({}, anchor, {
-    color: light2
-  }),
+  anchor: anchor,
   icon: {
     color: light3,
     size: iconSize
@@ -397,9 +406,7 @@ var light$1 = {
     edgeSize: edgeSize,
     elevation: elevation
   }),
-  anchor: Object.assign({}, anchor, {
-    color: dark1
-  }),
+  anchor: anchor,
   icon: {
     color: dark4,
     size: iconSize
@@ -415,9 +422,7 @@ var vapor$1 = {
     edgeSize: edgeSize,
     elevation: elevation
   }),
-  anchor: Object.assign({}, anchor, {
-    color: dark1
-  }),
+  anchor: anchor,
   icon: {
     color: dark4,
     size: iconSize

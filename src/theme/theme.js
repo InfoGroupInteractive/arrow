@@ -26,7 +26,10 @@ const glowbal = {
 };
 
 const anchor = {
-    fontWeight: 400
+    'textDecoration': 'underline',
+    'fontWeight': 400,
+    'color': { 'dark': colors.light1, 'light': colors.dark1 },
+    'hover': { 'color': { 'dark': colors.accent3Alt, 'light': colors.accent3 }}
 };
 
 const size = {
@@ -86,12 +89,12 @@ const button = {
 }
 
 const text = {
-    "xsmall": { "size": "10px", "height": "12px", "maxWidth": "288px" },
-    "small": { "size": "12px", "height": "14px", "maxWidth": "336px" },
-    "medium": { "size": "14px", "height": "16px", "maxWidth": "432px" },
-    "large": { "size": "18px", "height": "21px", "maxWidth": "528px" },
-    "xlarge": { "size": "26px", "height": "30px", "maxWidth": "624px" },
-    "xxlarge": { "size": "32px", "height": "36px", "maxWidth": "816px" }
+    'xsmall': { 'size': '10px', 'height': '12px', 'maxWidth': '288px' },
+    'small': { 'size': '12px', 'height': '14px', 'maxWidth': '336px' },
+    'medium': { 'size': '14px', 'height': '16px', 'maxWidth': '432px' },
+    'large': { 'size': '18px', 'height': '21px', 'maxWidth': '528px' },
+    'xlarge': { 'size': '26px', 'height': '30px', 'maxWidth': '624px' },
+    'xxlarge': { 'size': '32px', 'height': '36px', 'maxWidth': '816px' }
 }
 
 const textInput = {
@@ -121,9 +124,7 @@ export const dark = {
         },
         elevation
     }),
-    anchor: Object.assign({}, anchor, {
-        color: colors.light2
-    }),
+    anchor,
     icon: {
         color: colors.light3,
         size: iconSize
@@ -140,9 +141,7 @@ export const light = {
         edgeSize,
         elevation
     }),
-    anchor: Object.assign({}, anchor, {
-        color: colors.dark1
-    }),
+    anchor,
     icon: {
         color: colors.dark4,
         size: iconSize
@@ -159,9 +158,7 @@ export const vapor = {
         edgeSize,
         elevation
     }),
-    anchor: Object.assign({}, anchor, {
-        color: colors.dark1
-    }),
+    anchor,
     icon: {
         color: colors.dark4,
         size: iconSize
