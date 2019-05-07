@@ -52,6 +52,27 @@ const edgeSize = {
     responsiveBreakpoint: 'small'
 };
 
+const shadow = 'rgba(0, 0, 0, 0.20)'
+
+const elevation = {
+    'light': {
+        'none': 'none',
+        'xsmall': `0px 1px 2px ${shadow}`,
+        'small': `0px 2px 4px ${shadow}`,
+        'medium': `0px 4px 8px ${shadow}`,
+        'large': `0px 8px 16px ${shadow}`,
+        'xlarge': `0px 12px 24px ${shadow}`
+    },
+    'dark': {
+        'none': 'none',
+        'xsmall': `0px 2px 2px ${shadow}`,
+        'small': `0px 4px 4px ${shadow}`,
+        'medium': `0px 6px 8px ${shadow}`,
+        'large': `0px 8px 16px ${shadow}`,
+        'xlarge': `0px 12px 24px ${shadow}`
+    }
+}
+
 const button = {
     padding: {
         vertical: '0.6em',
@@ -97,7 +118,8 @@ export const dark = {
         edgeSize,
         drop: {
             background: colors.dark2
-        }
+        },
+        elevation
     }),
     anchor: Object.assign({}, anchor, {
         color: colors.light2
@@ -115,7 +137,8 @@ export const dark = {
 export const light = {
     global: Object.assign({}, glowbal, {
         colors: colors.theme.light,
-        edgeSize
+        edgeSize,
+        elevation
     }),
     anchor: Object.assign({}, anchor, {
         color: colors.dark1
@@ -133,7 +156,8 @@ export const light = {
 export const vapor = {
     global: Object.assign({}, glowbal, {
         colors: colors.theme.vapor,
-        edgeSize
+        edgeSize,
+        elevation
     }),
     anchor: Object.assign({}, anchor, {
         color: colors.dark1

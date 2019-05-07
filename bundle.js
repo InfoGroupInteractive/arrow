@@ -293,6 +293,25 @@ var edgeSize = {
   xlarge: '48px',
   responsiveBreakpoint: 'small'
 };
+var shadow = 'rgba(0, 0, 0, 0.20)';
+var elevation = {
+  'light': {
+    'none': 'none',
+    'xsmall': "0px 1px 2px ".concat(shadow),
+    'small': "0px 2px 4px ".concat(shadow),
+    'medium': "0px 4px 8px ".concat(shadow),
+    'large': "0px 8px 16px ".concat(shadow),
+    'xlarge': "0px 12px 24px ".concat(shadow)
+  },
+  'dark': {
+    'none': 'none',
+    'xsmall': "0px 2px 2px ".concat(shadow),
+    'small': "0px 4px 4px ".concat(shadow),
+    'medium': "0px 6px 8px ".concat(shadow),
+    'large': "0px 8px 16px ".concat(shadow),
+    'xlarge': "0px 12px 24px ".concat(shadow)
+  }
+};
 var button = {
   padding: {
     vertical: '0.6em',
@@ -357,7 +376,8 @@ var dark$1 = {
     edgeSize: edgeSize,
     drop: {
       background: dark2
-    }
+    },
+    elevation: elevation
   }),
   anchor: Object.assign({}, anchor, {
     color: light2
@@ -374,7 +394,8 @@ var dark$1 = {
 var light$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.light,
-    edgeSize: edgeSize
+    edgeSize: edgeSize,
+    elevation: elevation
   }),
   anchor: Object.assign({}, anchor, {
     color: dark1
@@ -391,7 +412,8 @@ var light$1 = {
 var vapor$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.vapor,
-    edgeSize: edgeSize
+    edgeSize: edgeSize,
+    elevation: elevation
   }),
   anchor: Object.assign({}, anchor, {
     color: dark1
