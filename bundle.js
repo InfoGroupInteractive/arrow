@@ -267,14 +267,6 @@ var glowbal = {
     medium: {
       value: 1200
     }
-  },
-  drop: {
-    extend: function extend(_ref) {
-      var theme$$1 = _ref.theme;
-      console.log(theme$$1.dark);
-
-      background: theme$$1.dark ? warning : '#fff';
-    }
   }
 };
 var anchor = {
@@ -362,7 +354,10 @@ var iconSize = {
 var dark$1 = {
   global: Object.assign({}, glowbal, {
     colors: theme.dark,
-    edgeSize: edgeSize
+    edgeSize: edgeSize,
+    drop: {
+      background: warning
+    }
   }),
   anchor: Object.assign({}, anchor, {
     color: light2

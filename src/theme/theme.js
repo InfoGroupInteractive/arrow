@@ -22,12 +22,6 @@ const glowbal = {
         medium: {
             value: 1200
         }
-    },
-    drop: {
-        extend: ({theme}) => {
-            console.log(theme.dark);
-            background: theme.dark ? colors.warning : '#fff'
-        }
     }
 };
 
@@ -100,7 +94,10 @@ const iconSize = {
 export const dark = {
     global: Object.assign({}, glowbal, {
         colors: colors.theme.dark,
-        edgeSize
+        edgeSize,
+        drop: {
+            background: colors.warning
+        }
     }),
     anchor: Object.assign({}, anchor, {
         color: colors.light2
