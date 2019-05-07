@@ -126,8 +126,15 @@ export const light = {
     text,
     textInput,
     select: {
-        extend: (props) => {
-            console.log(props);
+        container: {
+            extend: (props) => {
+                console.log(props);
+            }
+        },
+        control: {
+            extend: (props) => {
+                console.log(props);
+            }
         }
     }
 };

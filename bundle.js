@@ -385,8 +385,15 @@ var light$1 = {
   text: text,
   textInput: textInput,
   select: {
-    extend: function extend(props) {
-      console.log(props);
+    container: {
+      extend: function extend(props) {
+        console.log(props);
+      }
+    },
+    control: {
+      extend: function extend(props) {
+        console.log(props);
+      }
     }
   }
 };
