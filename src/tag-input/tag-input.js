@@ -39,7 +39,7 @@ class TagInput extends Component {
                                     align='center'>
                                     <Text size='xsmall'>{v}</Text>
                                     <Close
-                                        size='small'
+                                        size='xsmall'
                                         onClick={() => {
                                             onRemoveValue(v);
                                         }}

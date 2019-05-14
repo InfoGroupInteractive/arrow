@@ -928,7 +928,7 @@ function (_Component) {
         }, React__default.createElement(grommet.Text, {
           size: "xsmall"
         }, v), React__default.createElement(grommetIcons.Close, {
-          size: "small",
+          size: "xsmall",
           onClick: function onClick() {
             onRemoveValue(v);
           }
