@@ -926,9 +926,9 @@ function (_Component) {
           alignSelf: "center",
           align: "center"
         }, React__default.createElement(grommet.Text, {
-          size: "xsmall"
+          size: "small"
         }, v), React__default.createElement(grommetIcons.Close, {
-          size: "small",
+          size: "xsmall",
           onClick: function onClick() {
             onRemoveValue(v);
           }
