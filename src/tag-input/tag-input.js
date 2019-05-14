@@ -37,7 +37,7 @@ class TagInput extends Component {
                                     gap='xsmall'
                                     alignSelf='center'
                                     align='center'>
-                                    <Text size='small'>{v}</Text>
+                                    <Text size='xsmall'>{v}</Text>
                                     <Close
                                         size='xsmall'
                                         onClick={() => {
