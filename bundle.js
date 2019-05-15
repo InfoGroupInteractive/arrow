@@ -926,7 +926,9 @@ function (_Component) {
           alignSelf: "center",
           align: "center"
         }, React__default.createElement(grommet.Text, {
-          size: "small"
+          size: "small",
+          title: v,
+          truncate: true
         }, v), React__default.createElement(grommetIcons.Close, {
           size: "xxsmall",
           onClick: function onClick() {
