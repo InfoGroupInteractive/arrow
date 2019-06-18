@@ -1,4 +1,4 @@
-import uuidv4 from 'uuid/v4';
+
 import * as toastConstants from './toast.constants';
 
 export default (state=[], action)=>{
@@ -7,7 +7,7 @@ export default (state=[], action)=>{
         case toastConstants.ADD_TOAST:           
             newState = state.slice();
             newState.push({
-                id: uuidv4(),
+                id: action.id,
                 text: action.text,
                 background: action.background
             });
@@ -18,7 +18,7 @@ export default (state=[], action)=>{
             if(toastIndex !== -1){
                 newState.splice(toastIndex, 1);
             }            
-            return newState;            
+            return newState;
         default:
             return state;
     }

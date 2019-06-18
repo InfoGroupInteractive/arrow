@@ -26,9 +26,9 @@ export const doFetch = (url, method='GET', body, signal, headers={
             .catch((e)=>{
                 if(e.name !== 'AbortError'){
                     reject(e);                    
-                }                
+                }
             }); //fetch error
-    })   
-    
+    })
+
     return plomise;
 };

@@ -509,10 +509,22 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var Toast = function Toast(_ref) {
   var toasts = _ref.toasts,
-      onClose = _ref.onClose;
+      onClose = _ref.onClose,
+      margin = _ref.margin,
+      _ref$position = _ref.position,
+      position = _ref$position === void 0 ? 'top-right' : _ref$position;
 
   if (toasts && Array.isArray(toasts) && toasts.length > 0) {
-    var toastItems = toasts.map(function (m) {
+    return React__default.createElement(grommet.Layer, {
+      modal: false,
+      position: position,
+      style: {
+        background: 'transparent'
+      }
+    }, React__default.createElement(grommet.Box, {
+      gap: "small",
+      margin: margin
+    }, toasts.map(function (m) {
       return React__default.createElement(grommet.Box, {
         key: m.id,
         background: m.background || 'accent-1',
@@ -530,19 +542,7 @@ var Toast = function Toast(_ref) {
           onClose(m.id);
         }
       }));
-    });
-    return React__default.createElement(grommet.Layer, {
-      modal: false,
-      position: "bottom",
-      style: {
-        background: 'transparent'
-      }
-    }, React__default.createElement(grommet.Box, {
-      gap: "small",
-      margin: {
-        bottom: 'small'
-      }
-    }, toastItems));
+    })));
   } else {
     return null;
   }
@@ -553,67 +553,6 @@ var Toast$1 = reactRedux.connect(mapStateToProps)(Toast);
 var ADD_TOAST = 'ADD_TOAST';
 var REMOVE_TOAST = 'REMOVE_TOAST';
 
-// Unique ID creation requires a high quality random # generator.  In node.js
-// this is pretty straight-forward - we use the crypto API.
-
-
-
-var rng = function nodeRNG() {
-  return crypto.randomBytes(16);
-};
-
-/**
- * Convert array of 16 byte values to UUID string format of the form:
- * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
- */
-var byteToHex = [];
-for (var i = 0; i < 256; ++i) {
-  byteToHex[i] = (i + 0x100).toString(16).substr(1);
-}
-
-function bytesToUuid(buf, offset) {
-  var i = offset || 0;
-  var bth = byteToHex;
-  // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
-  return ([bth[buf[i++]], bth[buf[i++]], 
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]], '-',
-	bth[buf[i++]], bth[buf[i++]],
-	bth[buf[i++]], bth[buf[i++]],
-	bth[buf[i++]], bth[buf[i++]]]).join('');
-}
-
-var bytesToUuid_1 = bytesToUuid;
-
-function v4(options, buf, offset) {
-  var i = buf && offset || 0;
-
-  if (typeof(options) == 'string') {
-    buf = options === 'binary' ? new Array(16) : null;
-    options = null;
-  }
-  options = options || {};
-
-  var rnds = options.random || (options.rng || rng)();
-
-  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
-  rnds[6] = (rnds[6] & 0x0f) | 0x40;
-  rnds[8] = (rnds[8] & 0x3f) | 0x80;
-
-  // Copy bytes to buffer, if provided
-  if (buf) {
-    for (var ii = 0; ii < 16; ++ii) {
-      buf[i + ii] = rnds[ii];
-    }
-  }
-
-  return buf || bytesToUuid_1(rnds);
-}
-
-var v4_1 = v4;
-
 var toastReducers = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
@@ -623,7 +562,7 @@ var toastReducers = (function () {
     case ADD_TOAST:
       newState = state.slice();
       newState.push({
-        id: v4_1(),
+        id: action.id,
         text: action.text,
         background: action.background
       });
@@ -699,6 +638,67 @@ if (window.embeddedArrow) {
   }, 'http://localhost:3000');
 }
 
+// Unique ID creation requires a high quality random # generator.  In node.js
+// this is pretty straight-forward - we use the crypto API.
+
+
+
+var rng = function nodeRNG() {
+  return crypto.randomBytes(16);
+};
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+var byteToHex = [];
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 0x100).toString(16).substr(1);
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+  var bth = byteToHex;
+  // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+  return ([bth[buf[i++]], bth[buf[i++]], 
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]]]).join('');
+}
+
+var bytesToUuid_1 = bytesToUuid;
+
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
+
+  if (typeof(options) == 'string') {
+    buf = options === 'binary' ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
+
+  var rnds = options.random || (options.rng || rng)();
+
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] & 0x0f) | 0x40;
+  rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || bytesToUuid_1(rnds);
+}
+
+var v4_1 = v4;
+
 var createToast = function createToast(text, background) {
   store.dispatch(createToastAction(text, background));
 };
@@ -714,6 +714,7 @@ var removeToastAction = function removeToastAction(id) {
 var createToastAction = function createToastAction(text, background) {
   return {
     type: ADD_TOAST,
+    id: v4_1(),
     text: text,
     background: background
   };
@@ -1000,11 +1001,11 @@ var doFetch = function doFetch(url) {
           } else {
             reject(json); //fail with error response from server
           }
-        }).catch(function (e) {
+        })["catch"](function (e) {
           return reject(e);
         }); //error processing json response
       }
-    }).catch(function (e) {
+    })["catch"](function (e) {
       if (e.name !== 'AbortError') {
         reject(e);
       }
@@ -1020,18 +1021,18 @@ var theme$1 = {
   themes: themes
 };
 
-exports.theme = theme$1;
 exports.ArrowApp = ArrowApp;
-exports.Navigation = Navigation;
 exports.ErrorBoundary = ErrorBoundary;
 exports.Loader = Loader;
+exports.Navigation = Navigation;
+exports.TagInput = TagInput;
 exports.Toast = Toast$1;
 exports.createToast = createToast;
-exports.removeToast = removeToast;
-exports.removeToastAction = removeToastAction;
 exports.createToastAction = createToastAction;
-exports.toastReducers = toastReducers;
-exports.setTheme = setTheme;
-exports.TagInput = TagInput;
 exports.doFetch = doFetch;
 exports.getContrastingColor = getContrastingColor;
+exports.removeToast = removeToast;
+exports.removeToastAction = removeToastAction;
+exports.setTheme = setTheme;
+exports.theme = theme$1;
+exports.toastReducers = toastReducers;
