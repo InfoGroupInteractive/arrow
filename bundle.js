@@ -73,7 +73,7 @@ var light = {
   'status-error': error,
   'status-warning': warning,
   'status-ok': success,
-  'status-unknown': light2,
+  'status-unknown': light6,
   'status-disabled': light6
 };
 var dark = Object.assign({}, light, {
@@ -86,8 +86,7 @@ var dark = Object.assign({}, light, {
   'accent-1': accent1Alt,
   'accent-2': accent2Alt,
   'accent-3': accent3Alt,
-  'accent-4': accent4Alt,
-  'status-unknown': dark2
+  'accent-4': accent4Alt
 });
 var vapor = Object.assign({}, light, {
   brand: '#FF71CE',
@@ -528,7 +527,10 @@ var Toast = function Toast(_ref) {
     }, toasts.map(function (m) {
       return React__default.createElement(grommet.Box, {
         key: m.id,
-        background: m.background || 'accent-1',
+        background: m.background || {
+          light: 'light-2',
+          dark: 'dark-2'
+        },
         pad: "medium",
         elevation: "xsmall",
         round: "small",

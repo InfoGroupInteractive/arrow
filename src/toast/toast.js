@@ -20,7 +20,7 @@ const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
                     {toasts.map((m) => (
                         <Box
                             key={m.id}
-                            background={ m.background || 'accent-1'}
+                            background={ m.background || {light: 'light-2', dark: 'dark-2'}}
                             pad='medium'
                             elevation='xsmall'
                             round='small'
