@@ -1,5 +1,6 @@
 import * as constants from './toast.constants';
 import store from '../store';
+import uuidv4 from 'uuid/v4';
 
 export const createToast = (text, background) =>{
     store.dispatch(createToastAction(text, background));
@@ -16,6 +17,7 @@ export const removeToastAction = (id) => ({
 
 export const createToastAction = (text, background) => ({
     type: constants.ADD_TOAST,
+    id: uuidv4(),
     text,
     background
-})
+});

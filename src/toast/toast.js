@@ -12,29 +12,28 @@ const mapStateToProps = (state)=>{
 };
 
 
-const Toast = ({ toasts, onClose }) => {
+const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
     if(toasts && Array.isArray(toasts) && toasts.length > 0){
-        let toastItems = toasts.map(m=>(
-            <Box 
-                key={m.id}
-                background={ m.background || 'accent-1'}
-                pad='medium'
-                elevation='xsmall'
-                round='small'
-                direction='row'
-                justify='between'
-                align='center'
-                gap='medium'>
-                <Text size='large'>{m.text}</Text>
-                <Close onClick={()=>{onClose(m.id)}} />
-            </Box>
-        ));
         return (
-            <Layer modal={false} position='bottom' style={{background: 'transparent'}}>
-                <Box gap='small' margin={{bottom:'small'}} >
-                    {toastItems}
+            <Layer modal={false} position={position} style={{background: 'transparent'}}>
+                <Box gap='small' margin={margin} >
+                    {toasts.map((m) => (
+                        <Box
+                            key={m.id}
+                            background={ m.background || {light: 'light-2', dark: 'dark-2'}}
+                            pad='medium'
+                            elevation='xsmall'
+                            round='small'
+                            direction='row'
+                            justify='between'
+                            align='center'
+                            gap='medium'>
+                            <Text size='large'>{m.text}</Text>
+                            <Close onClick={()=>{onClose(m.id)}} />
+                        </Box>
+                    ))}
                 </Box>
-                
+
             </Layer>
         )
     } else {
