@@ -73,7 +73,7 @@ var light = {
   'status-error': error,
   'status-warning': warning,
   'status-ok': success,
-  'status-unknown': light6,
+  'status-unknown': light2,
   'status-disabled': light6
 };
 var dark = Object.assign({}, light, {
@@ -86,7 +86,8 @@ var dark = Object.assign({}, light, {
   'accent-1': accent1Alt,
   'accent-2': accent2Alt,
   'accent-3': accent3Alt,
-  'accent-4': accent4Alt
+  'accent-4': accent4Alt,
+  'status-unknown': dark2
 });
 var vapor = Object.assign({}, light, {
   brand: '#FF71CE',
