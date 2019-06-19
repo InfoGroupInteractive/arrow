@@ -21,13 +21,3 @@ export const createToastAction = (text, background) => ({
     text,
     background
 });
-
-export const addEphemeralToast = (text, background, delay = 3000) => {
-    const action = createToastAction(text, background);
-
-    store.dispatch(action);
-
-    setTimeout(() => {
-        removeToast(action.id)
-    }, delay)
-};

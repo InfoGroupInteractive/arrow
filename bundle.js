@@ -719,14 +719,6 @@ var createToastAction = function createToastAction(text, background) {
     background: background
   };
 };
-var addEphemeralToast = function addEphemeralToast(text, background) {
-  var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 3000;
-  var action = createToastAction(text, background);
-  store.dispatch(action);
-  setTimeout(function () {
-    removeToast(action.id);
-  }, delay);
-};
 
 function Navigation(props) {
   var navigationItems = props.navigationItems,
@@ -1035,7 +1027,6 @@ exports.Loader = Loader;
 exports.Navigation = Navigation;
 exports.TagInput = TagInput;
 exports.Toast = Toast$1;
-exports.addEphemeralToast = addEphemeralToast;
 exports.createToast = createToast;
 exports.createToastAction = createToastAction;
 exports.doFetch = doFetch;
