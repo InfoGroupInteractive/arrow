@@ -20,9 +20,11 @@ export default {
             runtimeHelpers: true,
             exclude: "node_modules/**"
         }),
-        resolve(),
+        resolve({
+            preferBuiltins: true
+        }),
         commonjs(),
-        scss()
+        scss(),
     ],
-    external: id => /^react|react-dom|react-redux|redux|grommet|grommet-icons/.test(id)
+    external: id => /^react|react-dom|react-redux|redux|grommet|grommet-icons|color|@babel|crypto/.test(id)
 }
