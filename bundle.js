@@ -664,13 +664,13 @@ var LoaderOverlay = function LoaderOverlay(props) {
     align: "center",
     background: {
       color: {
-        'dark': 'dark-2',
-        'light': 'light-2'
+        'dark': 'dark-6',
+        'light': 'light-6'
       },
       opacity: 'strong'
     },
     style: {
-      display: 'fixed',
+      position: 'fixed',
       top: 0,
       bottom: 0,
       right: 0,
