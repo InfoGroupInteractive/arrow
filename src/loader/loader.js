@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeContext, Box } from 'grommet';
 import { alpha } from '../utils/color-utils';
+import { brand } from  '../theme/colors';
 
 import './loader.scss';
 
@@ -9,7 +10,7 @@ const Loader = ({size = 'medium', color = 'brand'}) => {
         <ThemeContext.Consumer>
         {(theme) => {
             const loaderSize = theme ? theme.icon.size[size] : '24px';
-            const loaderColor = theme ? theme.global.colors[color] : '#000';
+            const loaderColor = theme ? theme.global.colors[color] : brand;
             const loaderBaseColor = alpha(loaderColor, 0.25);
 
             return (
