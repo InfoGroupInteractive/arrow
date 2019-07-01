@@ -664,10 +664,10 @@ var LoaderOverlay = function LoaderOverlay(props) {
     align: "center",
     background: {
       color: {
-        'dark': 'dark-6',
-        'light': 'light-6'
+        'dark': 'dark-5',
+        'light': 'light-2'
       },
-      opacity: 'strong'
+      opacity: 'weak'
     },
     style: {
       position: 'fixed',

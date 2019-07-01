@@ -46,8 +46,8 @@ export const LoaderOverlay = (props) => (
         justify='center'
         align='center'
         background={{
-            color: {'dark': 'dark-6', 'light': 'light-6'},
-            opacity: 'strong'
+            color: {'dark': 'dark-5', 'light': 'light-2'},
+            opacity: 'weak'
         }}
         style={{
             position: 'fixed',
