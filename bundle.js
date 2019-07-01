@@ -622,7 +622,7 @@ function Navigation(props) {
   });
 }
 
-var Loader = (function (_ref) {
+var Loader = function Loader(_ref) {
   var _ref$size = _ref.size,
       size = _ref$size === void 0 ? 'medium' : _ref$size,
       _ref$color = _ref.color,
@@ -646,7 +646,38 @@ var Loader = (function (_ref) {
       }
     });
   });
-});
+};
+
+var LoaderCentered = function LoaderCentered(props) {
+  return React__default.createElement(grommet.Box, {
+    fill: true,
+    flex: true,
+    justify: "center",
+    align: "center"
+  }, React__default.createElement(Loader, props));
+};
+var LoaderOverlay = function LoaderOverlay(props) {
+  return React__default.createElement(grommet.Box, {
+    fill: true,
+    flex: true,
+    justify: "center",
+    align: "center",
+    background: {
+      color: {
+        'dark': 'dark-2',
+        'light': 'light-2'
+      },
+      opacity: 'strong'
+    },
+    style: {
+      display: 'fixed',
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0
+    }
+  }, React__default.createElement(Loader, props));
+};
 
 var ArrowApp =
 /*#__PURE__*/
@@ -880,6 +911,8 @@ Object.defineProperty(exports, 'getContrastingColor', {
 exports.ArrowApp = ArrowApp;
 exports.ErrorBoundary = ErrorBoundary;
 exports.Loader = Loader;
+exports.LoaderCentered = LoaderCentered;
+exports.LoaderOverlay = LoaderOverlay;
 exports.Navigation = Navigation;
 exports.TagInput = TagInput;
 exports.Toast = Toast$1;

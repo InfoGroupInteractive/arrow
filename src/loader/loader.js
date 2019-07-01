@@ -1,10 +1,10 @@
 import React from 'react';
-import { ThemeContext } from 'grommet';
+import { ThemeContext, Box } from 'grommet';
 import { alpha } from '../utils/color-utils';
 
 import './loader.scss';
 
-export default ({size = 'medium', color = 'brand'}) => {
+const Loader = ({size = 'medium', color = 'brand'}) => {
     return (
         <ThemeContext.Consumer>
         {(theme) => {
@@ -32,3 +32,32 @@ export default ({size = 'medium', color = 'brand'}) => {
         </ThemeContext.Consumer>
     )
 }
+
+export const LoaderCentered = (props) => (
+    <Box fill flex justify='center' align='center'>
+        <Loader {...props} />
+    </Box>
+);
+
+export const LoaderOverlay = (props) => (
+    <Box
+        fill
+        flex
+        justify='center'
+        align='center'
+        background={{
+            color: {'dark': 'dark-2', 'light': 'light-2'},
+            opacity: 'strong'
+        }}
+        style={{
+            display: 'fixed',
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0
+        }}>
+        <Loader {...props} />
+    </Box>
+);
+
+export default Loader
