@@ -2,7 +2,7 @@
   "name": "arrow",
   "version": "1.0.0",
   "description": "Look and feel for CDP UI",
-  "main": "bundle.js",
+  "main": "index.js",
   "dependencies": {
     "uuid": "3.3.2"
   },
