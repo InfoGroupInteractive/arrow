@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
+var colors = require('./src/theme/colors');
 var _classCallCheck = _interopDefault(require('@babel/runtime/helpers/classCallCheck'));
 var _createClass = _interopDefault(require('@babel/runtime/helpers/createClass'));
 var _possibleConstructorReturn = _interopDefault(require('@babel/runtime/helpers/possibleConstructorReturn'));
@@ -18,139 +19,10 @@ var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToG
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
-var Color = _interopDefault(require('color'));
-
-var brand = '#54B948';
-var accent1 = '#ECE64A';
-var accent1Alt = '#D5DD48';
-var accent2 = '#08B0BC';
-var accent2Alt = '#28C0D2';
-var accent3 = '#F28049';
-var accent3Alt = '#F4985F';
-var accent4 = '#6A66AA';
-var accent4Alt = '#807AB9';
-var dark1 = '#231F20';
-var dark2 = '#303234';
-var dark3 = '#434445';
-var dark4 = '#58595B';
-var dark5 = '#6D6E71';
-var dark6 = '#7E8082';
-var light1 = '#F6F6F6';
-var light2 = '#E4E6E8';
-var light3 = '#D0D2D4';
-var light4 = '#BCBEC0';
-var light5 = '#A7A9AC';
-var light6 = '#939598';
-var error = '#EB3C3C';
-var warning = '#FFBB22';
-var success = '#329B46';
-var light = {
-  brand: brand,
-  control: brand,
-  focus: accent1,
-  placeholder: light5,
-  border: light3,
-  text: {
-    light: dark1
-  },
-  'accent-1': accent1,
-  'accent-2': accent2,
-  'accent-3': accent3,
-  'accent-4': accent4,
-  'dark-1': dark1,
-  'dark-2': dark2,
-  'dark-3': dark3,
-  'dark-4': dark4,
-  'dark-5': dark5,
-  'dark-6': dark6,
-  'light-1': light1,
-  'light-2': light2,
-  'light-3': light3,
-  'light-4': light4,
-  'light-5': light5,
-  'light-6': light6,
-  'status-critical': error,
-  'status-error': error,
-  'status-warning': warning,
-  'status-ok': success,
-  'status-unknown': light6,
-  'status-disabled': light6
-};
-var dark = Object.assign({}, light, {
-  background: dark1,
-  focus: accent1Alt,
-  border: dark3,
-  text: {
-    dark: light3
-  },
-  'accent-1': accent1Alt,
-  'accent-2': accent2Alt,
-  'accent-3': accent3Alt,
-  'accent-4': accent4Alt
-});
-var vapor = Object.assign({}, light, {
-  brand: '#FF71CE',
-  'accent-1': '#B967FF',
-  'accent-1-alt': '#D5DD48',
-  'accent-2': '#01CDFE',
-  'accent-2-alt': '#28C0D2',
-  'accent-3': '#05FFA1',
-  'accent-3-alt': '#F4985F',
-  'accent-4': '#FFFB96',
-  'accent-4-alt': '#807AB9',
-  'dark-1': '#FF71CE',
-  'dark-2': '#B967FF',
-  'dark-3': '#01CDFE',
-  'dark-4': '#05FFA1',
-  'dark-5': '#FFFB96',
-  'dark-6': '#103',
-  'light-1': '#FF71CE',
-  'light-2': '#B967FF',
-  'light-3': '#01CDFE',
-  'light-4': '#05FFA1',
-  'light-5': '#FFFB96',
-  'light-6': '#336',
-  'status-critical': '#EB3C3C',
-  'status-error': '#EB3C3C',
-  'status-warning': '#F7E463',
-  'status-ok': '#329B46'
-});
-var theme = {
-  light: light,
-  dark: dark,
-  vapor: vapor
-};
-
-var colors = /*#__PURE__*/Object.freeze({
-    brand: brand,
-    accent1: accent1,
-    accent1Alt: accent1Alt,
-    accent2: accent2,
-    accent2Alt: accent2Alt,
-    accent3: accent3,
-    accent3Alt: accent3Alt,
-    accent4: accent4,
-    accent4Alt: accent4Alt,
-    dark1: dark1,
-    dark2: dark2,
-    dark3: dark3,
-    dark4: dark4,
-    dark5: dark5,
-    dark6: dark6,
-    light1: light1,
-    light2: light2,
-    light3: light3,
-    light4: light4,
-    light5: light5,
-    light6: light6,
-    error: error,
-    warning: warning,
-    success: success,
-    theme: theme
-});
+var colorUtils = require('./src/utils/color-utils');
 
 var getTheme = function getTheme(isDark) {
-  var defaultTextColor = isDark ? light3 : dark3;
+  var defaultTextColor = isDark ? colors.light3 : colors.dark3;
   var defaultFontSize = 11;
   return {
     background: 'transparent',
@@ -163,7 +35,7 @@ var getTheme = function getTheme(isDark) {
       },
       ticks: {
         line: {
-          stroke: dark6,
+          stroke: colors.dark6,
           strokeWidth: 1
         },
         text: {
@@ -180,7 +52,7 @@ var getTheme = function getTheme(isDark) {
     },
     grid: {
       line: {
-        stroke: light3,
+        stroke: colors.light3,
         strokeWidth: 1
       }
     },
@@ -367,17 +239,17 @@ var iconSize = {
   xlarge: '48px',
   xxlarge: '72px'
 };
-var dark$1 = {
+var dark = {
   global: Object.assign({}, glowbal, {
-    colors: theme.dark,
+    colors: colors.theme.dark,
     edgeSize: edgeSize,
     drop: {
-      background: dark2
+      background: colors.dark2
     },
     elevation: elevation
   }),
   icon: {
-    color: light3,
+    color: colors.light3,
     size: iconSize
   },
   size: size,
@@ -385,14 +257,14 @@ var dark$1 = {
   text: text,
   textInput: textInput
 };
-var light$1 = {
+var light = {
   global: Object.assign({}, glowbal, {
-    colors: theme.light,
+    colors: colors.theme.light,
     edgeSize: edgeSize,
     elevation: elevation
   }),
   icon: {
-    color: dark4,
+    color: colors.dark4,
     size: iconSize
   },
   size: size,
@@ -400,14 +272,14 @@ var light$1 = {
   text: text,
   textInput: textInput
 };
-var vapor$1 = {
+var vapor = {
   global: Object.assign({}, glowbal, {
-    colors: theme.vapor,
+    colors: colors.theme.vapor,
     edgeSize: edgeSize,
     elevation: elevation
   }),
   icon: {
-    color: dark4,
+    color: colors.dark4,
     size: iconSize
   },
   size: size,
@@ -417,9 +289,9 @@ var vapor$1 = {
 };
 
 var themes = /*#__PURE__*/Object.freeze({
-    dark: dark$1,
-    light: light$1,
-    vapor: vapor$1
+    dark: dark,
+    light: light,
+    vapor: vapor
 });
 
 var ErrorBoundary =
@@ -750,31 +622,6 @@ function Navigation(props) {
   });
 }
 
-var alpha = function alpha(color, percentage) {
-  return Color(color).alpha(percentage);
-};
-/**
- *
- * determines if seed color is light or dark and returns a contrasting color
- * @export
- * @param {string} color
- * @param {number} [ratio=3]
- * @returns string
- */
-
-var getContrastingColor = function getContrastingColor(color) {
-  var c = Color(color);
-  var contrast = 0;
-
-  if (c.isLight()) {
-    contrast = c.contrast(Color('black'));
-    return c.darken(contrast);
-  } else {
-    contrast = c.contrast(Color('white'));
-    return c.lighten(contrast);
-  }
-};
-
 var Loader = (function (_ref) {
   var _ref$size = _ref.size,
       size = _ref$size === void 0 ? 'medium' : _ref$size,
@@ -783,7 +630,7 @@ var Loader = (function (_ref) {
   return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
     var loaderSize = theme ? theme.icon.size[size] : '24px';
     var loaderColor = theme ? theme.global.colors[color] : '#000';
-    var loaderBaseColor = alpha(loaderColor, 0.25);
+    var loaderBaseColor = colorUtils.alpha(loaderColor, 0.25);
     return React__default.createElement("div", {
       className: "loader",
       style: {
@@ -1017,13 +864,19 @@ var doFetch = function doFetch(url) {
   return plomise;
 };
 
-var theme$1 = {
+var theme = {
   colors: colors,
   reportTheme: reportTheme,
   constants: constants,
   themes: themes
 };
 
+Object.defineProperty(exports, 'getContrastingColor', {
+    enumerable: true,
+    get: function () {
+        return colorUtils.getContrastingColor;
+    }
+});
 exports.ArrowApp = ArrowApp;
 exports.ErrorBoundary = ErrorBoundary;
 exports.Loader = Loader;
@@ -1033,9 +886,8 @@ exports.Toast = Toast$1;
 exports.createToast = createToast;
 exports.createToastAction = createToastAction;
 exports.doFetch = doFetch;
-exports.getContrastingColor = getContrastingColor;
 exports.removeToast = removeToast;
 exports.removeToastAction = removeToastAction;
 exports.setTheme = setTheme;
-exports.theme = theme$1;
+exports.theme = theme;
 exports.toastReducers = toastReducers;
