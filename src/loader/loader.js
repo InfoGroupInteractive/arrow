@@ -5,11 +5,11 @@ import { brand } from  '../theme/colors';
 
 import './loader.scss';
 
-const Loader = ({size = 'medium', color = 'brand'}) => {
+const Loader = ({size = 'xlarge', color = 'brand'}) => {
     return (
         <ThemeContext.Consumer>
         {(theme) => {
-            const loaderSize = theme ? theme.icon.size[size] : '24px';
+            const loaderSize = theme ? theme.icon.size[size] : '48px';
             const loaderColor = theme ? theme.global.colors[color] : brand;
             const loaderBaseColor = alpha(loaderColor, 0.25);
 
