@@ -775,14 +775,14 @@ var getContrastingColor = function getContrastingColor(color) {
   }
 };
 
-var Loader = (function (_ref) {
+var Loader = function Loader(_ref) {
   var _ref$size = _ref.size,
       size = _ref$size === void 0 ? 'medium' : _ref$size,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'brand' : _ref$color;
   return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
     var loaderSize = theme ? theme.icon.size[size] : '24px';
-    var loaderColor = theme ? theme.global.colors[color] : '#000';
+    var loaderColor = theme ? theme.global.colors[color] : brand;
     var loaderBaseColor = alpha(loaderColor, 0.25);
     return React__default.createElement("div", {
       className: "loader",
