@@ -41,4 +41,7 @@ const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
     }    
 };
 
+// displayName needed for UI Automation
+Toast.displayName = 'Toast';
+
 export default connect(mapStateToProps)(Toast);
