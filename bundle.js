@@ -569,11 +569,9 @@ var STYLE = {
 
 var MOBILE_STYLE = _objectSpread({
   position: 'fixed',
-  top: 'initial',
-  right: 'initial',
-  bottom: 'initial',
-  left: 'initial',
-  height: 'auto'
+  right: 'unset',
+  height: 'auto',
+  width: 'auto'
 }, STYLE);
 
 var Toast = function Toast(_ref) {

@@ -62,11 +62,9 @@ const STYLE = {
 
 const MOBILE_STYLE = {
     position: 'fixed',
-    top: 'initial',
-    right: 'initial',
-    bottom: 'initial',
-    left: 'initial',
+    right: 'unset',
     height: 'auto',
+    width: 'auto',
     ...STYLE
 }
 
