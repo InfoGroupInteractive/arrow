@@ -15,6 +15,7 @@ var reactRedux = require('react-redux');
 var grommet = require('grommet');
 var _regeneratorRuntime = _interopDefault(require('@babel/runtime/regenerator'));
 var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToGenerator'));
+var _defineProperty = _interopDefault(require('@babel/runtime/helpers/defineProperty'));
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
@@ -501,56 +502,165 @@ function (_React$Component) {
   return ErrorBoundary;
 }(React__default.Component);
 
+var _STATUSES;
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     toasts: state.toasts
   };
 };
 
-var Toast = function Toast(_ref) {
-  var toasts = _ref.toasts,
-      onClose = _ref.onClose,
-      margin = _ref.margin,
-      _ref$position = _ref.position,
-      position = _ref$position === void 0 ? 'top-right' : _ref$position;
+var STATUSES = (_STATUSES = {
+  INFO: 'INFO',
+  SUCCESS: 'SUCCESS'
+}, _defineProperty(_STATUSES, "SUCCESS", 'SUCCESS'), _defineProperty(_STATUSES, "ERROR", 'ERROR'), _STATUSES);
 
-  if (toasts && Array.isArray(toasts) && toasts.length > 0) {
-    return React__default.createElement(grommet.Layer, {
-      modal: false,
-      position: position,
-      style: {
-        background: 'transparent'
-      }
-    }, React__default.createElement(grommet.Box, {
-      gap: "small",
-      margin: margin
-    }, toasts.map(function (m) {
-      return React__default.createElement(grommet.Box, {
-        key: m.id,
-        background: m.background || {
-          light: 'light-2',
-          dark: 'dark-2'
-        },
-        pad: "medium",
-        elevation: "xsmall",
-        round: "small",
-        direction: "row",
-        justify: "between",
-        align: "center",
-        gap: "medium"
-      }, React__default.createElement(grommet.Text, {
-        size: "large"
-      }, m.text), React__default.createElement(grommetIcons.Close, {
-        onClick: function onClick() {
-          onClose(m.id);
-        }
-      }));
-    })));
-  } else {
-    return null;
+var GET_STATUS_COLOR = function GET_STATUS_COLOR(status, statuses) {
+  switch (status) {
+    case statuses.SUCCESS:
+      return 'status-ok';
+
+    case statuses.WARNING:
+      return 'status-warning';
+
+    case statuses.ERROR:
+      return 'status-critical';
+
+    default:
+      return 'status-unknown';
   }
 };
 
+var GET_STATUS_TEXT = function GET_STATUS_TEXT(status, statuses) {
+  switch (status) {
+    case statuses.SUCCESS:
+      return 'Complete';
+
+    case statuses.WARNING:
+      return 'Needs Attention';
+
+    case statuses.ERROR:
+      return 'Needs Attention';
+
+    default:
+      return 'FYI';
+  }
+};
+
+function GET_STATUS_ICON(status, statuses) {
+  switch (status) {
+    case statuses.SUCCESS:
+      return grommetIcons.StatusGood;
+
+    case statuses.WARNING:
+      return grommetIcons.StatusWarning;
+
+    case statuses.ERROR:
+      return grommetIcons.StatusCritical;
+
+    default:
+      return grommetIcons.StatusInfo;
+  }
+}
+
+var Toast = function Toast(_ref) {
+  var toasts = _ref.toasts,
+      _ref$position = _ref.position,
+      position = _ref$position === void 0 ? 'top-right' : _ref$position,
+      _ref$margin = _ref.margin,
+      margin = _ref$margin === void 0 ? 'small' : _ref$margin,
+      _ref$statuses = _ref.statuses,
+      statuses = _ref$statuses === void 0 ? STATUSES : _ref$statuses,
+      _ref$getStatusText = _ref.getStatusText,
+      getStatusText = _ref$getStatusText === void 0 ? GET_STATUS_TEXT : _ref$getStatusText,
+      _ref$getStatusIcon = _ref.getStatusIcon,
+      getStatusIcon = _ref$getStatusIcon === void 0 ? GET_STATUS_ICON : _ref$getStatusIcon,
+      _ref$getStatusColor = _ref.getStatusColor,
+      getStatusColor = _ref$getStatusColor === void 0 ? GET_STATUS_COLOR : _ref$getStatusColor;
+
+  if (toasts && Array.isArray(toasts) && toasts.length > 0) {
+    return React__default.createElement(ResponsiveContext.Consumer, null, function (size) {
+      return React__default.createElement(grommet.Layer, {
+        modal: false,
+        position: position
+      }, toasts.map(function (toast) {
+        var Icon = getStatusIcon(toast.status, statuses);
+        var color = getStatusColor(toast.status, statuses);
+        return React__default.createElement(grommet.Box, {
+          margin: size === 'small' ? 'none' : margin,
+          key: toast.id,
+          background: {
+            light: 'white',
+            dark: 'black'
+          },
+          border: {
+            color: color,
+            size: 'medium',
+            side: 'left'
+          },
+          pad: "small",
+          elevation: "xsmall",
+          round: "xsmall",
+          direction: "row",
+          align: "center",
+          gap: "small"
+        }, React__default.createElement(Icon, {
+          color: color,
+          size: "medium"
+        }), React__default.createElement(grommet.Box, {
+          flex: true,
+          direction: "column"
+        }, React__default.createElement(grommet.Text, {
+          size: "xsmall",
+          weight: "bold"
+        }, getStatusText(toast.status, statuses)), React__default.createElement(grommet.Text, {
+          size: "xsmall"
+        }, toast.text)), React__default.createElement(grommet.Box, {
+          margin: {
+            left: 'medium'
+          }
+        }, React__default.createElement(grommetIcons.Close, {
+          color: "dark-6",
+          size: "medium",
+          onClick: function onClick() {
+            onClose(toast.id);
+          },
+          cursor: "pointer"
+        })));
+      }));
+    });
+  }
+}; // const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
+//     if(toasts && Array.isArray(toasts) && toasts.length > 0){
+//         return (
+//             <Layer modal={false} position={position} style={{background: 'transparent'}}>
+//                 <Box gap='small' margin={margin} >
+//                     {toasts.map((m) => (
+//                         <Box
+//                             key={m.id}
+//                             background={ m.background || {light: 'light-2', dark: 'dark-2'}}
+//                             pad='medium'
+//                             elevation='xsmall'
+//                             round='small'
+//                             direction='row'
+//                             justify='between'
+//                             align='center'
+//                             gap='medium'>
+//                             <Text size='large'>{m.text}</Text>
+//                             <Close onClick={()=>{onClose(m.id)}} />
+//                         </Box>
+//                     ))}
+//                 </Box>
+//             </Layer>
+//         )
+//     } else {
+//         return null;
+//     }
+// };
+// displayName needed for UI Automation
+
+
+Toast.displayName = 'Toast';
 var Toast$1 = reactRedux.connect(mapStateToProps)(Toast);
 
 var ADD_TOAST = 'ADD_TOAST';
@@ -567,7 +677,7 @@ var toastReducers = (function () {
       newState.push({
         id: action.id,
         text: action.text,
-        background: action.background
+        status: action.status
       });
       return newState;
 
@@ -702,8 +812,8 @@ function v4(options, buf, offset) {
 
 var v4_1 = v4;
 
-var createToast = function createToast(text, background) {
-  store.dispatch(createToastAction(text, background));
+var createToast = function createToast(text, status) {
+  store.dispatch(createToastAction(text, status));
 };
 var removeToast = function removeToast(id) {
   store.dispatch(removeToastAction(id));
@@ -714,12 +824,12 @@ var removeToastAction = function removeToastAction(id) {
     id: id
   };
 };
-var createToastAction = function createToastAction(text, background) {
+var createToastAction = function createToastAction(text, status) {
   return {
     type: ADD_TOAST,
     id: v4_1(),
     text: text,
-    background: background
+    status: status
   };
 };
 
