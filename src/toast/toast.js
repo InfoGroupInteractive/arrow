@@ -56,29 +56,45 @@ function GET_STATUS_ICON (status, statuses) {
     }
 }
 
+const STYLE = {
+    background: 'transparent'
+}
+
+const MOBILE_STYLE = {
+    position: 'fixed',
+    top: 'initial',
+    right: 'initial',
+    bottom: 'initial',
+    left: 'initial',
+    height: 'auto',
+    ...STYLE
+}
 
 const Toast = ({
     toasts,
     onClose,
     position = 'top-right',
     margin = 'small',
+    mobileMargin = { top: 'xsmall' },
     statuses = STATUSES,
     getStatusText = GET_STATUS_TEXT,
     getStatusIcon = GET_STATUS_ICON,
-    getStatusColor = GET_STATUS_COLOR
+    getStatusColor = GET_STATUS_COLOR,
+    style = STYLE,
+    mobileStyle = MOBILE_STYLE
 }) => {
     if(toasts && Array.isArray(toasts) && toasts.length > 0){
         return (
             <ResponsiveContext.Consumer>
             {(size) => (
-                <Layer modal={false} position={position} style={{background: 'transparent'}}>
+                <Layer modal={false} position={position} style={size !== 'small' ? style : mobileStyle}>
                     {toasts.map((toast) => {
                         const Icon = getStatusIcon(toast.status, statuses);
                         const color = getStatusColor(toast.status, statuses);
 
                         return (
                             <Box
-                                margin={size === 'small' ? 'none' : margin}
+                                margin={size !== 'small' ? margin : mobileMargin}
                                 key={toast.id}
                                 background={{ light: 'light-1', dark: 'dark-2' }}
                                 border={{

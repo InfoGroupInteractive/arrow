@@ -15,6 +15,7 @@ var reactRedux = require('react-redux');
 var grommet = require('grommet');
 var _regeneratorRuntime = _interopDefault(require('@babel/runtime/regenerator'));
 var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToGenerator'));
+var _objectSpread = _interopDefault(require('@babel/runtime/helpers/objectSpread'));
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
@@ -562,6 +563,19 @@ function GET_STATUS_ICON(status, statuses) {
   }
 }
 
+var STYLE = {
+  background: 'transparent'
+};
+
+var MOBILE_STYLE = _objectSpread({
+  position: 'fixed',
+  top: 'initial',
+  right: 'initial',
+  bottom: 'initial',
+  left: 'initial',
+  height: 'auto'
+}, STYLE);
+
 var Toast = function Toast(_ref) {
   var toasts = _ref.toasts,
       onClose = _ref.onClose,
@@ -569,6 +583,10 @@ var Toast = function Toast(_ref) {
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
       _ref$margin = _ref.margin,
       margin = _ref$margin === void 0 ? 'small' : _ref$margin,
+      _ref$mobileMargin = _ref.mobileMargin,
+      mobileMargin = _ref$mobileMargin === void 0 ? {
+    top: 'xsmall'
+  } : _ref$mobileMargin,
       _ref$statuses = _ref.statuses,
       statuses = _ref$statuses === void 0 ? STATUSES : _ref$statuses,
       _ref$getStatusText = _ref.getStatusText,
@@ -576,21 +594,23 @@ var Toast = function Toast(_ref) {
       _ref$getStatusIcon = _ref.getStatusIcon,
       getStatusIcon = _ref$getStatusIcon === void 0 ? GET_STATUS_ICON : _ref$getStatusIcon,
       _ref$getStatusColor = _ref.getStatusColor,
-      getStatusColor = _ref$getStatusColor === void 0 ? GET_STATUS_COLOR : _ref$getStatusColor;
+      getStatusColor = _ref$getStatusColor === void 0 ? GET_STATUS_COLOR : _ref$getStatusColor,
+      _ref$style = _ref.style,
+      style = _ref$style === void 0 ? STYLE : _ref$style,
+      _ref$mobileStyle = _ref.mobileStyle,
+      mobileStyle = _ref$mobileStyle === void 0 ? MOBILE_STYLE : _ref$mobileStyle;
 
   if (toasts && Array.isArray(toasts) && toasts.length > 0) {
     return React__default.createElement(grommet.ResponsiveContext.Consumer, null, function (size) {
       return React__default.createElement(grommet.Layer, {
         modal: false,
         position: position,
-        style: {
-          background: 'transparent'
-        }
+        style: size !== 'small' ? style : mobileStyle
       }, toasts.map(function (toast) {
         var Icon = getStatusIcon(toast.status, statuses);
         var color = getStatusColor(toast.status, statuses);
         return React__default.createElement(grommet.Box, {
-          margin: size === 'small' ? 'none' : margin,
+          margin: size !== 'small' ? margin : mobileMargin,
           key: toast.id,
           background: {
             light: 'light-1',
