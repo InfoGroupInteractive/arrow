@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Box, Layer, Text } from 'grommet';
+import { Box, Layer, Text, ResponsiveContext } from 'grommet';
 import { Close, StatusGood, StatusWarning, StatusCritical, StatusInfo } from 'grommet-icons';
 
 

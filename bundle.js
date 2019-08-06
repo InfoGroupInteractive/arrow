@@ -579,7 +579,7 @@ var Toast = function Toast(_ref) {
       getStatusColor = _ref$getStatusColor === void 0 ? GET_STATUS_COLOR : _ref$getStatusColor;
 
   if (toasts && Array.isArray(toasts) && toasts.length > 0) {
-    return React__default.createElement(ResponsiveContext.Consumer, null, function (size) {
+    return React__default.createElement(grommet.ResponsiveContext.Consumer, null, function (size) {
       return React__default.createElement(grommet.Layer, {
         modal: false,
         position: position
