@@ -13,7 +13,7 @@ const mapStateToProps = (state)=>{
 const STATUSES = {
     INFO: 'INFO',
     SUCCESS: 'SUCCESS',
-    SUCCESS: 'SUCCESS',
+    WARNING: 'WARNING',
     ERROR: 'ERROR'
 };
 
@@ -71,7 +71,7 @@ const Toast = ({
         return (
             <ResponsiveContext.Consumer>
             {(size) => (
-                <Layer modal={false} position={position}>
+                <Layer modal={false} position={position} style={{background: 'transparent'}}>
                     {toasts.map((toast) => {
                         const Icon = getStatusIcon(toast.status, statuses);
                         const color = getStatusColor(toast.status, statuses);
@@ -80,7 +80,7 @@ const Toast = ({
                             <Box
                                 margin={size === 'small' ? 'none' : margin}
                                 key={toast.id}
-                                background={{ light: 'white', dark: 'black' }}
+                                background={{ light: 'light-1', dark: 'dark-2' }}
                                 border={{
                                     color: color,
                                     size: 'medium',
@@ -101,7 +101,7 @@ const Toast = ({
                                 </Box>
                                 <Box margin={{ left: 'medium' }}>
                                     <Close
-                                        color='dark-6'
+                                        color='light-5'
                                         size='small'
                                         onClick={() => {onClose(toast.id)}}
                                         cursor='pointer'

@@ -15,7 +15,6 @@ var reactRedux = require('react-redux');
 var grommet = require('grommet');
 var _regeneratorRuntime = _interopDefault(require('@babel/runtime/regenerator'));
 var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToGenerator'));
-var _defineProperty = _interopDefault(require('@babel/runtime/helpers/defineProperty'));
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
@@ -502,18 +501,18 @@ function (_React$Component) {
   return ErrorBoundary;
 }(React__default.Component);
 
-var _STATUSES;
-
 var mapStateToProps = function mapStateToProps(state) {
   return {
     toasts: state.toasts
   };
 };
 
-var STATUSES = (_STATUSES = {
+var STATUSES = {
   INFO: 'INFO',
-  SUCCESS: 'SUCCESS'
-}, _defineProperty(_STATUSES, "SUCCESS", 'SUCCESS'), _defineProperty(_STATUSES, "ERROR", 'ERROR'), _STATUSES);
+  SUCCESS: 'SUCCESS',
+  WARNING: 'WARNING',
+  ERROR: 'ERROR'
+};
 
 var GET_STATUS_COLOR = function GET_STATUS_COLOR(status, statuses) {
   switch (status) {
@@ -583,7 +582,10 @@ var Toast = function Toast(_ref) {
     return React__default.createElement(grommet.ResponsiveContext.Consumer, null, function (size) {
       return React__default.createElement(grommet.Layer, {
         modal: false,
-        position: position
+        position: position,
+        style: {
+          background: 'transparent'
+        }
       }, toasts.map(function (toast) {
         var Icon = getStatusIcon(toast.status, statuses);
         var color = getStatusColor(toast.status, statuses);
@@ -591,8 +593,8 @@ var Toast = function Toast(_ref) {
           margin: size === 'small' ? 'none' : margin,
           key: toast.id,
           background: {
-            light: 'white',
-            dark: 'black'
+            light: 'light-1',
+            dark: 'dark-2'
           },
           border: {
             color: color,
@@ -621,7 +623,7 @@ var Toast = function Toast(_ref) {
             left: 'medium'
           }
         }, React__default.createElement(grommetIcons.Close, {
-          color: "dark-6",
+          color: "light-5",
           size: "small",
           onClick: function onClick() {
             onClose(toast.id);
