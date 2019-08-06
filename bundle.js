@@ -580,7 +580,7 @@ var Toast = function Toast(_ref) {
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
       _ref$margin = _ref.margin,
-      margin = _ref$margin === void 0 ? 'small' : _ref$margin,
+      margin = _ref$margin === void 0 ? 'xsmall' : _ref$margin,
       _ref$statuses = _ref.statuses,
       statuses = _ref$statuses === void 0 ? STATUSES : _ref$statuses,
       _ref$getStatusText = _ref.getStatusText,

@@ -72,7 +72,7 @@ const Toast = ({
     toasts,
     onClose,
     position = 'top-right',
-    margin = 'small',
+    margin = 'xsmall',
     statuses = STATUSES,
     getStatusText = GET_STATUS_TEXT,
     getStatusIcon = GET_STATUS_ICON,
