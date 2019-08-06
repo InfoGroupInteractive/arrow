@@ -581,10 +581,6 @@ var Toast = function Toast(_ref) {
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
       _ref$margin = _ref.margin,
       margin = _ref$margin === void 0 ? 'small' : _ref$margin,
-      _ref$mobileMargin = _ref.mobileMargin,
-      mobileMargin = _ref$mobileMargin === void 0 ? {
-    top: 'xsmall'
-  } : _ref$mobileMargin,
       _ref$statuses = _ref.statuses,
       statuses = _ref$statuses === void 0 ? STATUSES : _ref$statuses,
       _ref$getStatusText = _ref.getStatusText,
@@ -608,7 +604,7 @@ var Toast = function Toast(_ref) {
         var Icon = getStatusIcon(toast.status, statuses);
         var color = getStatusColor(toast.status, statuses);
         return React__default.createElement(grommet.Box, {
-          margin: size !== 'small' ? margin : mobileMargin,
+          margin: margin,
           key: toast.id,
           background: {
             light: 'light-1',

@@ -73,7 +73,6 @@ const Toast = ({
     onClose,
     position = 'top-right',
     margin = 'small',
-    mobileMargin = { top: 'xsmall' },
     statuses = STATUSES,
     getStatusText = GET_STATUS_TEXT,
     getStatusIcon = GET_STATUS_ICON,
@@ -92,7 +91,7 @@ const Toast = ({
 
                         return (
                             <Box
-                                margin={size !== 'small' ? margin : mobileMargin}
+                                margin={margin}
                                 key={toast.id}
                                 background={{ light: 'light-1', dark: 'dark-2' }}
                                 border={{
