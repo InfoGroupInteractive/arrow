@@ -87,14 +87,14 @@ const Toast = ({
                                     side: 'left'
                                 }}
                                 pad='small'
-                                elevation='small'
+                                elevation='medium'
                                 round='xsmall'
                                 direction='row'
                                 align='center'
                                 gap='small'>
                                 <Icon color={color} size='medium' />
                                 <Box flex direction='column'>
-                                    <Text size='xsmall' weight='bold'>
+                                    <Text size='small' weight='bold'>
                                         {getStatusText(toast.status, statuses)}
                                     </Text>
                                     <Text size='small'>{toast.text}</Text>
