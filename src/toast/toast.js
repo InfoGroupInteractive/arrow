@@ -59,6 +59,7 @@ function GET_STATUS_ICON (status, statuses) {
 
 const Toast = ({
     toasts,
+    onClose,
     position = 'top-right',
     margin = 'small',
     statuses = STATUSES,
@@ -101,7 +102,7 @@ const Toast = ({
                                 <Box margin={{ left: 'medium' }}>
                                     <Close
                                         color='dark-6'
-                                        size='medium'
+                                        size='small'
                                         onClick={() => {onClose(toast.id)}}
                                         cursor='pointer'
                                     />

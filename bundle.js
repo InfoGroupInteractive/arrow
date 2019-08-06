@@ -565,6 +565,7 @@ function GET_STATUS_ICON(status, statuses) {
 
 var Toast = function Toast(_ref) {
   var toasts = _ref.toasts,
+      onClose = _ref.onClose,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? 'top-right' : _ref$position,
       _ref$margin = _ref.margin,
@@ -621,7 +622,7 @@ var Toast = function Toast(_ref) {
           }
         }, React__default.createElement(grommetIcons.Close, {
           color: "dark-6",
-          size: "medium",
+          size: "small",
           onClick: function onClick() {
             onClose(toast.id);
           },
