@@ -602,7 +602,7 @@ var Toast = function Toast(_ref) {
             side: 'left'
           },
           pad: "small",
-          elevation: "xsmall",
+          elevation: "small",
           round: "xsmall",
           direction: "row",
           align: "center",
@@ -617,7 +617,7 @@ var Toast = function Toast(_ref) {
           size: "xsmall",
           weight: "bold"
         }, getStatusText(toast.status, statuses)), React__default.createElement(grommet.Text, {
-          size: "xsmall"
+          size: "small"
         }, toast.text)), React__default.createElement(grommet.Box, {
           margin: {
             left: 'medium'

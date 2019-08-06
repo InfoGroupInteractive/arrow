@@ -87,7 +87,7 @@ const Toast = ({
                                     side: 'left'
                                 }}
                                 pad='small'
-                                elevation='xsmall'
+                                elevation='small'
                                 round='xsmall'
                                 direction='row'
                                 align='center'
@@ -97,7 +97,7 @@ const Toast = ({
                                     <Text size='xsmall' weight='bold'>
                                         {getStatusText(toast.status, statuses)}
                                     </Text>
-                                    <Text size='xsmall'>{toast.text}</Text>
+                                    <Text size='small'>{toast.text}</Text>
                                 </Box>
                                 <Box margin={{ left: 'medium' }}>
                                     <Close
