@@ -630,6 +630,8 @@ var Toast = function Toast(_ref) {
       }));
     });
   }
+
+  return null;
 }; // const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
 //     if(toasts && Array.isArray(toasts) && toasts.length > 0){
 //         return (

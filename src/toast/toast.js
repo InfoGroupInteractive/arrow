@@ -113,8 +113,10 @@ const Toast = ({
             )}
             </ResponsiveContext.Consumer>
         );
-    };
-}
+    }
+
+    return null;
+};
 
 
 // const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
