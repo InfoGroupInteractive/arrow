@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Box, Layer, Text, ResponsiveContext } from 'grommet';
-import { Close, StatusGood, StatusWarning, StatusCritical, StatusInfo } from 'grommet-icons';
+import { Close } from 'grommet-icons';
+
+import * as constants from '../status/status.constants';
+import * as utils from '../status/status.utils';
 
 
 const mapStateToProps = (state)=>{
@@ -9,52 +12,6 @@ const mapStateToProps = (state)=>{
         toasts: state.toasts
     };
 };
-
-const STATUSES = {
-    INFO: 'INFO',
-    SUCCESS: 'SUCCESS',
-    WARNING: 'WARNING',
-    ERROR: 'ERROR'
-};
-
-const GET_STATUS_COLOR = (status, statuses) => {
-    switch (status) {
-        case statuses.SUCCESS:
-            return 'status-ok';
-        case statuses.WARNING:
-            return 'status-warning';
-        case statuses.ERROR:
-            return 'status-critical';
-        default:
-            return 'status-unknown';
-    }
-}
-
-const GET_STATUS_TEXT = (status, statuses) => {
-    switch (status) {
-        case statuses.SUCCESS:
-            return 'Complete';
-        case statuses.WARNING:
-            return 'Needs Attention';
-        case statuses.ERROR:
-            return 'Needs Attention';
-        default:
-            return 'FYI';
-    }
-}
-
-function GET_STATUS_ICON (status, statuses) {
-    switch (status) {
-      case statuses.SUCCESS:
-        return StatusGood;
-      case statuses.WARNING:
-        return StatusWarning;
-      case statuses.ERROR:
-        return StatusCritical;
-      default:
-        return StatusInfo;
-    }
-}
 
 const STYLE = {
     background: 'transparent'
@@ -73,10 +30,10 @@ const Toast = ({
     onClose,
     position = 'top-right',
     margin = 'xsmall',
-    statuses = STATUSES,
-    getStatusText = GET_STATUS_TEXT,
-    getStatusIcon = GET_STATUS_ICON,
-    getStatusColor = GET_STATUS_COLOR,
+    statuses = constants,
+    getStatusText = utils.getStatusText,
+    getStatusIcon = utils.getStatusIcon,
+    getStatusColor = utils.getStatusColor,
     style = STYLE,
     mobileStyle = MOBILE_STYLE
 }) => {
@@ -133,36 +90,6 @@ const Toast = ({
 };
 
 
-// const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
-//     if(toasts && Array.isArray(toasts) && toasts.length > 0){
-//         return (
-//             <Layer modal={false} position={position} style={{background: 'transparent'}}>
-//                 <Box gap='small' margin={margin} >
-//                     {toasts.map((m) => (
-//                         <Box
-//                             key={m.id}
-//                             background={ m.background || {light: 'light-2', dark: 'dark-2'}}
-//                             pad='medium'
-//                             elevation='xsmall'
-//                             round='small'
-//                             direction='row'
-//                             justify='between'
-//                             align='center'
-//                             gap='medium'>
-//                             <Text size='large'>{m.text}</Text>
-//                             <Close onClick={()=>{onClose(m.id)}} />
-//                         </Box>
-//                     ))}
-//                 </Box>
-
-//             </Layer>
-//         )
-//     } else {
-//         return null;
-//     }
-// };
-
 // displayName needed for UI Automation
 Toast.displayName = 'Toast';
-
 export default connect(mapStateToProps)(Toast);

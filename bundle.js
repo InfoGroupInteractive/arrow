@@ -502,20 +502,19 @@ function (_React$Component) {
   return ErrorBoundary;
 }(React__default.Component);
 
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    toasts: state.toasts
-  };
-};
+var INFO = 'INFO';
+var SUCCESS = 'SUCCESS';
+var WARNING = 'WARNING';
+var ERROR = 'ERROR';
 
-var STATUSES = {
-  INFO: 'INFO',
-  SUCCESS: 'SUCCESS',
-  WARNING: 'WARNING',
-  ERROR: 'ERROR'
-};
+var constants$1 = /*#__PURE__*/Object.freeze({
+    INFO: INFO,
+    SUCCESS: SUCCESS,
+    WARNING: WARNING,
+    ERROR: ERROR
+});
 
-var GET_STATUS_COLOR = function GET_STATUS_COLOR(status, statuses) {
+var getStatusColor = function getStatusColor(status, statuses) {
   switch (status) {
     case statuses.SUCCESS:
       return 'status-ok';
@@ -530,8 +529,7 @@ var GET_STATUS_COLOR = function GET_STATUS_COLOR(status, statuses) {
       return 'status-unknown';
   }
 };
-
-var GET_STATUS_TEXT = function GET_STATUS_TEXT(status, statuses) {
+var getStatusText = function getStatusText(status, statuses) {
   switch (status) {
     case statuses.SUCCESS:
       return 'Complete';
@@ -546,8 +544,7 @@ var GET_STATUS_TEXT = function GET_STATUS_TEXT(status, statuses) {
       return 'FYI';
   }
 };
-
-function GET_STATUS_ICON(status, statuses) {
+var getStatusIcon = function getStatusIcon(status, statuses) {
   switch (status) {
     case statuses.SUCCESS:
       return grommetIcons.StatusGood;
@@ -561,7 +558,19 @@ function GET_STATUS_ICON(status, statuses) {
     default:
       return grommetIcons.StatusInfo;
   }
-}
+};
+
+var utils = /*#__PURE__*/Object.freeze({
+    getStatusColor: getStatusColor,
+    getStatusText: getStatusText,
+    getStatusIcon: getStatusIcon
+});
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    toasts: state.toasts
+  };
+};
 
 var STYLE = {
   background: 'transparent'
@@ -582,13 +591,13 @@ var Toast = function Toast(_ref) {
       _ref$margin = _ref.margin,
       margin = _ref$margin === void 0 ? 'xsmall' : _ref$margin,
       _ref$statuses = _ref.statuses,
-      statuses = _ref$statuses === void 0 ? STATUSES : _ref$statuses,
+      statuses = _ref$statuses === void 0 ? constants$1 : _ref$statuses,
       _ref$getStatusText = _ref.getStatusText,
-      getStatusText = _ref$getStatusText === void 0 ? GET_STATUS_TEXT : _ref$getStatusText,
+      getStatusText$1 = _ref$getStatusText === void 0 ? getStatusText : _ref$getStatusText,
       _ref$getStatusIcon = _ref.getStatusIcon,
-      getStatusIcon = _ref$getStatusIcon === void 0 ? GET_STATUS_ICON : _ref$getStatusIcon,
+      getStatusIcon$1 = _ref$getStatusIcon === void 0 ? getStatusIcon : _ref$getStatusIcon,
       _ref$getStatusColor = _ref.getStatusColor,
-      getStatusColor = _ref$getStatusColor === void 0 ? GET_STATUS_COLOR : _ref$getStatusColor,
+      getStatusColor$1 = _ref$getStatusColor === void 0 ? getStatusColor : _ref$getStatusColor,
       _ref$style = _ref.style,
       style = _ref$style === void 0 ? STYLE : _ref$style,
       _ref$mobileStyle = _ref.mobileStyle,
@@ -601,8 +610,8 @@ var Toast = function Toast(_ref) {
         position: position,
         style: size !== 'small' ? style : mobileStyle
       }, toasts.map(function (toast) {
-        var Icon = getStatusIcon(toast.status, statuses);
-        var color = getStatusColor(toast.status, statuses);
+        var Icon = getStatusIcon$1(toast.status, statuses);
+        var color = getStatusColor$1(toast.status, statuses);
         return React__default.createElement(grommet.Box, {
           margin: margin,
           key: toast.id,
@@ -630,7 +639,7 @@ var Toast = function Toast(_ref) {
         }, React__default.createElement(grommet.Text, {
           size: "small",
           weight: "bold"
-        }, getStatusText(toast.status, statuses)), React__default.createElement(grommet.Text, {
+        }, getStatusText$1(toast.status, statuses)), React__default.createElement(grommet.Text, {
           size: "small"
         }, toast.text)), React__default.createElement(grommet.Box, {
           margin: {
@@ -649,34 +658,7 @@ var Toast = function Toast(_ref) {
   }
 
   return null;
-}; // const Toast = ({ toasts, onClose, margin, position = 'top-right' }) => {
-//     if(toasts && Array.isArray(toasts) && toasts.length > 0){
-//         return (
-//             <Layer modal={false} position={position} style={{background: 'transparent'}}>
-//                 <Box gap='small' margin={margin} >
-//                     {toasts.map((m) => (
-//                         <Box
-//                             key={m.id}
-//                             background={ m.background || {light: 'light-2', dark: 'dark-2'}}
-//                             pad='medium'
-//                             elevation='xsmall'
-//                             round='small'
-//                             direction='row'
-//                             justify='between'
-//                             align='center'
-//                             gap='medium'>
-//                             <Text size='large'>{m.text}</Text>
-//                             <Close onClick={()=>{onClose(m.id)}} />
-//                         </Box>
-//                     ))}
-//                 </Box>
-//             </Layer>
-//         )
-//     } else {
-//         return null;
-//     }
-// };
-// displayName needed for UI Automation
+}; // displayName needed for UI Automation
 
 
 Toast.displayName = 'Toast';
@@ -1177,6 +1159,8 @@ var doFetch = function doFetch(url) {
   return plomise;
 };
 
+var index = _objectSpread({}, constants$1, utils);
+
 var theme$1 = {
   colors: colors,
   reportTheme: reportTheme,
@@ -1190,6 +1174,7 @@ exports.Loader = Loader;
 exports.LoaderCentered = LoaderCentered;
 exports.LoaderOverlay = LoaderOverlay;
 exports.Navigation = Navigation;
+exports.Status = index;
 exports.TagInput = TagInput;
 exports.Toast = Toast$1;
 exports.createToast = createToast;
