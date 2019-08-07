@@ -514,7 +514,9 @@ var constants$1 = /*#__PURE__*/Object.freeze({
     ERROR: ERROR
 });
 
-var getStatusColor = function getStatusColor(status, statuses) {
+var getStatusColor = function getStatusColor(status) {
+  var statuses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : constants$1;
+
   switch (status) {
     case statuses.SUCCESS:
       return 'status-ok';
@@ -529,7 +531,9 @@ var getStatusColor = function getStatusColor(status, statuses) {
       return 'status-unknown';
   }
 };
-var getStatusText = function getStatusText(status, statuses) {
+var getStatusText = function getStatusText(status) {
+  var statuses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : constants$1;
+
   switch (status) {
     case statuses.SUCCESS:
       return 'Complete';
@@ -544,7 +548,9 @@ var getStatusText = function getStatusText(status, statuses) {
       return 'FYI';
   }
 };
-var getStatusIcon = function getStatusIcon(status, statuses) {
+var getStatusIcon = function getStatusIcon(status) {
+  var statuses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : constants$1;
+
   switch (status) {
     case statuses.SUCCESS:
       return grommetIcons.StatusGood;

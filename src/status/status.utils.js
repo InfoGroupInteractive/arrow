@@ -1,6 +1,7 @@
 import { StatusGood, StatusWarning, StatusCritical, StatusInfo } from 'grommet-icons';
+import * as constants from './status.constants';
 
-export const getStatusColor = (status, statuses) => {
+export const getStatusColor = (status, statuses = constants) => {
     switch (status) {
         case statuses.SUCCESS:
             return 'status-ok';
@@ -13,7 +14,7 @@ export const getStatusColor = (status, statuses) => {
     }
 }
 
-export const getStatusText = (status, statuses) => {
+export const getStatusText = (status, statuses = constants) => {
     switch (status) {
         case statuses.SUCCESS:
             return 'Complete';
@@ -26,7 +27,7 @@ export const getStatusText = (status, statuses) => {
     }
 }
 
-export const getStatusIcon = (status, statuses) => {
+export const getStatusIcon = (status, statuses = constants) => {
     switch (status) {
       case statuses.SUCCESS:
         return StatusGood;
