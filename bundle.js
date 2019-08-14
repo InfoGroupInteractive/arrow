@@ -662,10 +662,8 @@ var Toast = function Toast(_ref) {
       }));
     });
   }
-
   return null;
 }; // displayName needed for UI Automation
-
 
 Toast.displayName = 'Toast';
 var Toast$1 = reactRedux.connect(mapStateToProps)(Toast);
