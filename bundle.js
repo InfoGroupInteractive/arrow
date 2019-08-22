@@ -15,6 +15,7 @@ var reactRedux = require('react-redux');
 var grommet = require('grommet');
 var _regeneratorRuntime = _interopDefault(require('@babel/runtime/regenerator'));
 var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToGenerator'));
+var _objectSpread = _interopDefault(require('@babel/runtime/helpers/objectSpread'));
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
@@ -501,54 +502,168 @@ function (_React$Component) {
   return ErrorBoundary;
 }(React__default.Component);
 
+var INFO = 'INFO';
+var SUCCESS = 'SUCCESS';
+var WARNING = 'WARNING';
+var ERROR = 'ERROR';
+
+var constants$1 = /*#__PURE__*/Object.freeze({
+    INFO: INFO,
+    SUCCESS: SUCCESS,
+    WARNING: WARNING,
+    ERROR: ERROR
+});
+
+var getStatusColor = function getStatusColor(status) {
+  var statuses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : constants$1;
+
+  switch (status) {
+    case statuses.SUCCESS:
+      return 'status-ok';
+
+    case statuses.WARNING:
+      return 'status-warning';
+
+    case statuses.ERROR:
+      return 'status-critical';
+
+    default:
+      return 'status-unknown';
+  }
+};
+var getStatusText = function getStatusText(status) {
+  var statuses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : constants$1;
+
+  switch (status) {
+    case statuses.SUCCESS:
+      return 'Complete';
+
+    case statuses.WARNING:
+      return 'Needs Attention';
+
+    case statuses.ERROR:
+      return 'Needs Attention';
+
+    default:
+      return 'FYI';
+  }
+};
+var getStatusIcon = function getStatusIcon(status) {
+  var statuses = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : constants$1;
+
+  switch (status) {
+    case statuses.SUCCESS:
+      return grommetIcons.StatusGood;
+
+    case statuses.WARNING:
+      return grommetIcons.StatusWarning;
+
+    case statuses.ERROR:
+      return grommetIcons.StatusCritical;
+
+    default:
+      return grommetIcons.StatusInfo;
+  }
+};
+
+var utils = /*#__PURE__*/Object.freeze({
+    getStatusColor: getStatusColor,
+    getStatusText: getStatusText,
+    getStatusIcon: getStatusIcon
+});
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     toasts: state.toasts
   };
 };
 
+var STYLE = {
+  background: 'transparent'
+};
+
+var MOBILE_STYLE = _objectSpread({
+  position: 'fixed',
+  right: 'unset',
+  height: 'auto',
+  width: 'auto'
+}, STYLE);
+
 var Toast = function Toast(_ref) {
   var toasts = _ref.toasts,
       onClose = _ref.onClose,
-      margin = _ref.margin,
       _ref$position = _ref.position,
-      position = _ref$position === void 0 ? 'top-right' : _ref$position;
+      position = _ref$position === void 0 ? 'top-right' : _ref$position,
+      _ref$margin = _ref.margin,
+      margin = _ref$margin === void 0 ? 'xsmall' : _ref$margin,
+      _ref$statuses = _ref.statuses,
+      statuses = _ref$statuses === void 0 ? constants$1 : _ref$statuses,
+      _ref$getStatusText = _ref.getStatusText,
+      getStatusText$1 = _ref$getStatusText === void 0 ? getStatusText : _ref$getStatusText,
+      _ref$getStatusIcon = _ref.getStatusIcon,
+      getStatusIcon$1 = _ref$getStatusIcon === void 0 ? getStatusIcon : _ref$getStatusIcon,
+      _ref$getStatusColor = _ref.getStatusColor,
+      getStatusColor$1 = _ref$getStatusColor === void 0 ? getStatusColor : _ref$getStatusColor,
+      _ref$style = _ref.style,
+      style = _ref$style === void 0 ? STYLE : _ref$style,
+      _ref$mobileStyle = _ref.mobileStyle,
+      mobileStyle = _ref$mobileStyle === void 0 ? MOBILE_STYLE : _ref$mobileStyle;
 
   if (toasts && Array.isArray(toasts) && toasts.length > 0) {
-    return React__default.createElement(grommet.Layer, {
-      modal: false,
-      position: position,
-      style: {
-        background: 'transparent'
-      }
-    }, React__default.createElement(grommet.Box, {
-      gap: "small",
-      margin: margin
-    }, toasts.map(function (m) {
-      return React__default.createElement(grommet.Box, {
-        key: m.id,
-        background: m.background || {
-          light: 'light-2',
-          dark: 'dark-2'
-        },
-        pad: "medium",
-        elevation: "xsmall",
-        round: "small",
-        direction: "row",
-        justify: "between",
-        align: "center",
-        gap: "medium"
-      }, React__default.createElement(grommet.Text, {
-        size: "large"
-      }, m.text), React__default.createElement(grommetIcons.Close, {
-        onClick: function onClick() {
-          onClose(m.id);
-        }
+    return React__default.createElement(grommet.ResponsiveContext.Consumer, null, function (size) {
+      return React__default.createElement(grommet.Layer, {
+        modal: false,
+        position: position,
+        style: size !== 'small' ? style : mobileStyle
+      }, toasts.map(function (toast) {
+        var Icon = getStatusIcon$1(toast.status, statuses);
+        var color = getStatusColor$1(toast.status, statuses);
+        return React__default.createElement(grommet.Box, {
+          margin: margin,
+          key: toast.id,
+          background: {
+            light: 'light-1',
+            dark: 'dark-2'
+          },
+          border: {
+            color: color,
+            size: 'medium',
+            side: 'left'
+          },
+          pad: "small",
+          elevation: "medium",
+          round: "xsmall",
+          direction: "row",
+          align: "center",
+          gap: "small"
+        }, React__default.createElement(Icon, {
+          color: color,
+          size: "medium"
+        }), React__default.createElement(grommet.Box, {
+          flex: true,
+          direction: "column"
+        }, React__default.createElement(grommet.Text, {
+          size: "small",
+          weight: "bold"
+        }, getStatusText$1(toast.status, statuses)), React__default.createElement(grommet.Text, {
+          size: "small"
+        }, toast.text)), React__default.createElement(grommet.Box, {
+          margin: {
+            left: 'medium'
+          }
+        }, React__default.createElement(grommetIcons.Close, {
+          color: "light-5",
+          size: "small",
+          onClick: function onClick() {
+            onClose(toast.id);
+          },
+          cursor: "pointer"
+        })));
       }));
-    })));
-  } else {
-    return null;
+    });
   }
+
+  return null;
 }; // displayName needed for UI Automation
 
 
@@ -569,7 +684,7 @@ var toastReducers = (function () {
       newState.push({
         id: action.id,
         text: action.text,
-        background: action.background
+        status: action.status
       });
       return newState;
 
@@ -704,8 +819,8 @@ function v4(options, buf, offset) {
 
 var v4_1 = v4;
 
-var createToast = function createToast(text, background) {
-  store.dispatch(createToastAction(text, background));
+var createToast = function createToast(text, status) {
+  store.dispatch(createToastAction(text, status));
 };
 var removeToast = function removeToast(id) {
   store.dispatch(removeToastAction(id));
@@ -716,12 +831,12 @@ var removeToastAction = function removeToastAction(id) {
     id: id
   };
 };
-var createToastAction = function createToastAction(text, background) {
+var createToastAction = function createToastAction(text, status) {
   return {
     type: ADD_TOAST,
     id: v4_1(),
     text: text,
-    background: background
+    status: status
   };
 };
 
@@ -1050,6 +1165,8 @@ var doFetch = function doFetch(url) {
   return plomise;
 };
 
+var index = _objectSpread({}, constants$1, utils);
+
 var theme$1 = {
   colors: colors,
   reportTheme: reportTheme,
@@ -1072,5 +1189,6 @@ exports.getContrastingColor = getContrastingColor;
 exports.removeToast = removeToast;
 exports.removeToastAction = removeToastAction;
 exports.setTheme = setTheme;
+exports.status = index;
 exports.theme = theme$1;
 exports.toastReducers = toastReducers;

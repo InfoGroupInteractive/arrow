@@ -9,7 +9,7 @@ export default (state=[], action)=>{
             newState.push({
                 id: action.id,
                 text: action.text,
-                background: action.background
+                status: action.status
             });
             return newState;
         case toastConstants.REMOVE_TOAST:           

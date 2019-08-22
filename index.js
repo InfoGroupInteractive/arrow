@@ -21,3 +21,4 @@ export { setTheme } from './src/theme/theme.actions';
 export { default as TagInput } from './src/tag-input/tag-input';
 export { doFetch } from './src/utils/fetch-utils';
 export { getContrastingColor } from './src/utils/color-utils';
+export { default as status } from './src/status'
