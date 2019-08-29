@@ -15,7 +15,7 @@ var reactRedux = require('react-redux');
 var grommet = require('grommet');
 var _regeneratorRuntime = _interopDefault(require('@babel/runtime/regenerator'));
 var _asyncToGenerator = _interopDefault(require('@babel/runtime/helpers/asyncToGenerator'));
-var _defineProperty = _interopDefault(require('@babel/runtime/helpers/defineProperty'));
+var _objectSpread = _interopDefault(require('@babel/runtime/helpers/objectSpread'));
 var grommetIcons = require('grommet-icons');
 var redux = require('redux');
 var crypto = _interopDefault(require('crypto'));
@@ -572,10 +572,6 @@ var utils = /*#__PURE__*/Object.freeze({
     getStatusIcon: getStatusIcon
 });
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 var mapStateToProps = function mapStateToProps(state) {
   return {
     toasts: state.toasts
@@ -603,11 +599,11 @@ var Toast = function Toast(_ref) {
       _ref$statuses = _ref.statuses,
       statuses = _ref$statuses === void 0 ? constants$1 : _ref$statuses,
       _ref$getStatusText = _ref.getStatusText,
-      getStatusText$1 = _ref$getStatusText === void 0 ? getStatusText : _ref$getStatusText,
+      getStatusText$$1 = _ref$getStatusText === void 0 ? getStatusText : _ref$getStatusText,
       _ref$getStatusIcon = _ref.getStatusIcon,
-      getStatusIcon$1 = _ref$getStatusIcon === void 0 ? getStatusIcon : _ref$getStatusIcon,
+      getStatusIcon$$1 = _ref$getStatusIcon === void 0 ? getStatusIcon : _ref$getStatusIcon,
       _ref$getStatusColor = _ref.getStatusColor,
-      getStatusColor$1 = _ref$getStatusColor === void 0 ? getStatusColor : _ref$getStatusColor,
+      getStatusColor$$1 = _ref$getStatusColor === void 0 ? getStatusColor : _ref$getStatusColor,
       _ref$style = _ref.style,
       style = _ref$style === void 0 ? STYLE : _ref$style,
       _ref$mobileStyle = _ref.mobileStyle,
@@ -620,8 +616,8 @@ var Toast = function Toast(_ref) {
         position: position,
         style: size !== 'small' ? style : mobileStyle
       }, toasts.map(function (toast) {
-        var Icon = getStatusIcon$1(toast.status, statuses);
-        var color = getStatusColor$1(toast.status, statuses);
+        var Icon = getStatusIcon$$1(toast.status, statuses);
+        var color = getStatusColor$$1(toast.status, statuses);
         return React__default.createElement(grommet.Box, {
           margin: margin,
           key: toast.id,
@@ -649,7 +645,7 @@ var Toast = function Toast(_ref) {
         }, React__default.createElement(grommet.Text, {
           size: "small",
           weight: "bold"
-        }, getStatusText$1(toast.status, statuses)), React__default.createElement(grommet.Text, {
+        }, getStatusText$$1(toast.status, statuses)), React__default.createElement(grommet.Text, {
           size: "small"
         }, toast.text)), React__default.createElement(grommet.Box, {
           margin: {
@@ -901,9 +897,9 @@ var Loader = function Loader(_ref) {
       size = _ref$size === void 0 ? 'xlarge' : _ref$size,
       _ref$color = _ref.color,
       color = _ref$color === void 0 ? 'brand' : _ref$color;
-  return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme) {
-    var loaderSize = theme ? theme.icon.size[size] : '48px';
-    var loaderColor = theme ? theme.global.colors[color] : brand;
+  return React__default.createElement(grommet.ThemeContext.Consumer, null, function (theme$$1) {
+    var loaderSize = theme$$1 ? theme$$1.icon.size[size] : '48px';
+    var loaderColor = theme$$1 ? theme$$1.global.colors[color] : brand;
     var loaderBaseColor = alpha(loaderColor, 0.25);
     return React__default.createElement("div", {
       className: "loader",
@@ -1154,13 +1150,13 @@ var doFetch = function doFetch(url) {
             // 200 level response
             resolve(json);
           } else {
-            reject(json); //fail with error response from server
+            reject([res.status, json]); //fail with error response from server
           }
-        })["catch"](function (e) {
+        }).catch(function (e) {
           return reject(e);
         }); //error processing json response
       }
-    })["catch"](function (e) {
+    }).catch(function (e) {
       if (e.name !== 'AbortError') {
         reject(e);
       }
@@ -1169,10 +1165,7 @@ var doFetch = function doFetch(url) {
   return plomise;
 };
 
-function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-var index = _objectSpread$1({}, constants$1, {}, utils);
+var index = _objectSpread({}, constants$1, utils);
 
 var theme$1 = {
   colors: colors,
@@ -1181,21 +1174,21 @@ var theme$1 = {
   themes: themes
 };
 
+exports.theme = theme$1;
 exports.ArrowApp = ArrowApp;
+exports.Navigation = Navigation;
 exports.ErrorBoundary = ErrorBoundary;
 exports.Loader = Loader;
 exports.LoaderCentered = LoaderCentered;
 exports.LoaderOverlay = LoaderOverlay;
-exports.Navigation = Navigation;
-exports.TagInput = TagInput;
 exports.Toast = Toast$1;
 exports.createToast = createToast;
-exports.createToastAction = createToastAction;
-exports.doFetch = doFetch;
-exports.getContrastingColor = getContrastingColor;
 exports.removeToast = removeToast;
 exports.removeToastAction = removeToastAction;
-exports.setTheme = setTheme;
-exports.status = index;
-exports.theme = theme$1;
+exports.createToastAction = createToastAction;
 exports.toastReducers = toastReducers;
+exports.setTheme = setTheme;
+exports.TagInput = TagInput;
+exports.doFetch = doFetch;
+exports.getContrastingColor = getContrastingColor;
+exports.status = index;

@@ -1,8 +1,17 @@
-.loader {
-  animation: spin 800ms infinite ease; }
+$spin-duration: 800ms;
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
+
+
+.loader {
+    animation: spin $spin-duration infinite ease;
+
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

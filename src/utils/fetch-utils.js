@@ -17,7 +17,7 @@ export const doFetch = (url, method='GET', body, signal, headers={
                             if(res.ok){ // 200 level response
                                 resolve(json);
                             } else {
-                                reject(json); //fail with error response from server
+                                reject([res.status, json]); //fail with error response from server
                             }
                         })
                         .catch((e)=>reject(e)); //error processing json response
